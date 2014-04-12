@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+//#include "HelloWorldScene.h"
+#include "Box2dView.h"
 
 USING_NS_CC;
 
@@ -27,7 +28,8 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+//    auto scene = HelloWorld::createScene();
+    auto scene = Box2DView::createScene();
 
     // run
     director->runWithScene(scene);
