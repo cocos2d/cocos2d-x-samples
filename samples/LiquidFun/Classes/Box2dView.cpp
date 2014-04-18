@@ -182,7 +182,9 @@ bool Box2DView::initWithEntryID(int entryId)
 {
     m_entry = g_testEntries + entryId;
     m_test = m_entry->createFcn();
-    
+
+    auto scale = m_test->GetDefaultViewZoom();
+    m_test->getRenderer()->setRatio(1/scale);
     
     // Adds Touch Event Listener
     auto listener = EventListenerTouchOneByOne::create();

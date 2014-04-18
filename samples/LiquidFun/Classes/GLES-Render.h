@@ -30,12 +30,6 @@ struct b2AABB;
 // inside b2World::Step.
 class GLESDebugDraw : public b2Draw
 {
-    float32 mRatio;
-    cocos2d::GLProgram* mShaderProgram;
-    GLint        mPointSizeLocation;
-    GLint        mColorLocation;
-
-    void initShader( void );
 public:
     GLESDebugDraw();
 
@@ -62,6 +56,16 @@ public:
     virtual void DrawString(int x, int y, const char* string, ...); 
 
     virtual void DrawAABB(b2AABB* aabb, const b2Color& color);
+
+    void setRatio(float32 ratio) { mRatio = ratio; }
+
+protected:
+    float32 mRatio;
+    cocos2d::GLProgram* mShaderProgram;
+    GLint        mPointSizeLocation;
+    GLint        mColorLocation;
+
+    void initShader( void );
 };
 
 
