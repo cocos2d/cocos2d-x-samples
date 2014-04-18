@@ -205,6 +205,9 @@ public:
 	// Restore default particle parameters.
 	void RestoreParticleParameters();
 
+
+    GLESDebugDraw* getRenderer() { return &m_debugDraw; }
+
     b2World* m_world;
 
 protected:

@@ -51,6 +51,8 @@ const uint32 Test::k_ParticleColorsCount =
 	B2_ARRAY_SIZE(Test::k_ParticleColors);
 
 Test::Test()
+// XXX: This doesn't work since GetDefaultViewZoom is not virtual
+: m_debugDraw(1/GetDefaultViewZoom())
 {
 	const b2ParticleSystemDef particleSystemDef;
 	b2Vec2 gravity;
