@@ -24,90 +24,122 @@
 #include <stdarg.h>
 #include <string.h>
 
+#ifndef WIN32
+#include <alloca.h>
+#endif
+
 USING_NS_CC;
+
+float currentscale = 1;	// amount of pixels that corresponds to one world unit, needed to use glPointSize correctly
 
 GLESDebugDraw::GLESDebugDraw()
     : mRatio( 1.0f )
+    , mPointSizeLocation(-1)
+    , mColorLocation(-1)
+
 {
     this->initShader();
 }
 
 GLESDebugDraw::GLESDebugDraw( float32 ratio )
     : mRatio( ratio )
+    , mPointSizeLocation(-1)
+    , mColorLocation(-1)
 {
     this->initShader();
 }
 
 void GLESDebugDraw::initShader( void )
 {
-    mUniformColorShaderProgram = ShaderCache::getInstance()->getProgram(GLProgram::SHADER_NAME_POSITION_U_COLOR);
-
-    mUniformColorLocation = glGetUniformLocation( mUniformColorShaderProgram->getProgram(), "u_color");
+    mShaderProgram = ShaderCache::getInstance()->getProgram(GLProgram::SHADER_NAME_POSITION_U_COLOR);
+    mPointSizeLocation = mShaderProgram->getUniformLocation("u_pointSize");
+    mColorLocation = mShaderProgram->getUniformLocation("u_color");
 }
 
 void GLESDebugDraw::DrawPolygon(const b2Vec2* old_vertices, int vertexCount, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
-    b2Vec2* vertices = new b2Vec2[vertexCount];
+    b2Vec2* vertices = (b2Vec2*) alloca(sizeof(b2Vec2) * vertexCount);
     for( int i=0;i<vertexCount;i++) 
     {
         vertices[i] = old_vertices[i];
         vertices[i] *= mRatio;
     }
 
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
-
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
+
     glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,vertexCount);
 
 
     CHECK_GL_ERROR_DEBUG();
-
-    delete[] vertices;
 }
 
-void GLESDebugDraw::DrawSolidPolygon(const b2Vec2* old_vertices, int vertexCount, const b2Color& color)
+void GLESDebugDraw::DrawFlatPolygon(const b2Vec2* old_vertices, int32 vertexCount, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
-    b2Vec2* vertices = new b2Vec2[vertexCount];
+    b2Vec2* vertices = (b2Vec2*) alloca(sizeof(b2Vec2) * vertexCount);
     for( int i=0;i<vertexCount;i++) {
         vertices[i] = old_vertices[i];
         vertices[i] *= mRatio;
     }
-    
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
 
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
+
+
+    glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
+    CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,vertexCount);
+}
+
+
+void GLESDebugDraw::DrawSolidPolygon(const b2Vec2* old_vertices, int vertexCount, const b2Color& color)
+{
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
+
+    b2Vec2* vertices = (b2Vec2*) alloca(sizeof(b2Vec2) * vertexCount);
+    for( int i=0;i<vertexCount;i++) {
+        vertices[i] = old_vertices[i];
+        vertices[i] *= mRatio;
+    }
+
+    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, vertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
 
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
 
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
+
     glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(2,vertexCount*2);
 
     CHECK_GL_ERROR_DEBUG();
-
-    delete[] vertices;
 }
 
 void GLESDebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
     const float32 k_segments = 16.0f;
     int vertexCount=16;
     const float32 k_increment = 2.0f * b2_pi / k_segments;
     float32 theta = 0.0f;
-    
-    GLfloat*    glVertices = new GLfloat[vertexCount*2];
+
+    GLfloat* glVertices = (GLfloat*) alloca(sizeof(GLfloat) * vertexCount * 2);
     for (int i = 0; i < k_segments; ++i)
     {
         b2Vec2 v = center + radius * b2Vec2(cosf(theta), sinf(theta));
@@ -116,29 +148,28 @@ void GLESDebugDraw::DrawCircle(const b2Vec2& center, float32 radius, const b2Col
         theta += k_increment;
     }
     
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, glVertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
 
     glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,vertexCount);
 
     CHECK_GL_ERROR_DEBUG();
-
-    delete[] glVertices;
 }
 
 void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
     const float32 k_segments = 16.0f;
     int vertexCount=16;
     const float32 k_increment = 2.0f * b2_pi / k_segments;
     float32 theta = 0.0f;
     
-    GLfloat*    glVertices = new GLfloat[vertexCount*2];
+    GLfloat* glVertices = (GLfloat*) alloca(sizeof(GLfloat) * vertexCount * 2);
     for (int i = 0; i < k_segments; ++i)
     {
         b2Vec2 v = center + radius * b2Vec2(cosf(theta), sinf(theta));
@@ -147,12 +178,15 @@ void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const 
         theta += k_increment;
     }
     
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, glVertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r*0.5f, color.g*0.5f, color.b*0.5f, 0.5f);
+
     glDrawArrays(GL_TRIANGLE_FAN, 0, vertexCount);
 
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
 
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
     glDrawArrays(GL_LINE_LOOP, 0, vertexCount);
 
     // Draw the axis line
@@ -161,23 +195,21 @@ void GLESDebugDraw::DrawSolidCircle(const b2Vec2& center, float32 radius, const 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(2,vertexCount*2);
 
     CHECK_GL_ERROR_DEBUG();
-
-    delete[] glVertices;
 }
 
 void GLESDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
-
-    GLfloat    glVertices[] = 
+    GLfloat    glVertices[] =
     {
         p1.x * mRatio, p1.y * mRatio,
         p2.x * mRatio, p2.y * mRatio
     };
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, glVertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
 
     glDrawArrays(GL_LINES, 0, 2);
 
@@ -185,6 +217,57 @@ void GLESDebugDraw::DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Colo
 
     CHECK_GL_ERROR_DEBUG();
 }
+
+float smoothstep(float x) { return x * x * (3 - 2 * x); }
+
+void GLESDebugDraw::DrawParticles(const b2Vec2 *centers_old, float32 radius, const b2ParticleColor *colors, int32 count)
+{
+    /*
+     // normally this is how we'd enable them on desktop OpenGL,
+     // but for some reason this is not applying textures, so we use alpha instead
+     glEnable(GL_POINT_SPRITE);
+     glTexEnvi(GL_POINT_SPRITE, GL_COORD_REPLACE, GL_TRUE);
+     */
+    const float particle_size_multiplier = 8;  // no falloff
+    const float global_alpha = 0.35f;  // instead of texture
+
+    mShaderProgram->setUniformLocationWith1f(mPointSizeLocation, radius * mRatio * particle_size_multiplier);
+
+    GL::blendFunc(GL_SRC_ALPHA, GL_ONE);
+
+    b2Vec2 *centers = (b2Vec2 *) alloca(sizeof(b2Vec2) * count);
+    for(int i=0; i<count; i++) {
+        centers[i].x = centers_old[i].x *mRatio;
+        centers[i].y = centers_old[i].y *mRatio;
+    }
+
+    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, centers);
+    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_TEX_COORDS, 0, 0, 1, 1);
+
+	if (0 /*colors*/)
+	{
+        // hack to render with proper alpha on desktop for Testbed
+        b2ParticleColor * mcolors = const_cast<b2ParticleColor *>(colors);
+        for (int i = 0; i < count; i++)
+        {
+            mcolors[i].a = static_cast<uint8>(global_alpha * 255);
+        }
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, &colors[0].r);
+	}
+	else
+	{
+        glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, 1, 1, 1, global_alpha);
+        mShaderProgram->setUniformLocationWith4f(mColorLocation, 1, 1, 1, global_alpha);
+	}
+
+	glDrawArrays(GL_POINTS, 0, count);
+    CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,count);
+
+#ifdef __ANDROID__
+    glDisable(GL_POINT_SPRITE_OES);
+#endif
+}
+
 
 void GLESDebugDraw::DrawTransform(const b2Transform& xf)
 {
@@ -199,21 +282,21 @@ void GLESDebugDraw::DrawTransform(const b2Transform& xf)
 
 void GLESDebugDraw::DrawPoint(const b2Vec2& p, float32 size, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
-
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
-
-    //    glPointSize(size);
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
     GLfloat                glVertices[] = {
         p.x * mRatio, p.y * mRatio
     };
 
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, glVertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
+
+//    mShaderProgram->setUniformLocationWith1f(mPointSizeLocation, s_pointSize);
 
     glDrawArrays(GL_POINTS, 0, 1);
-    //    glPointSize(1.0f);
+
 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,1);
 
@@ -229,10 +312,8 @@ void GLESDebugDraw::DrawString(int x, int y, const char *string, ...)
 
 void GLESDebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
 {
-    mUniformColorShaderProgram->use();
-    mUniformColorShaderProgram->setUniformsForBuiltins();
-
-    mUniformColorShaderProgram->setUniformLocationWith4f(mUniformColorLocation, color.r, color.g, color.b, 1);
+    mShaderProgram->use();
+    mShaderProgram->setUniformsForBuiltins();
 
     GLfloat                glVertices[] = {
         aabb->lowerBound.x * mRatio, aabb->lowerBound.y * mRatio,
@@ -242,84 +323,12 @@ void GLESDebugDraw::DrawAABB(b2AABB* aabb, const b2Color& color)
     };
 
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, 0, glVertices);
+//    glVertexAttrib4f(GLProgram::VERTEX_ATTRIB_COLOR, color.r, color.g, color.b, 1);
+    mShaderProgram->setUniformLocationWith4f(mColorLocation, color.r, color.g, color.b, 1);
+
     glDrawArrays(GL_LINE_LOOP, 0, 4);
 
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,4);
 
-    CHECK_GL_ERROR_DEBUG();
-}
-
-void GLESDebugDraw::DrawParticles(const b2Vec2 *centers, float32 radius,
-                                  const b2ParticleColor *colors, int32 count)
-{
-    if (!mRenderParticles) return;
-
-    if (colors) {
-        mNonUniformColorShaderProgram->use();
-        mNonUniformColorShaderProgram->setUniformsForBuiltins();
-		glEnableVertexAttribArray(GLProgram::VERTEX_ATTRIB_COLOR);
-    } else {
-        static const b2Color k_white(1.0f, 1.0f, 1.0f);
-        mUniformColorShaderProgram->use();
-        mUniformColorShaderProgram->setUniformsForBuiltins();
-        mUniformColorShaderProgram->setUniformLocationWith4f(
-                                                             mUniformColorLocation, k_white.r, k_white.g, k_white.b, 1);
-    }
-
-    // Number of line segments used to draw each circle which represents a
-    // particle.
-    static const int32 k_segments = 8;
-
-    // Cache the points for the unit circle.
-    static b2Vec2 k_unitCircle[k_segments];
-    static bool k_unitCircleInitialized = false;
-    if (!k_unitCircleInitialized) {
-        static const float32 k_increment = 2.0f * b2_pi / k_segments;
-        float32 theta = 0.0f;
-        for (int32 i = 0; i < k_segments; ++i, theta += k_increment) {
-            k_unitCircle[i].x = cos(theta);
-            k_unitCircle[i].y = sin(theta);
-        }
-        k_unitCircleInitialized = true;
-    }
-
-    // Cache the circle with the radius applied.
-    b2Vec2 segments[k_segments];
-    for (int32 i = 0; i < k_segments; ++i) {
-        segments[i].x = k_unitCircle[i].x * radius * mRatio;
-        segments[i].y = k_unitCircle[i].y * radius * mRatio;
-    }
-
-    // Array of vertex (x, y) pairs.
-    GLfloat glVertices[k_segments * 2];
-    // Array used to optionally associate a color (rgba) with each vertex.
-    GLbyte glColors[k_segments * 4];
-    for (int32 i = 0; i < count; ++i) {
-        for (int32 j = 0; j < k_segments; ++j) {
-            const int32 vertexOffset = j * 2;
-            const b2Vec2 &center = centers[i];
-            const b2Vec2 &vertex = segments[j];
-            glVertices[vertexOffset] = (center.x * mRatio) + vertex.x;
-            glVertices[vertexOffset + 1] = (center.y * mRatio)+ vertex.y;
-        }
-        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE,
-                              0, glVertices);
-        if (colors) {
-            for (int32 j = 0; j < k_segments; ++j) {
-                const int32 colorOffset = j * 4;
-                const b2ParticleColor &color = colors[i];
-                glColors[colorOffset] = color.r;
-                glColors[colorOffset + 1] = color.g;
-                glColors[colorOffset + 2] = color.b;
-                glColors[colorOffset + 3] = color.a;
-            }
-            glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE,
-                                  GL_TRUE, 0, glColors);
-        }
-        glDrawArrays(mSolidParticles ? GL_TRIANGLE_FAN : GL_LINE_LOOP, 0,
-					 k_segments);
-        CC_INCREMENT_GL_DRAWS(1);
-    }
-    
     CHECK_GL_ERROR_DEBUG();
 }

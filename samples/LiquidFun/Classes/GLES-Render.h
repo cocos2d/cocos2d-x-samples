@@ -31,12 +31,9 @@ struct b2AABB;
 class GLESDebugDraw : public b2Draw
 {
     float32 mRatio;
-    cocos2d::GLProgram* mUniformColorShaderProgram;
-    GLint mUniformColorLocation;
-
-    cocos2d::GLProgram* mNonUniformColorShaderProgram;
-	bool mSolidParticles;
-	bool mRenderParticles;
+    cocos2d::GLProgram* mShaderProgram;
+    GLint        mPointSizeLocation;
+    GLint        mColorLocation;
 
     void initShader( void );
 public:
@@ -46,11 +43,15 @@ public:
 
     virtual void DrawPolygon(const b2Vec2* vertices, int vertexCount, const b2Color& color);
 
+    virtual void DrawFlatPolygon(const b2Vec2* vertices, int32 vertexCount, const b2Color& color);
+
     virtual void DrawSolidPolygon(const b2Vec2* vertices, int vertexCount, const b2Color& color);
 
     virtual void DrawCircle(const b2Vec2& center, float32 radius, const b2Color& color);
 
     virtual void DrawSolidCircle(const b2Vec2& center, float32 radius, const b2Vec2& axis, const b2Color& color);
+
+    virtual void DrawParticles(const b2Vec2 *centers, float32 radius, const b2ParticleColor *colors, int32 count);
 
     virtual void DrawSegment(const b2Vec2& p1, const b2Vec2& p2, const b2Color& color);
 
@@ -61,16 +62,6 @@ public:
     virtual void DrawString(int x, int y, const char* string, ...); 
 
     virtual void DrawAABB(b2AABB* aabb, const b2Color& color);
-
-    virtual void DrawParticles(const b2Vec2 *centers, float32 radius, const b2ParticleColor *colors, int32 count);
-
-    void SetSolidParticlesEnable(const bool enable) {
-        mSolidParticles = enable;
-	}
-
-	void SetRenderParticlesEnable(const bool enable) {
-        mRenderParticles = enable;
-	}
 };
 
 
