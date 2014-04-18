@@ -3,7 +3,7 @@ cocos2d-x-samples
 
 Contains different samples that show how to use cocos2d-x v3.0 with 3rd party libraries:
 
-Samples:
+Availabel samples:
 
 ### LiquidFun
 
