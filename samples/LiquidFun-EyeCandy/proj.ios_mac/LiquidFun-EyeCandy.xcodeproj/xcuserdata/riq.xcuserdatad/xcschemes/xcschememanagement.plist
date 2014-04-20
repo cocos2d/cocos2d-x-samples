@@ -4,12 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>LiquidFun-Testbed Mac.xcscheme</key>
+		<key>LiquidFun Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>LiquidFun-Testbed iOS.xcscheme</key>
+		<key>LiquidFun iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>

@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "5087E73D17EB910900C73F5D"
                BuildableName = "LiquidFun Mac.app"
-               BlueprintName = "LiquidFun-Testbed Mac"
-               ReferencedContainer = "container:LiquidFun-Testbed.xcodeproj">
+               BlueprintName = "LiquidFun Mac"
+               ReferencedContainer = "container:LiquidFun.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,8 +34,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
             BuildableName = "LiquidFun Mac.app"
-            BlueprintName = "LiquidFun-Testbed Mac"
-            ReferencedContainer = "container:LiquidFun-Testbed.xcodeproj">
+            BlueprintName = "LiquidFun Mac"
+            ReferencedContainer = "container:LiquidFun.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,8 +53,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
             BuildableName = "LiquidFun Mac.app"
-            BlueprintName = "LiquidFun-Testbed Mac"
-            ReferencedContainer = "container:LiquidFun-Testbed.xcodeproj">
+            BlueprintName = "LiquidFun Mac"
+            ReferencedContainer = "container:LiquidFun.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -71,8 +71,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "5087E73D17EB910900C73F5D"
             BuildableName = "LiquidFun Mac.app"
-            BlueprintName = "LiquidFun-Testbed Mac"
-            ReferencedContainer = "container:LiquidFun-Testbed.xcodeproj">
+            BlueprintName = "LiquidFun Mac"
+            ReferencedContainer = "container:LiquidFun.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
