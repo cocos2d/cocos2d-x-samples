@@ -1,18 +1,18 @@
-#ifndef _BOX2D_TEST_H_
-#define _BOX2D_TEST_H_
+#ifndef _EYECANDY_LAYER_H_
+#define _EYECANDY_LAYER_H_
 
 #include "cocos2d.h"
 #include <Box2D/Box2D.h>
 
 class GLESDebugDraw;
 
-class Box2DTestLayer : public cocos2d::Layer
+class EyeCandyLayer : public cocos2d::Layer
 {
 public:
-    static Box2DTestLayer* create();
+    static EyeCandyLayer* create();
 
-    Box2DTestLayer();
-    ~Box2DTestLayer();
+    EyeCandyLayer();
+    ~EyeCandyLayer();
 
     void initPhysics();
 
@@ -35,4 +35,4 @@ protected:
     b2Body *_mover;
 };
 
-#endif // _BOX2D_TEST_H_
+#endif // _EYECANDY_LAYER_H_

@@ -7,7 +7,7 @@ Available samples:
 
 ## LiquidFun
 
-[LiquidFun](http://google.github.io/liquidfun/) is a 2d rigid-body physics engine, built on top of [Box2d](box2d.org). It has all the Box2d features, plus particles support that can be used to simulate fluids.
+Based on [Box2d](box2d.org), [LiquidFun](http://google.github.io/liquidfun/) features particle-based fluid simulation. Game developers can use it for new game mechanics and add realistic physics to game play. Designers can use the library to create beautiful fluid interactive experiences.
 
 We provide 2 samples:
 

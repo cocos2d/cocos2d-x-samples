@@ -1,4 +1,5 @@
-#include "Box2dTest.h"
+#include "EyeCandyLayer.h"
+#include "LFParticleSystemNode.h"
 #include "GLES-Render.h"
 
 using namespace cocos2d;
@@ -9,25 +10,28 @@ enum {
     kTagParentNode = 1,
 };
 
-Box2DTestLayer* Box2DTestLayer::create()
+EyeCandyLayer* EyeCandyLayer::create()
 {
-    auto layer = new Box2DTestLayer();
+    auto layer = new EyeCandyLayer();
     layer->autorelease();
     return layer;
 }
 
-Box2DTestLayer::Box2DTestLayer()
+EyeCandyLayer::EyeCandyLayer()
 : _world(nullptr)
 {
     auto director = Director::getInstance();
     auto dispatcher = director->getEventDispatcher();
     
     auto touchListener = EventListenerTouchAllAtOnce::create();
-    touchListener->onTouchesEnded = CC_CALLBACK_2(Box2DTestLayer::onTouchesEnded, this);
+    touchListener->onTouchesEnded = CC_CALLBACK_2(EyeCandyLayer::onTouchesEnded, this);
     dispatcher->addEventListenerWithSceneGraphPriority(touchListener, this);
     
     // init physics
     this->initPhysics();
+
+    auto p = LFParticleSystemNode::create(_particleSystem, PTM_RATIO);
+    this->addChild(p);
 
     //Set up sprite
     auto parent = Node::create();
@@ -44,13 +48,13 @@ Box2DTestLayer::Box2DTestLayer()
     scheduleUpdate();
 }
 
-Box2DTestLayer::~Box2DTestLayer()
+EyeCandyLayer::~EyeCandyLayer()
 {
     delete _debugDraw;
     delete _world;
 }
 
-void Box2DTestLayer::initPhysics()
+void EyeCandyLayer::initPhysics()
 {
     b2Vec2 gravity;
     gravity.Set(0.0f, -10.0f);
@@ -70,7 +74,7 @@ void Box2DTestLayer::initPhysics()
 //    flags += b2Draw::e_aabbBit;
 //    flags += b2Draw::e_pairBit;
 //    flags += b2Draw::e_centerOfMassBit;
-    flags += b2Draw::e_particleBit;
+//    flags += b2Draw::e_particleBit;
     _debugDraw->SetFlags(flags);
 
 
@@ -113,8 +117,9 @@ void Box2DTestLayer::initPhysics()
     _particleSystem->SetDensity(1.2f);
 
     b2ParticleGroupDef pd;
-    pd.flags = b2_waterParticle;
-    
+    pd.flags = b2_waterParticle | b2_colorMixingParticle;
+    pd.color.Set(255, 0, 0, 255);
+
     b2PolygonShape shape2;
     shape2.SetAsBox(9.0f, 9.0f, b2Vec2(0.0f, 0.0f), 0.0);
     
@@ -122,7 +127,7 @@ void Box2DTestLayer::initPhysics()
     _particleSystem->CreateParticleGroup(pd);
 }
 
-void Box2DTestLayer::addNewSpriteAtPosition(Point p)
+void EyeCandyLayer::addNewSpriteAtPosition(Point p)
 {
     CCLOG("Add sprite %0.2f x %02.f",p.x,p.y);
 
@@ -152,7 +157,7 @@ void Box2DTestLayer::addNewSpriteAtPosition(Point p)
 }
 
 
-void Box2DTestLayer::update(float dt)
+void EyeCandyLayer::update(float dt)
 {
     //It is recommended that a fixed time step is used with Box2D for stability
     //of the simulation, however, we are using a variable time step here.
@@ -165,15 +170,9 @@ void Box2DTestLayer::update(float dt)
     // Instruct the world to perform a single step of simulation. It is
     // generally best to keep the time step and iterations fixed.
     _world->Step(dt, velocityIterations, positionIterations);
-
-    b2Vec2 *array = _particleSystem->GetPositionBuffer();
-    int32 l = _particleSystem->GetParticleCount();
-    for(int i=0; i<l; i++) {
-        b2Vec2 p = array[i];
-    }
 }
 
-void Box2DTestLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
+void EyeCandyLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event* event)
 {
     //Add a new body/atlas sprite at the touched location
 
@@ -190,16 +189,16 @@ void Box2DTestLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event* e
 
 // Draw
 
-void Box2DTestLayer::draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated)
+void EyeCandyLayer::draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated)
 {
     Layer::draw(renderer, transform, transformUpdated);
 
     _customCmd.init(_globalZOrder);
-    _customCmd.func = CC_CALLBACK_0(Box2DTestLayer::onDraw, this, transform, transformUpdated);
+    _customCmd.func = CC_CALLBACK_0(EyeCandyLayer::onDraw, this, transform, transformUpdated);
     renderer->addCommand(&_customCmd);
 }
 
-void Box2DTestLayer::onDraw(const kmMat4 &transform, bool transformUpdated)
+void EyeCandyLayer::onDraw(const kmMat4 &transform, bool transformUpdated)
 {
     kmGLPushMatrix();
     kmGLLoadMatrix(&transform);

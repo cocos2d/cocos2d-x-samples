@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "Box2dTest.h"
+#include "EyeCandyLayer.h"
 
 USING_NS_CC;
 
@@ -29,7 +29,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 //    auto scene = HelloWorld::createScene();
     auto scene = Scene::create();
-    auto layer = Box2DTestLayer::create();
+    auto layer = EyeCandyLayer::create();
     scene->addChild(layer);
 
     // run
