@@ -1,3 +1,6 @@
 [submodule "libs/cocos2d-x"]
 	path = libs/cocos2d-x
 	url = https://github.com/cocos2d/cocos2d-x.git
+[submodule "libs/liquidfun"]
+	path = libs/liquidfun
+	url = https://github.com/google/liquidfun.git
