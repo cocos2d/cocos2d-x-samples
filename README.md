@@ -29,8 +29,8 @@ Supported platforms:
 
 The Eye Candy demo that comes with LiquidFun, adapted for cocos2d-x. Includes two useful classes:
 
-- `LHParticleSystemNode`: Wraps a LiquidFun `b2ParticleSystem` into a cocos2d-x node.
-- `LHPhysicsSpriteNode`: Wraps a LiquidFun `b2Body` into a cocos2d-x node.
+- `LFParticleSystemNode`: Wraps a LiquidFun `b2ParticleSystem` into a cocos2d-x node.
+- `LFPhysicsSpriteNode`: Wraps a LiquidFun `b2Body` into a cocos2d-x node.
 
 Supported platforms:
 
