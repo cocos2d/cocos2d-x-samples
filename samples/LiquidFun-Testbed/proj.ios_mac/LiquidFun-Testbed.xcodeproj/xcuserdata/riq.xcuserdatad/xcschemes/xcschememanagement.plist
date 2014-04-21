@@ -4,15 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>LiquidFun Mac.xcscheme</key>
+		<key>LiquidFun-Testbed Mac.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>13</integer>
 		</dict>
-		<key>LiquidFun iOS.xcscheme</key>
+		<key>LiquidFun-Testbed iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>12</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
