@@ -17,7 +17,7 @@ We provide 2 samples:
 
 The Testbed that comes with LiquidFun, adapted for cocos2d-x.
 
-Supported platforms:
+Supported platforms (the rest coming soon):
 
  - iOS
  - Mac
@@ -32,7 +32,7 @@ The Eye Candy demo that comes with LiquidFun, adapted for cocos2d-x. Includes tw
 - `LFParticleSystemNode`: Wraps a LiquidFun `b2ParticleSystem` into a cocos2d-x node.
 - `LFPhysicsSpriteNode`: Wraps a LiquidFun `b2Body` into a cocos2d-x node.
 
-Supported platforms:
+Supported platforms (the rest coming soon):
 
  - iOS
 
