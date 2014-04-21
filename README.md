@@ -13,11 +13,28 @@ We provide 2 samples:
 
 ### LiquidFun - Testbed
 
+![Testbed](https://lh3.googleusercontent.com/-dpZfoZ7vG-Q/U1S0GFHmhyI/AAAAAAAA75I/WKnvNs4Ypi8/s400/IMG_0012.jpg)
+
 The Testbed that comes with LiquidFun, adapted for cocos2d-x.
+
+Supported platforms:
+
+ - iOS
+ - Mac
+ - Win32
 
 ### LiquidFun - EyeCandy
 
-The Eye Candy demo that comes with LiquidFun, adapted for cocos2d-x.
+![Eye Candy](https://lh6.googleusercontent.com/-H4TflaTWLfQ/U1S0GHh5A7I/AAAAAAAA75I/eqbAyAcnyzg/s400/IMG_0011.jpg)
+
+The Eye Candy demo that comes with LiquidFun, adapted for cocos2d-x. Includes two useful classes:
+
+- `LHParticleSystemNode`: Wraps a LiquidFun `b2ParticleSystem` into a cocos2d-x node.
+- `LHPhysicsSpriteNode`: Wraps a LiquidFun `b2Body` into a cocos2d-x node.
+
+Supported platforms:
+
+ - iOS
 
 
 

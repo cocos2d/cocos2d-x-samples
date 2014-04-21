@@ -78,7 +78,7 @@ bool LFParticleSystemNode::init(b2ParticleSystem* particleSystem, float ratio)
     setupVBO();
 
     auto textureCache = Director::getInstance()->getTextureCache();
-    _texture = textureCache->addImage("Images/stars2.png");
+    _texture = textureCache->addImage("Images/fire.png");
 
     _blendFunc = BlendFunc::ADDITIVE;
 
@@ -106,7 +106,7 @@ void LFParticleSystemNode::setupVBO()
     float *size = (float*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
     for(int i=0; i<_sizeVBO; i++) {
         float s = _particleSystem->GetRadius() * 2;
-        size[i] = s + CCRANDOM_MINUS1_1() * 0.5 * s;
+        size[i] = s + CCRANDOM_0_1() * s;
     }
     glUnmapBuffer(GL_ARRAY_BUFFER);
 
@@ -133,13 +133,15 @@ void LFParticleSystemNode::onDraw(const kmMat4 &transform, bool transformUpdated
     getShaderProgram()->use();
     getShaderProgram()->setUniformsForBuiltins(newMV);
 
+//    GL::blendFunc(_blendFunc.src, _blendFunc.dst);
+    GL::bindTexture2D(_texture->getName());
+    GL::blendFunc(_blendFunc.src, _blendFunc.dst);
 
-    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
-    // pointSprite sizes
-    glEnableVertexAttribArray(3);
 
     int totalParticles = _particleSystem->GetParticleCount();
     CCASSERT(totalParticles<_sizeVBO, "too many particles, increase VBO size");
+
+    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
 
     // Update Positions
     glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
@@ -158,11 +160,9 @@ void LFParticleSystemNode::onDraw(const kmMat4 &transform, bool transformUpdated
     glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
 
     // sizes
+    glEnableVertexAttribArray(3);
     glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[2]);
     glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, sizeof(float), NULL);
-
-    GL::blendFunc(_blendFunc.src, _blendFunc.dst);
-    GL::bindTexture2D(_texture->getName());
 
     glDrawArrays(GL_POINTS, 0, totalParticles);
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,totalParticles);

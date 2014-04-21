@@ -1,5 +1,7 @@
 #include "EyeCandyLayer.h"
 #include "LFParticleSystemNode.h"
+#include "LFSpriteNode.h"
+
 #include "GLES-Render.h"
 
 using namespace cocos2d;
@@ -70,10 +72,10 @@ void EyeCandyLayer::initPhysics()
 
     uint32 flags = 0;
     flags += b2Draw::e_shapeBit;
-//    flags += b2Draw::e_jointBit;
+    flags += b2Draw::e_jointBit;
 //    flags += b2Draw::e_aabbBit;
 //    flags += b2Draw::e_pairBit;
-//    flags += b2Draw::e_centerOfMassBit;
+    flags += b2Draw::e_centerOfMassBit;
 //    flags += b2Draw::e_particleBit;
     _debugDraw->SetFlags(flags);
 
@@ -108,7 +110,7 @@ void EyeCandyLayer::initPhysics()
     groundBody->CreateFixture(&groundBox,0);
 
 
-
+    // particles
     b2ParticleSystemDef particleSystemDef;
     particleSystemDef.dampingStrength = 0.2f;
     particleSystemDef.radius = 0.3f;
@@ -118,13 +120,39 @@ void EyeCandyLayer::initPhysics()
 
     b2ParticleGroupDef pd;
     pd.flags = b2_waterParticle | b2_colorMixingParticle;
-    pd.color.Set(255, 0, 0, 255);
+    pd.color.Set(30, 64, 194, 255);
 
     b2PolygonShape shape2;
     shape2.SetAsBox(9.0f, 9.0f, b2Vec2(0.0f, 0.0f), 0.0);
     
     pd.shape = &shape2;
     _particleSystem->CreateParticleGroup(pd);
+
+
+    // mover
+    b2BodyDef bdg;
+    bdg.position.Set(s.width/PTM_RATIO/2, s.height/PTM_RATIO/2);
+    b2Body* ground = _world->CreateBody(&bdg);
+
+    b2BodyDef bd;
+    bd.type = b2_dynamicBody;
+    bd.position.Set(s.width/PTM_RATIO/2, s.height/PTM_RATIO/2);
+    _mover = _world->CreateBody(&bd);
+    b2PolygonShape shape;
+    shape.SetAsBox(1.0f, 5.0f, b2Vec2(0.0f, 2.0f), 0.0);
+    _mover->CreateFixture(&shape, 5.0f);
+
+    b2RevoluteJointDef jd;
+    jd.bodyA = ground;
+    jd.bodyB = _mover;
+    jd.localAnchorA.Set(0.0f, 0.0f);
+    jd.localAnchorB.Set(0.0f, 5.0f);
+    jd.referenceAngle = 0.0f;
+    jd.motorSpeed = 0;
+    jd.maxMotorTorque = 1e7f;
+    jd.enableMotor = true;
+    _joint = (b2RevoluteJoint*)_world->CreateJoint(&jd);
+    _joint->SetMotorSpeed(0.7);
 }
 
 void EyeCandyLayer::addNewSpriteAtPosition(Point p)
@@ -132,12 +160,10 @@ void EyeCandyLayer::addNewSpriteAtPosition(Point p)
     CCLOG("Add sprite %0.2f x %02.f",p.x,p.y);
 
     auto parent = this->getChildByTag(kTagParentNode);
-    auto sprite = Sprite::create("Images/r1.png");
+    auto sprite = LFSpriteNode::create("Images/r1.png");
     parent->addChild(sprite);
-    sprite->setPosition( Point( p.x, p.y) );
 
     // Define the dynamic body.
-    //Set up a 1m squared box in the physics world
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
@@ -154,6 +180,9 @@ void EyeCandyLayer::addNewSpriteAtPosition(Point p)
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);
+
+    sprite->setB2Body(body);
+    sprite->setPTMRatio(PTM_RATIO);
 }
 
 

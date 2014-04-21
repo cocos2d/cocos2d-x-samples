@@ -172,6 +172,8 @@
 		A0ECBF89190385EC00489C7B /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBF86190385EC00489C7B /* GLES-Render.cpp */; };
 		A0ECBF8E1903A3D800489C7B /* LFParticleSystemNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBF8C1903A3D800489C7B /* LFParticleSystemNode.cpp */; };
 		A0ECBF8F1903A3D800489C7B /* LFParticleSystemNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBF8C1903A3D800489C7B /* LFParticleSystemNode.cpp */; };
+		A0ECBF991904CFB100489C7B /* LFSpriteNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBF971904CFB100489C7B /* LFSpriteNode.cpp */; };
+		A0ECBF9A1904CFB100489C7B /* LFSpriteNode.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBF971904CFB100489C7B /* LFSpriteNode.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -458,6 +460,8 @@
 		A0ECBF87190385EC00489C7B /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GLES-Render.h"; path = "../Classes/GLES-Render.h"; sourceTree = "<group>"; };
 		A0ECBF8C1903A3D800489C7B /* LFParticleSystemNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LFParticleSystemNode.cpp; path = ../Classes/LFParticleSystemNode.cpp; sourceTree = "<group>"; };
 		A0ECBF8D1903A3D800489C7B /* LFParticleSystemNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFParticleSystemNode.h; path = ../Classes/LFParticleSystemNode.h; sourceTree = "<group>"; };
+		A0ECBF971904CFB100489C7B /* LFSpriteNode.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = LFSpriteNode.cpp; path = ../Classes/LFSpriteNode.cpp; sourceTree = "<group>"; };
+		A0ECBF981904CFB100489C7B /* LFSpriteNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LFSpriteNode.h; path = ../Classes/LFSpriteNode.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -538,6 +542,8 @@
 				A00E3D1A19008BCB00F01AFF /* AppDelegate.h */,
 				A0ECBF8C1903A3D800489C7B /* LFParticleSystemNode.cpp */,
 				A0ECBF8D1903A3D800489C7B /* LFParticleSystemNode.h */,
+				A0ECBF971904CFB100489C7B /* LFSpriteNode.cpp */,
+				A0ECBF981904CFB100489C7B /* LFSpriteNode.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -1080,6 +1086,7 @@
 				A02667AC190375120048AABB /* b2TrackedBlock.cpp in Sources */,
 				A0266820190375120048AABB /* b2Fixture.cpp in Sources */,
 				A0266834190375120048AABB /* b2EdgeAndPolygonContact.cpp in Sources */,
+				A0ECBF991904CFB100489C7B /* LFSpriteNode.cpp in Sources */,
 				A00E3D5719008BCB00F01AFF /* AppDelegate.cpp in Sources */,
 				A0266842190375120048AABB /* b2MotorJoint.cpp in Sources */,
 				A0266836190375120048AABB /* b2PolygonAndCircleContact.cpp in Sources */,
@@ -1151,6 +1158,7 @@
 				A0266837190375120048AABB /* b2PolygonAndCircleContact.cpp in Sources */,
 				A0266847190375120048AABB /* b2PrismaticJoint.cpp in Sources */,
 				A02667AB190375120048AABB /* b2Timer.cpp in Sources */,
+				A0ECBF9A1904CFB100489C7B /* LFSpriteNode.cpp in Sources */,
 				A026679D190375120048AABB /* b2BlockAllocator.cpp in Sources */,
 				A026682F190375120048AABB /* b2Contact.cpp in Sources */,
 				A02667A9190375120048AABB /* b2Stat.cpp in Sources */,
