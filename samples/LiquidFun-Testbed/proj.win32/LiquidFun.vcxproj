@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Classes\AppDelegate.h" />
+    <ClInclude Include="..\Classes\Box2dView.h" />
+    <ClInclude Include="..\Classes\GLES-Render.h" />
+    <ClInclude Include="..\Classes\ParticleEmitter.h" />
+    <ClInclude Include="..\Classes\ParticleParameter.h" />
+    <ClInclude Include="..\Classes\Test.h" />
+    <ClInclude Include="..\Classes\Tests\AddPair.h" />
+    <ClInclude Include="..\Classes\Tests\AntiPointy.h" />
+    <ClInclude Include="..\Classes\Tests\ApplyForce.h" />
+    <ClInclude Include="..\Classes\Tests\BodyTypes.h" />
+    <ClInclude Include="..\Classes\Tests\Breakable.h" />
+    <ClInclude Include="..\Classes\Tests\Bridge.h" />
+    <ClInclude Include="..\Classes\Tests\BulletTest.h" />
+    <ClInclude Include="..\Classes\Tests\Cantilever.h" />
+    <ClInclude Include="..\Classes\Tests\Car.h" />
+    <ClInclude Include="..\Classes\Tests\Chain.h" />
+    <ClInclude Include="..\Classes\Tests\CharacterCollision.h" />
+    <ClInclude Include="..\Classes\Tests\CollisionFiltering.h" />
+    <ClInclude Include="..\Classes\Tests\CollisionProcessing.h" />
+    <ClInclude Include="..\Classes\Tests\CompoundShapes.h" />
+    <ClInclude Include="..\Classes\Tests\Confined.h" />
+    <ClInclude Include="..\Classes\Tests\ContinuousTest.h" />
+    <ClInclude Include="..\Classes\Tests\ConvexHull.h" />
+    <ClInclude Include="..\Classes\Tests\ConveyorBelt.h" />
+    <ClInclude Include="..\Classes\Tests\CornerCase.h" />
+    <ClInclude Include="..\Classes\Tests\DamBreak.h" />
+    <ClInclude Include="..\Classes\Tests\DistanceTest.h" />
+    <ClInclude Include="..\Classes\Tests\Dominos.h" />
+    <ClInclude Include="..\Classes\Tests\DrawingParticles.h" />
+    <ClInclude Include="..\Classes\Tests\DumpShell.h" />
+    <ClInclude Include="..\Classes\Tests\DynamicTreeTest.h" />
+    <ClInclude Include="..\Classes\Tests\EdgeShapes.h" />
+    <ClInclude Include="..\Classes\Tests\EdgeTest.h" />
+    <ClInclude Include="..\Classes\Tests\ElasticParticles.h" />
+    <ClInclude Include="..\Classes\Tests\Faucet.h" />
+    <ClInclude Include="..\Classes\Tests\Fracker.h" />
+    <ClInclude Include="..\Classes\Tests\Gears.h" />
+    <ClInclude Include="..\Classes\Tests\Impulse.h" />
+    <ClInclude Include="..\Classes\Tests\LiquidTimer.h" />
+    <ClInclude Include="..\Classes\Tests\Maxwell.h" />
+    <ClInclude Include="..\Classes\Tests\Mobile.h" />
+    <ClInclude Include="..\Classes\Tests\MobileBalanced.h" />
+    <ClInclude Include="..\Classes\Tests\MotorJoint.h" />
+    <ClInclude Include="..\Classes\Tests\MultipleParticleSystems.h" />
+    <ClInclude Include="..\Classes\Tests\OneSidedPlatform.h" />
+    <ClInclude Include="..\Classes\Tests\Particles.h" />
+    <ClInclude Include="..\Classes\Tests\ParticlesSurfaceTension.h" />
+    <ClInclude Include="..\Classes\Tests\Pinball.h" />
+    <ClInclude Include="..\Classes\Tests\Pointy.h" />
+    <ClInclude Include="..\Classes\Tests\PolyCollision.h" />
+    <ClInclude Include="..\Classes\Tests\PolyShapes.h" />
+    <ClInclude Include="..\Classes\Tests\Prismatic.h" />
+    <ClInclude Include="..\Classes\Tests\Pulleys.h" />
+    <ClInclude Include="..\Classes\Tests\Pyramid.h" />
+    <ClInclude Include="..\Classes\Tests\Ramp.h" />
+    <ClInclude Include="..\Classes\Tests\RayCast.h" />
+    <ClInclude Include="..\Classes\Tests\Revolute.h" />
+    <ClInclude Include="..\Classes\Tests\RigidParticles.h" />
+    <ClInclude Include="..\Classes\Tests\Rope.h" />
+    <ClInclude Include="..\Classes\Tests\RopeJoint.h" />
+    <ClInclude Include="..\Classes\Tests\Sandbox.h" />
+    <ClInclude Include="..\Classes\Tests\SensorTest.h" />
+    <ClInclude Include="..\Classes\Tests\ShapeEditing.h" />
+    <ClInclude Include="..\Classes\Tests\SliderCrank.h" />
+    <ClInclude Include="..\Classes\Tests\Soup.h" />
+    <ClInclude Include="..\Classes\Tests\SoupStirrer.h" />
+    <ClInclude Include="..\Classes\Tests\Sparky.h" />
+    <ClInclude Include="..\Classes\Tests\SphereStack.h" />
+    <ClInclude Include="..\Classes\Tests\TheoJansen.h" />
+    <ClInclude Include="..\Classes\Tests\Tiles.h" />
+    <ClInclude Include="..\Classes\Tests\TimeOfImpact.h" />
+    <ClInclude Include="..\Classes\Tests\Tumbler.h" />
+    <ClInclude Include="..\Classes\Tests\VaryingFriction.h" />
+    <ClInclude Include="..\Classes\Tests\VaryingRestitution.h" />
+    <ClInclude Include="..\Classes\Tests\VerticalStack.h" />
+    <ClInclude Include="..\Classes\Tests\WaveMachine.h" />
+    <ClInclude Include="..\Classes\Tests\Web.h" />
+    <ClInclude Include="..\Classes\VisibleRect.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Box2D.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\b2BroadPhase.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\b2Collision.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\b2Distance.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\b2DynamicTree.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\b2TimeOfImpact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\Shapes\b2ChainShape.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\Shapes\b2CircleShape.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\Shapes\b2EdgeShape.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\Shapes\b2PolygonShape.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Collision\Shapes\b2Shape.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2BlockAllocator.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2Draw.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2FreeList.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2GrowableStack.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2IntrusiveList.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2Math.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2Settings.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2SlabAllocator.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2StackAllocator.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2Stat.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2Timer.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Common\b2TrackedBlock.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2Body.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2ContactManager.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2Fixture.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2Island.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2TimeStep.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2World.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\b2WorldCallbacks.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2CircleContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2Contact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ContactSolver.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Contacts\b2PolygonContact.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2DistanceJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2FrictionJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2GearJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2Joint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2MotorJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2MouseJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2PrismaticJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2PulleyJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2RevoluteJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2RopeJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2WeldJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Dynamics\Joints\b2WheelJoint.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Particle\b2Particle.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Particle\b2ParticleGroup.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Particle\b2ParticleSystem.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Particle\b2StackQueue.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Particle\b2VoronoiDiagram.h" />
+    <ClInclude Include="..\liquidfun\Box2D\Rope\b2Rope.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Box2dView.cpp" />
+    <ClCompile Include="..\Classes\GLES-Render.cpp" />
+    <ClCompile Include="..\Classes\ParticleParameter.cpp" />
+    <ClCompile Include="..\Classes\Test.cpp" />
+    <ClCompile Include="..\Classes\TestEntries.cpp" />
+    <ClCompile Include="..\Classes\VisibleRect.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2BroadPhase.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2CollideCircle.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2CollideEdge.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2CollidePolygon.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2Collision.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2Distance.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2DynamicTree.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\b2TimeOfImpact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\Shapes\b2ChainShape.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\Shapes\b2CircleShape.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\Shapes\b2EdgeShape.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Collision\Shapes\b2PolygonShape.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2BlockAllocator.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2Draw.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2FreeList.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2Math.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2Settings.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2StackAllocator.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2Stat.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2Timer.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Common\b2TrackedBlock.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2Body.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2ContactManager.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2Fixture.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2Island.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2World.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\b2WorldCallbacks.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2CircleContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2Contact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2ContactSolver.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Contacts\b2PolygonContact.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2DistanceJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2FrictionJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2GearJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2Joint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2MotorJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2MouseJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2PulleyJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2RopeJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Particle\b2Particle.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Particle\b2ParticleGroup.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Particle\b2ParticleSystem.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Particle\b2VoronoiDiagram.cpp" />
+    <ClCompile Include="..\liquidfun\Box2D\Rope\b2Rope.cpp" />
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\liquidfun\Box2D\Documentation\footer.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\cocos2d-x\cocos\2d\cocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\cocos2d-x\cocos\audio\proj.win32\CocosDenshion.vcxproj">
+      <Project>{f8edd7fa-9a51-4e80-baeb-860825d2eac6}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\libs\cocos2d-x\external\chipmunk\proj.win32\chipmunk.vcxproj">
+      <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{4D01E5C2-894B-40DB-8BA6-F11B347B73CE}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>LiquidFun</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(Configuration).win32\</OutDir>
+    <IntDir>$(Configuration).win32\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>false</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun\Classes;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\glfw3\include\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\physics;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\math\kazmath;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\base;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d\platform\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\audio;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d;C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun\liquidfun;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;libzlib.lib;libpng.lib;libjpeg.lib;libtiff.lib;libwebp.lib;libiconv.lib;libcurl_imp.lib;glfw3.lib;freetype250.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=0;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun\Classes;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\glfw3\include\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\physics;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\math\kazmath;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\base;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d\platform\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\audio;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d;C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun\liquidfun;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>opengl32.lib;glew32.lib;libzlib.lib;libpng.lib;libjpeg.lib;libtiff.lib;libwebp.lib;libiconv.lib;libcurl_imp.lib;glfw3.lib;freetype250.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <ShowProgress>NotSet</ShowProgress>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
