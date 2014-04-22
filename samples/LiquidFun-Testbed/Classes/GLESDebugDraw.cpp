@@ -18,7 +18,7 @@
  * 3. This notice may not be removed or altered from any source distribution.
  */
 
-#include "GLES-Render.h"
+#include "GLESDebugDraw.h"
 #include "cocos2d.h"
 #include <stdio.h>
 #include <stdarg.h>

@@ -237,9 +237,6 @@
     <ClInclude Include="..\Classes\Box2dView.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GLES-Render.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\ParticleEmitter.h">
       <Filter>Classes</Filter>
     </ClInclude>
@@ -429,15 +426,15 @@
     <ClInclude Include="..\..\..\libs\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\GLESDebugDraw.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Box2dView.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\GLES-Render.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\ParticleParameter.cpp">
@@ -613,6 +610,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\libs\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.cpp">
       <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GLESDebugDraw.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

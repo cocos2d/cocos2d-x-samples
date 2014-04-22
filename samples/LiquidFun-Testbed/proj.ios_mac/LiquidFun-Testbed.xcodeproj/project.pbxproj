@@ -58,8 +58,6 @@
 		A00E3D5819008BCB00F01AFF /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D1919008BCB00F01AFF /* AppDelegate.cpp */; };
 		A00E3D5919008BCB00F01AFF /* Box2dView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D1B19008BCB00F01AFF /* Box2dView.cpp */; };
 		A00E3D5A19008BCB00F01AFF /* Box2dView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D1B19008BCB00F01AFF /* Box2dView.cpp */; };
-		A00E3D5B19008BCB00F01AFF /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D1D19008BCB00F01AFF /* GLES-Render.cpp */; };
-		A00E3D5C19008BCB00F01AFF /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D1D19008BCB00F01AFF /* GLES-Render.cpp */; };
 		A00E3D5F19008BCB00F01AFF /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D2119008BCB00F01AFF /* Test.cpp */; };
 		A00E3D6019008BCB00F01AFF /* Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D2119008BCB00F01AFF /* Test.cpp */; };
 		A00E3D6119008BCB00F01AFF /* TestEntries.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00E3D2319008BCB00F01AFF /* TestEntries.cpp */; };
@@ -178,6 +176,8 @@
 		A0266859190375120048AABB /* b2VoronoiDiagram.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A026677A190375120048AABB /* b2VoronoiDiagram.cpp */; };
 		A026685A190375120048AABB /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A026677D190375120048AABB /* b2Rope.cpp */; };
 		A026685B190375120048AABB /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A026677D190375120048AABB /* b2Rope.cpp */; };
+		A0ECBFAE1907313000489C7B /* GLESDebugDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBFAC1907313000489C7B /* GLESDebugDraw.cpp */; };
+		A0ECBFAF1907313000489C7B /* GLESDebugDraw.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0ECBFAC1907313000489C7B /* GLESDebugDraw.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -348,8 +348,6 @@
 		A00E3D1A19008BCB00F01AFF /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../Classes/AppDelegate.h; sourceTree = "<group>"; };
 		A00E3D1B19008BCB00F01AFF /* Box2dView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Box2dView.cpp; path = ../Classes/Box2dView.cpp; sourceTree = "<group>"; };
 		A00E3D1C19008BCB00F01AFF /* Box2dView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Box2dView.h; path = ../Classes/Box2dView.h; sourceTree = "<group>"; };
-		A00E3D1D19008BCB00F01AFF /* GLES-Render.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "GLES-Render.cpp"; path = "../Classes/GLES-Render.cpp"; sourceTree = "<group>"; };
-		A00E3D1E19008BCB00F01AFF /* GLES-Render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "GLES-Render.h"; path = "../Classes/GLES-Render.h"; sourceTree = "<group>"; };
 		A00E3D2119008BCB00F01AFF /* Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Test.cpp; path = ../Classes/Test.cpp; sourceTree = "<group>"; };
 		A00E3D2219008BCB00F01AFF /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Test.h; path = ../Classes/Test.h; sourceTree = "<group>"; };
 		A00E3D2319008BCB00F01AFF /* TestEntries.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TestEntries.cpp; path = ../Classes/TestEntries.cpp; sourceTree = "<group>"; };
@@ -541,6 +539,8 @@
 		A026677B190375120048AABB /* b2VoronoiDiagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2VoronoiDiagram.h; sourceTree = "<group>"; };
 		A026677D190375120048AABB /* b2Rope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = b2Rope.cpp; sourceTree = "<group>"; };
 		A026677E190375120048AABB /* b2Rope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = b2Rope.h; sourceTree = "<group>"; };
+		A0ECBFAC1907313000489C7B /* GLESDebugDraw.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GLESDebugDraw.cpp; path = ../Classes/GLESDebugDraw.cpp; sourceTree = "<group>"; };
+		A0ECBFAD1907313000489C7B /* GLESDebugDraw.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GLESDebugDraw.h; path = ../Classes/GLESDebugDraw.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -618,8 +618,8 @@
 				A00E3D1A19008BCB00F01AFF /* AppDelegate.h */,
 				A00E3D1B19008BCB00F01AFF /* Box2dView.cpp */,
 				A00E3D1C19008BCB00F01AFF /* Box2dView.h */,
-				A00E3D1D19008BCB00F01AFF /* GLES-Render.cpp */,
-				A00E3D1E19008BCB00F01AFF /* GLES-Render.h */,
+				A0ECBFAC1907313000489C7B /* GLESDebugDraw.cpp */,
+				A0ECBFAD1907313000489C7B /* GLESDebugDraw.h */,
 				A00E3DBB1900987B00F01AFF /* ParticleEmitter.h */,
 				A00E3DBC1900987B00F01AFF /* ParticleParameter.cpp */,
 				A00E3DBD1900987B00F01AFF /* ParticleParameter.h */,
@@ -1226,6 +1226,7 @@
 				A0266822190375120048AABB /* b2Island.cpp in Sources */,
 				A0266828190375120048AABB /* b2ChainAndCircleContact.cpp in Sources */,
 				A0266826190375120048AABB /* b2WorldCallbacks.cpp in Sources */,
+				A0ECBFAE1907313000489C7B /* GLESDebugDraw.cpp in Sources */,
 				A02667A0190375120048AABB /* b2FreeList.cpp in Sources */,
 				A026679C190375120048AABB /* b2BlockAllocator.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
@@ -1251,7 +1252,6 @@
 				A00E3D5919008BCB00F01AFF /* Box2dView.cpp in Sources */,
 				A0266820190375120048AABB /* b2Fixture.cpp in Sources */,
 				A0266834190375120048AABB /* b2EdgeAndPolygonContact.cpp in Sources */,
-				A00E3D5B19008BCB00F01AFF /* GLES-Render.cpp in Sources */,
 				A00E3D5719008BCB00F01AFF /* AppDelegate.cpp in Sources */,
 				A0266842190375120048AABB /* b2MotorJoint.cpp in Sources */,
 				A0266836190375120048AABB /* b2PolygonAndCircleContact.cpp in Sources */,
@@ -1319,6 +1319,7 @@
 				A0266791190375120048AABB /* b2DynamicTree.cpp in Sources */,
 				A0266793190375120048AABB /* b2TimeOfImpact.cpp in Sources */,
 				A026685B190375120048AABB /* b2Rope.cpp in Sources */,
+				A0ECBFAF1907313000489C7B /* GLESDebugDraw.cpp in Sources */,
 				A0266851190375120048AABB /* b2WheelJoint.cpp in Sources */,
 				A0266797190375120048AABB /* b2CircleShape.cpp in Sources */,
 				A026682B190375120048AABB /* b2ChainAndPolygonContact.cpp in Sources */,
@@ -1329,7 +1330,6 @@
 				A026682F190375120048AABB /* b2Contact.cpp in Sources */,
 				A02667A9190375120048AABB /* b2Stat.cpp in Sources */,
 				A0266839190375120048AABB /* b2PolygonContact.cpp in Sources */,
-				A00E3D5C19008BCB00F01AFF /* GLES-Render.cpp in Sources */,
 				A026678B190375120048AABB /* b2CollidePolygon.cpp in Sources */,
 				A0266831190375120048AABB /* b2ContactSolver.cpp in Sources */,
 				A0266799190375120048AABB /* b2EdgeShape.cpp in Sources */,
