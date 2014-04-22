@@ -70,7 +70,7 @@
     <ClInclude Include="..\..\..\libs\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.h" />
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\EyeCandyLayer.h" />
-    <ClInclude Include="..\Classes\GLES-Render.h" />
+    <ClInclude Include="..\Classes\GLESDebugDraw.h" />
     <ClInclude Include="..\Classes\LFParticleSystemNode.h" />
     <ClInclude Include="..\Classes\LFSpriteNode.h" />
     <ClInclude Include="..\Classes\Tests\AddPair.h" />
@@ -203,7 +203,7 @@
     <ClCompile Include="..\..\..\libs\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.cpp" />
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\EyeCandyLayer.cpp" />
-    <ClCompile Include="..\Classes\GLES-Render.cpp" />
+    <ClCompile Include="..\Classes\GLESDebugDraw.cpp" />
     <ClCompile Include="..\Classes\LFParticleSystemNode.cpp" />
     <ClCompile Include="..\Classes\LFSpriteNode.cpp" />
     <ClCompile Include="main.cpp" />

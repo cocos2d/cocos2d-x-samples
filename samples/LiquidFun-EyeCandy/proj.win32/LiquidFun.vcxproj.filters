@@ -414,13 +414,13 @@
     <ClInclude Include="..\Classes\EyeCandyLayer.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\GLES-Render.h">
-      <Filter>Classes</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\LFParticleSystemNode.h">
       <Filter>Classes</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\LFSpriteNode.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GLESDebugDraw.h">
       <Filter>Classes</Filter>
     </ClInclude>
   </ItemGroup>
@@ -593,13 +593,13 @@
     <ClCompile Include="..\Classes\EyeCandyLayer.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\GLES-Render.cpp">
-      <Filter>Classes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\LFParticleSystemNode.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\LFSpriteNode.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GLESDebugDraw.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
   </ItemGroup>

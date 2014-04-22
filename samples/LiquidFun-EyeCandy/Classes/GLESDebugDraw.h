@@ -18,10 +18,10 @@
 * 3. This notice may not be removed or altered from any source distribution.
 */
 
-#ifndef RENDER_H
-#define RENDER_H
+#ifndef __GLESDEBUGDRAW_H
+#define __GLESDEBUGDRAW_H
 
-#include "Box2D/Box2D.h"
+#include <Box2D/Box2D.h>
 #include "cocos2d.h"
 
 struct b2AABB;
@@ -69,4 +69,4 @@ protected:
 };
 
 
-#endif
+#endif // __GLESDEBUGDRAW_H
