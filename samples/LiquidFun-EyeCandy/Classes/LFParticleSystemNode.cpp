@@ -40,8 +40,8 @@ varying vec4 v_fragmentColor;
 #endif
 void main()
 {
-    gl_Position = CC_MVPMatrix * a_position;
-    gl_PointSize = a_size * CC_MVPMatrix[0][0];
+    gl_Position = CC_PMatrix * CC_MVMatrix * a_position;
+    gl_PointSize = a_size * CC_MVMatrix[0][0];
     v_fragmentColor = a_color;
 }
 )";

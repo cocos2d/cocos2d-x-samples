@@ -65,7 +65,12 @@ EyeCandyLayer::EyeCandyLayer()
     addChild(label, 0);
     label->setColor(Color3B(0,0,255));
     label->setPosition(Point(s.width/2, s.height-50));
-    
+
+//    auto scaleUp = ScaleBy::create(2, 1.8);
+//    auto scaleDown = scaleUp->reverse();
+//    auto seq = Sequence::create(scaleUp, scaleDown, NULL);
+//    this->runAction(seq);
+
     scheduleUpdate();
 }
 
