@@ -2,23 +2,26 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
-LOCAL_MODULE := cocos2dcpp_shared
+LOCAL_MODULE := liquidfun_eyecandy_shared
 
-LOCAL_MODULE_FILENAME := libcocos2dcpp
+LOCAL_MODULE_FILENAME := libliquidfun_eyecandy
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+                   ../../Classes/EyeCandyLayer.cpp \
+                   ../../Classes/GLESDebugDraw.cpp \
+                   ../../Classes/LFParticleSystemNode.cpp \
+                   ../../Classes/LFSpriteNode.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
 
 LOCAL_WHOLE_STATIC_LIBRARIES := cocos2dx_static
 LOCAL_WHOLE_STATIC_LIBRARIES += cocosdenshion_static
-LOCAL_WHOLE_STATIC_LIBRARIES += box2d_static
+LOCAL_WHOLE_STATIC_LIBRARIES += liquidfun_static
 
 
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,2d)
 $(call import-module,audio/android)
-$(call import-module,Box2D)
+$(call import-module,liquidfun)

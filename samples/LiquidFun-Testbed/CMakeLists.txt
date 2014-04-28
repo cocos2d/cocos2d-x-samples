@@ -42,14 +42,21 @@ endif()
 set(GAME_SRC
   proj.linux/main.cpp
   Classes/AppDelegate.cpp
-  Classes/HelloWorldScene.cpp
+  Classes/AppDelegate.cpp \
+  Classes/ParticleParameter.cpp \
+  Classes/VisibleRect.cpp \
+  Classes/TestEntries.cpp \
+  Classes/Test.cpp \
+  Classes/GLESDebugDraw.cpp \
+  Classes/Box2dView.cpp
 )
 
-set(COCOS2D_ROOT ${CMAKE_SOURCE_DIR}/cocos2d)
+set(COCOS2D_ROOT ${CMAKE_SOURCE_DIR}/libs/cocos2d-x)
 
 include_directories(
   /usr/local/include/GLFW
   ${COCOS2D_ROOT}
+  ${COCOS2D_ROOT}/liquidfun
   ${COCOS2D_ROOT}/cocos
   ${COCOS2D_ROOT}/cocos/audio/include
   ${COCOS2D_ROOT}/cocos/2d

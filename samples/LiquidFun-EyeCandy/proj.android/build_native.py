@@ -75,9 +75,9 @@ def do_build(cocos_root, ndk_root, app_android_root,ndk_build_param,sdk_root,and
     # windows should use ";" to seperate module paths
     platform = sys.platform
     if platform == 'win32':
-        ndk_module_path = 'NDK_MODULE_PATH=%s;%s/external;%s/cocos' % (cocos_root, cocos_root, cocos_root)
+        ndk_module_path = 'NDK_MODULE_PATH=%s;%s/external;%s/cocos;%s/..' % (cocos_root, cocos_root, cocos_root, cocos_root)
     else:
-        ndk_module_path = 'NDK_MODULE_PATH=%s:%s/external:%s/cocos' % (cocos_root, cocos_root, cocos_root)
+        ndk_module_path = 'NDK_MODULE_PATH=%s:%s/external:%s/cocos:%s/..' % (cocos_root, cocos_root, cocos_root, cocos_root)
 	
     num_of_cpu = get_num_of_cpu()
 	
@@ -132,7 +132,7 @@ def build(ndk_build_param,android_platform,build_mode):
     select_toolchain_version()
 
     current_dir = os.path.dirname(os.path.realpath(__file__))
-    cocos_root = os.path.join(current_dir, "../cocos2d")
+    cocos_root = os.path.join(current_dir, "../../../libs/cocos2d-x")
 
     app_android_root = current_dir
     copy_resources(app_android_root)
