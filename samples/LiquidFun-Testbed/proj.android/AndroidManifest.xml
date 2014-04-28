@@ -11,7 +11,7 @@
                  android:icon="@drawable/icon">
 
 
-        <activity android:name="org.cocos2dx.cpp.AppActivity"
+        <activity android:name="org.cocos2dx.liquidfun_testbed.AppActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="landscape"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
@@ -19,7 +19,7 @@
 
             <!-- Tell NativeActivity the name of our .so -->
             <meta-data android:name="android.app.lib_name"
-                       android:value="cocos2dcpp" />
+                       android:value="liquidfun_testbed" />
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

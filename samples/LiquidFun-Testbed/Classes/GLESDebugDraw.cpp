@@ -262,10 +262,6 @@ void GLESDebugDraw::DrawParticles(const b2Vec2 *centers_old, float32 radius, con
 
 	glDrawArrays(GL_POINTS, 0, count);
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,count);
-
-#ifdef __ANDROID__
-    glDisable(GL_POINT_SPRITE_OES);
-#endif
 }
 
 
