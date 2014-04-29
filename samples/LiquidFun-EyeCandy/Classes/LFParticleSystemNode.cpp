@@ -119,13 +119,28 @@ void LFParticleSystemNode::setupVBO()
 
     // point sprite position
     glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[2]);
-    glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(float), NULL, GL_DYNAMIC_DRAW);
-    float *size = (float*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-    for(int i=0; i<_sizeVBO; i++) {
-        float s = _particleSystem->GetRadius() * 2;
-        size[i] = s + CCRANDOM_0_1() * s;
+    
+    if (Configuration::getInstance()->supportsShareableVAO())
+    {
+        glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(float), NULL, GL_DYNAMIC_DRAW);
+        float *size = (float*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+        for(int i=0; i<_sizeVBO; i++) {
+            float s = _particleSystem->GetRadius() * 2;
+            size[i] = s + CCRANDOM_0_1() * s;
+        }
+        glUnmapBuffer(GL_ARRAY_BUFFER);
     }
-    glUnmapBuffer(GL_ARRAY_BUFFER);
+    else
+    {
+        float* size = (float*)malloc(_sizeVBO*sizeof(float));
+        for(int i=0; i<_sizeVBO; i++) {
+            float s = _particleSystem->GetRadius() * 2;
+            size[i] = s + CCRANDOM_0_1() * s;
+        }
+        
+        glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(float), size, GL_DYNAMIC_DRAW);
+        free(size);
+    }
 
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
@@ -160,21 +175,38 @@ void LFParticleSystemNode::onDraw(const kmMat4 &transform, bool transformUpdated
 
     GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
 
-    // Update Positions
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
-    b2Vec2 *positions = (b2Vec2*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-    b2Vec2* posBuffer = _particleSystem->GetPositionBuffer();
-    memcpy(positions, posBuffer, sizeof(positions[0]) * totalParticles);
-    glUnmapBuffer(GL_ARRAY_BUFFER);
-    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(b2Vec2), NULL);
-
-    // Colors
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
-    b2ParticleColor *colors = (b2ParticleColor*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-    b2ParticleColor* colorsBuffer = _particleSystem->GetColorBuffer();
-    memcpy(colors, colorsBuffer, sizeof(colors[0]) * totalParticles);
-    glUnmapBuffer(GL_ARRAY_BUFFER);
-    glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
+    if (Configuration::getInstance()->supportsShareableVAO())
+    {
+        // Update Positions
+        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
+        b2Vec2 *positions = (b2Vec2*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+        b2Vec2* posBuffer = _particleSystem->GetPositionBuffer();
+        memcpy(positions, posBuffer, sizeof(positions[0]) * totalParticles);
+        glUnmapBuffer(GL_ARRAY_BUFFER);
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(b2Vec2), NULL);
+        
+        // Colors
+        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
+        b2ParticleColor *colors = (b2ParticleColor*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
+        b2ParticleColor* colorsBuffer = _particleSystem->GetColorBuffer();
+        memcpy(colors, colorsBuffer, sizeof(colors[0]) * totalParticles);
+        glUnmapBuffer(GL_ARRAY_BUFFER);
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
+    }
+    else
+    {
+        // Update Positions
+        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
+        b2Vec2* posBuffer = _particleSystem->GetPositionBuffer();
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(posBuffer[0]) * totalParticles , posBuffer );
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(b2Vec2), NULL);
+        
+        // Colors
+        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
+        b2ParticleColor* colorsBuffer = _particleSystem->GetColorBuffer();
+        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(colorsBuffer[0]) * totalParticles , colorsBuffer );
+        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
+    }
 
     // sizes
     glEnableVertexAttribArray(3);
