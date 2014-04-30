@@ -54,3 +54,6 @@ ipch/
 *.xcuserstate
 xcuserdata/
 Thumbs.db
+
+#Android
+project.properties
