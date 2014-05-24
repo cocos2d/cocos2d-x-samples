@@ -246,7 +246,7 @@ void LFSpriteNode::setRotation(float fRotation)
     }
 }
 
-void LFSpriteNode::visit(Renderer *renderer, const kmMat4& parentTransform, bool parentTransformUpdated)
+void LFSpriteNode::visit(Renderer *renderer, const cocos2d::Mat4& parentTransform, bool parentTransformUpdated)
 {
     // box2d controls the position, so set the transform as dirty
     _transformUpdated = true;
@@ -254,7 +254,7 @@ void LFSpriteNode::visit(Renderer *renderer, const kmMat4& parentTransform, bool
 }
 
 // returns the transform matrix according the Chipmunk Body values
-const kmMat4& LFSpriteNode::getNodeToParentTransform() const
+const cocos2d::Mat4& LFSpriteNode::getNodeToParentTransform() const
 {
     // Although scale is not used by physics engines, it is calculated just in case
 	// the sprite is animated (scaled up/down) using actions.
@@ -284,12 +284,12 @@ const kmMat4& LFSpriteNode::getNodeToParentTransform() const
 
 	// Rot, Translate Matrix
 
-    kmScalar mat[] = {  (kmScalar)c * _scaleX, (kmScalar)s * _scaleX, 0,  0,
-        (kmScalar)-s * _scaleY, (kmScalar)c * _scaleY,  0,  0,
+    float mat[] = {  (float)c * _scaleX, (float)s * _scaleX, 0,  0,
+        (float)-s * _scaleY, (float)c * _scaleY,  0,  0,
         0,  0,  1,  0,
         x,	y,  0,  1};
 
+    _transform = Mat4(mat);
 
-    kmMat4Fill(&_transform, mat);
 	return _transform;
 }

@@ -61,7 +61,7 @@ public:
 
     bool initWithEntryID(int entryId);
     std::string title() const;
-    virtual void draw(cocos2d::Renderer *renderer, const kmMat4 &transform, bool transformUpdated) override;
+    virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, bool transformUpdated) override;
 
 //    virtual void registerWithTouchDispatcher();
     bool onTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
@@ -75,7 +75,7 @@ public:
     static Box2DView* viewWithEntryID(int entryId);
 
 protected:
-    void onDraw(const kmMat4 &transform, bool transformUpdated);
+    void onDraw(const cocos2d::Mat4 &transform, bool transformUpdated);
 
     cocos2d::EventListenerTouchOneByOne* _touchListener;
     cocos2d::EventListenerKeyboard* _keyboardListener;

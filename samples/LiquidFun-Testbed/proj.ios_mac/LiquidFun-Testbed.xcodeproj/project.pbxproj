@@ -1796,8 +1796,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../liquidfun/",
 					"$(inherited)",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/ios",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/ios/Simulation",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/ios",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1829,8 +1829,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../liquidfun/",
 					"$(inherited)",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/ios",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/ios/Simulation",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/ios",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
@@ -1863,7 +1863,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/mac",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/mac",
 					"$(SRCROOT)/../../../libs/cocos2d-x/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
@@ -1891,7 +1891,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/2d/platform/mac",
+					"$(SRCROOT)/../../../libs/cocos2d-x/cocos/platform/mac",
 					"$(SRCROOT)/../../../libs/cocos2d-x/external/glfw3/include/mac",
 				);
 				INFOPLIST_FILE = mac/Info.plist;
