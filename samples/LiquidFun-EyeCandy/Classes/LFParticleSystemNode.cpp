@@ -26,6 +26,7 @@ THE SOFTWARE.
 #include "LFParticleSystemNode.h"
 
 
+static const int MAX_PARTICLES = 10000;
 
 // Custom Shader
 static const GLchar* shaderVert = R"(
@@ -51,7 +52,6 @@ static const GLchar* shaderFrag = R"(
 #ifdef GL_ES
 precision lowp float;
 #endif
-uniform sampler2D CC_Texture0;
 
 varying vec4 v_fragmentColor;
 void main()
@@ -62,6 +62,16 @@ void main()
 
 
 using namespace cocos2d;
+
+LFParticleSystemNode::LFParticleSystemNode()
+: _ratioTransform(Mat4::IDENTITY)
+{
+}
+
+LFParticleSystemNode::~LFParticleSystemNode()
+{
+    free(_sizes);
+}
 
 LFParticleSystemNode* LFParticleSystemNode::create(b2ParticleSystem* particleSystem, float ratio)
 {
@@ -75,22 +85,13 @@ LFParticleSystemNode* LFParticleSystemNode::create(b2ParticleSystem* particleSys
 bool LFParticleSystemNode::init(b2ParticleSystem* particleSystem, float ratio)
 {
     _particleSystem = particleSystem;
-    kmMat4Scaling(&_ratioTransform, ratio, ratio, 1);
+    _ratioTransform.scale(ratio, ratio, 1);
     _ratio = ratio;
 
     // own shader
-    GLProgram *p = new GLProgram;
-    p->initWithByteArrays(shaderVert, shaderFrag);
-    p->bindAttribLocation(GLProgram::ATTRIBUTE_NAME_POSITION, GLProgram::VERTEX_ATTRIB_POSITION);
-    p->bindAttribLocation(GLProgram::ATTRIBUTE_NAME_COLOR, GLProgram::VERTEX_ATTRIB_COLOR);
-//    p->bindAttribLocation(GLProgram::ATTRIBUTE_NAME_TEX_COORD, GLProgram::VERTEX_ATTRIB_TEX_COORDS);
-    p->bindAttribLocation("a_size", 3);
-
-    p->link();
-    p->updateUniforms();
-
-    this->setShaderProgram(p);
-    p->release();
+    GLProgram *p = GLProgram::createWithByteArrays(shaderVert, shaderFrag);
+    GLProgramState *state = GLProgramState::getOrCreateWithGLProgram(p);
+    setGLProgramState(state);
 
     setupVBO();
 
@@ -104,121 +105,50 @@ bool LFParticleSystemNode::init(b2ParticleSystem* particleSystem, float ratio)
 
 void LFParticleSystemNode::setupVBO()
 {
-    glGenBuffers(3, &_buffersVBO[0]);
-
-    // 5000 particles
-    _sizeVBO = 5000;
-
-    // positions (point only)
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
-    glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(b2Vec2), NULL, GL_DYNAMIC_DRAW);
-
-    // colors
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
-    glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(b2ParticleColor), NULL, GL_DYNAMIC_DRAW);
-
-    // point sprite position
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[2]);
-    
-    if (Configuration::getInstance()->supportsShareableVAO())
-    {
-        glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(float), NULL, GL_DYNAMIC_DRAW);
-        float *size = (float*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-        for(int i=0; i<_sizeVBO; i++) {
-            float s = _particleSystem->GetRadius() * 2;
-            size[i] = s + CCRANDOM_0_1() * s;
-        }
-        glUnmapBuffer(GL_ARRAY_BUFFER);
-    }
-    else
-    {
-        float* size = (float*)malloc(_sizeVBO*sizeof(float));
-        for(int i=0; i<_sizeVBO; i++) {
-            float s = _particleSystem->GetRadius() * 2;
-            size[i] = s + CCRANDOM_0_1() * s;
-        }
-        
-        glBufferData(GL_ARRAY_BUFFER, _sizeVBO * sizeof(float), size, GL_DYNAMIC_DRAW);
-        free(size);
+    _sizes = (GLfloat*)malloc(MAX_PARTICLES * sizeof(_sizes[0]));
+    for(int i=0; i<MAX_PARTICLES; i++) {
+        float s = _particleSystem->GetRadius() * 2;
+        _sizes[i] = s + CCRANDOM_0_1() * s;
     }
 
+    auto glProgramState = getGLProgramState();
 
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    // Update Positions
+    glProgramState->setVertexAttribPointer("a_position", 2, GL_FLOAT, GL_FALSE, 0, _particleSystem->GetPositionBuffer());
+    glProgramState->setVertexAttribPointer("a_color", 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, _particleSystem->GetColorBuffer());
+    glProgramState->setVertexAttribPointer("a_size", 1, GL_FLOAT, GL_FALSE, 0, _sizes);
+
 
     CHECK_GL_ERROR_DEBUG();
 }
 
 // draw
 
-void LFParticleSystemNode::draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated)
+void LFParticleSystemNode::draw(Renderer *renderer, const Mat4 &transform, bool transformUpdated)
 {
     _customCommand.init(_globalZOrder);
     _customCommand.func = CC_CALLBACK_0(LFParticleSystemNode::onDraw, this, transform, transformUpdated);
     renderer->addCommand(&_customCommand);
 }
 
-void LFParticleSystemNode::onDraw(const kmMat4 &transform, bool transformUpdated)
+void LFParticleSystemNode::onDraw(const Mat4 &transform, bool transformUpdated)
 {
     // transform everything to PTM_RATIO
-    kmMat4 newMV;
-    kmMat4Multiply(&newMV, &_modelViewTransform, &_ratioTransform);
-    getShaderProgram()->use();
-    getShaderProgram()->setUniformsForBuiltins(newMV);
+    Mat4 newMV;
+    Mat4::multiply(_modelViewTransform, _ratioTransform, &newMV);
+
+    _glProgramState->apply(newMV);
 
 //    GL::blendFunc(_blendFunc.src, _blendFunc.dst);
     GL::bindTexture2D(_texture->getName());
     GL::blendFunc(_blendFunc.src, _blendFunc.dst);
 
-
     int totalParticles = _particleSystem->GetParticleCount();
-    CCASSERT(totalParticles<_sizeVBO, "too many particles, increase VBO size");
+    CCASSERT(totalParticles<MAX_PARTICLES, "too many particles, increase VBO size");
 
-    GL::enableVertexAttribs(GL::VERTEX_ATTRIB_FLAG_POSITION | GL::VERTEX_ATTRIB_FLAG_COLOR);
-
-    if (Configuration::getInstance()->supportsShareableVAO())
-    {
-        // Update Positions
-        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
-        b2Vec2 *positions = (b2Vec2*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-        b2Vec2* posBuffer = _particleSystem->GetPositionBuffer();
-        memcpy(positions, posBuffer, sizeof(positions[0]) * totalParticles);
-        glUnmapBuffer(GL_ARRAY_BUFFER);
-        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(b2Vec2), NULL);
-        
-        // Colors
-        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
-        b2ParticleColor *colors = (b2ParticleColor*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
-        b2ParticleColor* colorsBuffer = _particleSystem->GetColorBuffer();
-        memcpy(colors, colorsBuffer, sizeof(colors[0]) * totalParticles);
-        glUnmapBuffer(GL_ARRAY_BUFFER);
-        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
-    }
-    else
-    {
-        // Update Positions
-        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[0]);
-        b2Vec2* posBuffer = _particleSystem->GetPositionBuffer();
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(posBuffer[0]) * totalParticles , posBuffer );
-        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_POSITION, 2, GL_FLOAT, GL_FALSE, sizeof(b2Vec2), NULL);
-        
-        // Colors
-        glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[1]);
-        b2ParticleColor* colorsBuffer = _particleSystem->GetColorBuffer();
-        glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(colorsBuffer[0]) * totalParticles , colorsBuffer );
-        glVertexAttribPointer(GLProgram::VERTEX_ATTRIB_COLOR, 4, GL_UNSIGNED_BYTE, GL_TRUE, sizeof(b2ParticleColor), NULL);
-    }
-
-    // sizes
-    glEnableVertexAttribArray(3);
-    glBindBuffer(GL_ARRAY_BUFFER, _buffersVBO[2]);
-    glVertexAttribPointer(3, 1, GL_FLOAT, GL_FALSE, sizeof(float), NULL);
-
+    // Update Positions
     glDrawArrays(GL_POINTS, 0, totalParticles);
     CC_INCREMENT_GL_DRAWN_BATCHES_AND_VERTICES(1,totalParticles);
-
-    // cleanup
-    glDisableVertexAttribArray(3);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     CHECK_GL_ERROR_DEBUG();
 }

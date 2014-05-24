@@ -51,7 +51,7 @@ GLESDebugDraw::GLESDebugDraw( float32 ratio )
 
 void GLESDebugDraw::initShader( void )
 {
-    mShaderProgram = ShaderCache::getInstance()->getProgram(GLProgram::SHADER_NAME_POSITION_U_COLOR);
+    mShaderProgram = ShaderCache::getInstance()->getGLProgram(GLProgram::SHADER_NAME_POSITION_U_COLOR);
     mPointSizeLocation = mShaderProgram->getUniformLocation("u_pointSize");
     mColorLocation = mShaderProgram->getUniformLocation("u_color");
 }

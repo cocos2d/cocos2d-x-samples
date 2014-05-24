@@ -235,7 +235,7 @@ std::string Box2DView::title() const
     return std::string(m_entry->name);
 }
 
-void Box2DView::draw(Renderer *renderer, const kmMat4 &transform, bool transformUpdated)
+void Box2DView::draw(Renderer *renderer, const Mat4 &transform, bool transformUpdated)
 {
     Layer::draw(renderer, transform, transformUpdated);
 
@@ -244,7 +244,7 @@ void Box2DView::draw(Renderer *renderer, const kmMat4 &transform, bool transform
     renderer->addCommand(&_customCmd);
 }
 
-void Box2DView::onDraw(const kmMat4 &transform, bool transformUpdated)
+void Box2DView::onDraw(const Mat4 &transform, bool transformUpdated)
 {
     kmGLPushMatrix();
     kmGLLoadMatrix(&transform);
