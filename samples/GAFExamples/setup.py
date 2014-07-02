@@ -8,6 +8,7 @@ import os
 import sys
 import shutil
 from subprocess import call
+import ctypes
 #import win32file
 
 def main():
@@ -19,7 +20,7 @@ def main():
 
 	platform = sys.platform
 	if platform == 'win32':
-		#win32file.CreateSymbolicLink(gafDir, workDir + '/Examples', 1)
+		print "Please call setup.bat"
 	else:
 		os.symlink(gafDir, workDir + '/Examples')
 		
