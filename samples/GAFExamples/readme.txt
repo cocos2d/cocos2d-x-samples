@@ -4,5 +4,4 @@ GAF enables artists and animators to use Flash CS for creating complex animation
 
 HOW TO
 1. Please proceed to ../../libs/GAF/
-2. Checkout a GAF branch: git branch release-cocos2dx-3-managed-folders
-3. Open Examples folder to see the usage
+2. Open Examples folder to see the usage
