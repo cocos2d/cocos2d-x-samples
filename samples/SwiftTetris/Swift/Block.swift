@@ -68,7 +68,7 @@ class Block : Node
         {
             removeAllChildren()
             rotation = rot
-            Debug.getInstance.log("Rotation set to \(rotation)")
+            //Debug.getInstance.log("Rotation set to \(rotation)")
             addChild(rotations[rotation])
         }
     }

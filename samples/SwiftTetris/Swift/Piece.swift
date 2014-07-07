@@ -53,7 +53,7 @@ class Piece : Node
         var x = BS.width  * CGFloat(_position.x)
         var y = BS.height * CGFloat(_position.y)
         var pos : CGPoint = CGPointMake(CGFloat(BL.x) + x, CGFloat(BL.y) + y)
-        Debug.getInstance.log("setPosition: \(pos.x), \(pos.y)")
+        //Debug.getInstance.log("setPosition: \(pos.x), \(pos.y)")
         setPosition(pos)
     }
     

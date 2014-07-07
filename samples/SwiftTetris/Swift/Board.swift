@@ -216,21 +216,6 @@ class Board : Node
         
         self.addChild(_board)
     }
-
-//    func convertWorldPositionToCell(pos : CGPoint) -> Point
-//    {
-//        var cx : Int = Int((pos.x - _origin.x) / _blockSize.width) - Int(_cellBL.x)
-//        var cy : Int = Int((pos.y - _origin.y) / _blockSize.height) - Int(_cellBL.y)
-//        //Debug.getInstance.log("converting \(pos.x - _origin.x), \(pos.y - _origin.y) to \(cx), \(cy)")
-//        return Point(v: CShort(cy), h: CShort(cx))
-//    }
-//    
-//    func convertCellToWorldPosition(cell : FixedPoint) -> CGPoint
-//    {
-//        var px : CGFloat = (CGFloat(cell.x) * _blockSize.width) + _origin.x
-//        var py : CGFloat = (CGFloat(cell.y) * _blockSize.height) + _origin.y
-//        return CGPointMake(px, py)
-//    }
     
     func start()
     {
@@ -255,10 +240,10 @@ class Board : Node
             })
         label.runAction(bounce)
         
-        self._accelerometer = EventListenerAcceleration.create { (acceleration : Acceleration!, event : Event!) in
-            Debug.getInstance.log("acceleration \(acceleration.x) \(acceleration.y) \(acceleration.z)")
-        }
-        director.eventDispatcher.addEventListenerWithSceneGraphPriority(self._accelerometer, self)
+//        self._accelerometer = EventListenerAcceleration.create { (acceleration : Acceleration!, event : Event!) in
+//            Debug.getInstance.log("acceleration \(acceleration.x) \(acceleration.y) \(acceleration.z)")
+//        }
+//        director.eventDispatcher.addEventListenerWithSceneGraphPriority(self._accelerometer, self)
     }
     
     func startCountDown()
@@ -295,10 +280,6 @@ class Board : Node
     
     func cellToIndex(cell : FixedPoint) -> Int
     {
-        if Int(cell.x) >= COLUMNS || Int(cell.y) >= ROWS
-        {
-            //Debug.getInstance.log("invalid cell \(cell.h), \(cell.v) clamping")
-        }
         var x = Int(cell.x) >= COLUMNS ? COLUMNS - 1 : Int(cell.x)
         var y = Int(cell.y) >= ROWS    ? ROWS - 1    : Int(cell.y)
         return Int(y * COLUMNS + x)
@@ -463,7 +444,7 @@ class Board : Node
         var newPos = pos
         --newPos.x
         clampBlockToPlayArea(block)
-        Debug.getInstance.log("moveCurrentBlockLeft: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
+        //Debug.getInstance.log("moveCurrentBlockLeft: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
         block.setPos(newPos)
         if !canPlaceBlock(block)
         {
@@ -480,7 +461,7 @@ class Board : Node
         var newPos = pos
         ++newPos.x
         clampBlockToPlayArea(block)
-        Debug.getInstance.log("moveCurrentBlockRight: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
+        //Debug.getInstance.log("moveCurrentBlockRight: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
         block.setPos(newPos)
         if !canPlaceBlock(block)
         {
@@ -507,37 +488,6 @@ class Board : Node
         return nil
     }
     
-//    func adjustBlockForBounds(block : Block)
-//    {
-//        var cells : Array<FixedPoint> = block.getCells()
-//        var l : Fixed = 10000
-//        var r : Fixed = 0
-//        
-//        for p in cells
-//        {
-//            l = p.x < l ? p.y : l
-//            r = p.x > r ? p.y : r
-//        }
-//        
-//        Debug.getInstance.log("extents l \(l) r \(r)")
-//        
-//        var adjust : CGFloat = 0
-//        if (l < 0)
-//        {
-//            adjust = -CGFloat(l) * _blockSize.width
-//        }
-//        else if (r >= Fixed(COLUMNS-1))
-//        {
-//            adjust = (CGFloat(COLUMNS-1) - CGFloat(r)) * _blockSize.width
-//        }
-//        
-//        Debug.getInstance.log("adjusting block by \(adjust)")
-//        
-//        var pos = block.getPosition()
-//        pos.x += adjust
-//        block.setPosition(pos)
-//    }
-    
     func rotatePiece(touch : Touch!, event : Event!) -> Bool
     {        
         let block = _currentBlock
@@ -560,12 +510,6 @@ class Board : Node
         if !canPlaceBlock(b)
         {
             b.setRot(rotation)
-        }
-        
-        var cells = b.getCells()
-        for p in cells
-        {
-            Debug.getInstance.log("rotated cell \(p.x), \(p.y)")
         }
         
         b.addToMap()
@@ -624,7 +568,6 @@ class Board : Node
             return false;
         }
         _map[index].block = block
-        Debug.getInstance.log("add to map      \(cell.x), \(cell.y)")
         return true
     }
     
@@ -642,7 +585,6 @@ class Board : Node
             return false
         }
         _map[index].block = nil
-        Debug.getInstance.log("remove from map \(cell.x), \(cell.y)")
         return true
     }
 
@@ -656,15 +598,13 @@ class Board : Node
             var block = _map[index].block
             if block
             {
-
+                
             }
         }
     }
     
     func checkAndRemoveRows()
     {
-        return
-        
         var row = 0
         for r in 0...ROWS
         {

@@ -156,19 +156,6 @@ class BlockFactory
     
     func createBlockFromData(blockDescription : Array<Array<FixedPoint>>, color : Color) -> Block
     {
-//        Debug.getInstance.log("createBlockFromData count \(blockDescription.count) : color \(color.toRaw())")
-//        
-//        for o in blockDescription
-//        {
-//            Debug.getInstance.log("   count \(o.count)")
-//            for c in o
-//            {
-//                Debug.getInstance.log("  cell \(c.x), \(c.y)")
-//            }
-//        }
-//
-//        Debug.getInstance.log("DONE")
-        
         var block = Block()
         block._board = _board!
         block.type = color.toRaw()
