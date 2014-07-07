@@ -59,6 +59,8 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D03DA6011969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
 		D03DA6021969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
+		D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
+		D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D06FB7B51968A93A00193410 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77B1968A93A00193410 /* Action.mm */; };
 		D06FB7B61968A93A00193410 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77B1968A93A00193410 /* Action.mm */; };
 		D06FB7B71968A93A00193410 /* ActionInterval.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77D1968A93A00193410 /* ActionInterval.mm */; };
@@ -337,6 +339,7 @@
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D03DA6001969C6E400F57039 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		D0669AC2196B36380040E7EE /* SceneTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTest.swift; sourceTree = "<group>"; };
 		D06FB77A1968A93A00193410 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		D06FB77B1968A93A00193410 /* Action.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Action.mm; sourceTree = "<group>"; };
 		D06FB77C1968A93A00193410 /* ActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionInterval.h; sourceTree = "<group>"; };
@@ -733,6 +736,7 @@
 				D06FB7EC1968A98C00193410 /* SceneGame.swift */,
 				D06FB7ED1968A98C00193410 /* SceneMenu.swift */,
 				D06FB7EE1968A98C00193410 /* SceneSplash.swift */,
+				D0669AC2196B36380040E7EE /* SceneTest.swift */,
 			);
 			name = Swift;
 			path = ../Swift;
@@ -1001,6 +1005,7 @@
 				D06FB7FB1968A98C00193410 /* SceneSplash.swift in Sources */,
 				D06FB7D71968A93A00193410 /* Scene.mm in Sources */,
 				D06FB7C71968A93A00193410 /* EventListener.mm in Sources */,
+				D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7B51968A93A00193410 /* Action.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D06FB7B71968A93A00193410 /* ActionInterval.mm in Sources */,
@@ -1032,6 +1037,7 @@
 				D06FB7D21968A93A00193410 /* Label.mm in Sources */,
 				D06FB7CC1968A93A00193410 /* EventListenerKeyboard.mm in Sources */,
 				D06FB7BC1968A93A00193410 /* Transitions.mm in Sources */,
+				D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7CA1968A93A00193410 /* EventListenerAcceleration.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D06FB7F81968A98C00193410 /* SceneGame.swift in Sources */,

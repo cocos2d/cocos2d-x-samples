@@ -6,6 +6,7 @@ import Foundation
 
 class Block : Node
 {
+    var _board : Board? = nil
     var rotations : Piece[] = []
     var rotation : Int = 0
     var position : FixedPoint = FixedPoint(x: 0,y: 0)
@@ -48,7 +49,7 @@ class Block : Node
         var cells = getCells()
         for c in cells
         {
-            Board.getInstance.addToMap(self, cell: c)
+            _board!.addToMap(self, cell: c)
         }
     }
     
@@ -57,7 +58,7 @@ class Block : Node
         var cells = getCells()
         for c in cells
         {
-            Board.getInstance.removeFromMap(self, cell: c)
+            _board!.removeFromMap(self, cell: c)
         }
     }
     

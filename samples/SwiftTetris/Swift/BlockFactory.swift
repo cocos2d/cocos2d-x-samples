@@ -118,6 +118,8 @@ class BlockFactory
     
     var _blockSize : CGSize = CGSizeZero
     
+    var _board : Board? = nil
+    
     init()
     {
         var block = loadColoredBlock(Color.Red)
@@ -131,6 +133,11 @@ class BlockFactory
             static let instance = BlockFactory()
         }
         return Singleton.instance
+    }
+    
+    func setBoard(board : Board)
+    {
+        _board = board
     }
     
     func createColoredBlock(color : Color) -> Node
@@ -165,6 +172,7 @@ class BlockFactory
 //        Debug.getInstance.log("DONE")
         
         var block = Block()
+        block._board = _board!
         block.type = color.toRaw()
         block.setAnchorPoint(CGPointZero)
         
@@ -176,6 +184,7 @@ class BlockFactory
             var maxy : Fixed = 0
             
             var piece = Piece()
+            piece._board = _board!
             piece.setAnchorPoint(CGPointZero)
             
             for cell in pieceDesc

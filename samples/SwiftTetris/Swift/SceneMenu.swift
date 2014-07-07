@@ -14,7 +14,7 @@ class SceneMenu : Scene
     {
         var scene = SceneGame()
         var fade = TransitionFade.create(3, scene)
-        Director.getInstance().pushScene(fade)
+        Director.getInstance().replaceScene(fade)
 
         return true
     }

@@ -10,6 +10,7 @@ import Foundation
 
 class Piece : Node
 {
+    var _board : Board? = nil
     var _position : FixedPoint = FixedPoint(x:0, y:0)
     var _dimensions : FixedPoint = FixedPoint(x:0, y:0)
     var _BL : FixedPoint = FixedPoint(x:0, y:0)
@@ -46,7 +47,7 @@ class Piece : Node
     {
         _position = position
         var BS = BlockFactory.getInstance._blockSize
-        var BL = Board.getInstance._cellBL
+        var BL = _board!._cellBL
         BL.x *= Fixed(BS.width)
         BL.y *= Fixed(BS.height)
         var x = BS.width  * CGFloat(_position.x)

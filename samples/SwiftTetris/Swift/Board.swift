@@ -60,19 +60,11 @@ class Board : Node
     // Methods
     //
     
-    class var getInstance : Board
-    {
-        struct Singleton
-        {
-            static let instance = Board()
-        }
-        return Singleton.instance
-    }
-    
     init()
     {
         super.init()
         
+        BlockFactory.getInstance.setBoard(self)
         var block = BlockFactory.getInstance.loadColoredBlock(BlockFactory.Color.Grey)
         var blockSize = block.getContentSize()
         _blockSize = blockSize
@@ -172,10 +164,11 @@ class Board : Node
         _blocks = []
         _currentBlock = nil
         _map = []
-        _board.removeAllChildren()
-        _board.removeFromParentAndCleanup(true)
-        Director.getInstance().popScene()
-    }
+
+        var scene = SceneMenu()
+        var fade = TransitionFade.create(3, scene)
+        Director.getInstance().replaceScene(fade)
+}
     
     func fillBackground()
     {

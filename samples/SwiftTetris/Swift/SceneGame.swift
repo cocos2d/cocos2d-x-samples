@@ -14,8 +14,14 @@ class SceneGame : Scene
     
     override func onEnter()
     {
-        _board = Board.getInstance
-        self.addChild(_board!)
+        _board = Board()
+        addChild(_board!)
         _board!.start()
+    }
+    
+    override func onExit()
+    {
+        removeAllChildren()
+        _board = nil
     }
 }
