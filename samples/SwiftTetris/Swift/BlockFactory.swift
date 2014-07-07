@@ -31,8 +31,65 @@ class BlockFactory
                          0x0000060C, //
                          0x00000E04,
                          0x00000C06] //
+
+    /*
     
-    enum Piece : Int
+   -2  -1   0   1    2
+    2---+---+---+---+
+    |
+    1---+---+---+---+
+    |
+    0---+---+---+---+
+    |
+   -1---+---+---+---+
+    |
+   -2---+---+---+---+
+
+    let ? : Array<FixedPoint> = [FixedPoint(x:,y:), FixedPoint(x:,y:), FixedPoint(x:,y:), FixedPoint(x:,y:)]
+
+    */
+    
+    let BLOCKS = [
+    /*I*/
+    [ [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)],
+      [FixedPoint(x:-2,y:-1), FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
+      [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)],
+      [FixedPoint(x:-2,y:0),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)] ],
+    /*J*/
+    [ [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:-1)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
+      [FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)],
+      [FixedPoint(x:-2,y:0),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1)] ],
+    /*L*/
+    [ [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)],
+      [FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)],
+      [FixedPoint(x:-2,y:-1), FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:0)] ],
+    /*O*/
+    [ [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)] ],
+    /*S*/
+    [ [FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)],
+      [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)],
+      [FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)],
+      [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)] ],
+    /*T*/
+    [ [FixedPoint(x:-2,y:0),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1)],
+      [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:0)],
+      [FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2), FixedPoint(x:0,y:-1)] ],
+    /*Z*/
+    [ [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
+      [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
+      [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)] ] ]
+    
+    //typealias PieceDescription = Array<FixedPoint>
+    //typealias BlockDescription = Array<PieceDescription>
+
+    enum PieceName : Int
     {
         case I = 0
         case J
@@ -79,8 +136,7 @@ class BlockFactory
     func createColoredBlock(color : Color) -> Node
     {
         var index = color.toRaw()
-        var mask = MASKS[index]
-        return createBlockFromBitMask(mask, color: color)
+        return createBlockFromData(BLOCKS[index], color: color)
     }
     
     func createRandomBlock() -> Block
@@ -90,90 +146,82 @@ class BlockFactory
         var c = Double(NUM_SHAPES)
         var i = r * c / m
         var index : Int = Int(i)
-        var mask : Int = MASKS[index]
-        return createBlockFromBitMask(mask, color : Color.fromRaw(index)!)
+        return createBlockFromData(BLOCKS[index], color: Color.fromRaw(index)!)
     }
     
-    func createBlockFromBitMask(mask : Int, color : Color) -> Block
+    func createBlockFromData(blockDescription : Array<Array<FixedPoint>>, color : Color) -> Block
     {
-        var parent = Block()
-        parent.type = color.toRaw()
-        parent.setAnchorPoint(CGPointMake(0.5, 0.5))
+//        Debug.getInstance.log("createBlockFromData count \(blockDescription.count) : color \(color.toRaw())")
+//        
+//        for o in blockDescription
+//        {
+//            Debug.getInstance.log("   count \(o.count)")
+//            for c in o
+//            {
+//                Debug.getInstance.log("  cell \(c.x), \(c.y)")
+//            }
+//        }
+//
+//        Debug.getInstance.log("DONE")
         
-        var m = 0xFF000000
+        var block = Block()
+        block.type = color.toRaw()
+        block.setAnchorPoint(CGPointZero)
         
-        let cols : CGFloat = CGFloat(NUM_COLS - 1)
-        let rows : CGFloat = CGFloat(NUM_ROWS - 1)
-        
-        // where are constants FLT_MIN and FLT_MAX
-        var minx : CGFloat = 10000
-        var maxx : CGFloat = 0
-        var miny : CGFloat = 10000
-        var maxy : CGFloat = 0
-        
-        var ypos : CGFloat = 0
-        
-        for y in 0...3 {
+        for pieceDesc in blockDescription
+        {
+            var minx : Fixed = 10000
+            var maxx : Fixed = 0
+            var miny : Fixed = 10000
+            var maxy : Fixed = 0
             
-            var xpos : CGFloat = 0
-
-            // grab bytes from left to right
-            var byte : Int = ((mask & m) >> (8 * (3 - y)) & 0xFF) ;
-            m >>= 8
+            var piece = Piece()
+            piece.setAnchorPoint(CGPointZero)
             
-            // skip leading rows of blanks to align block to bottom of 4x4
-            if 0 == byte
+            for cell in pieceDesc
             {
-                continue
+                var c = loadColoredBlock(color)
+                
+                var rpos = cell.x + 1
+                var tpos = cell.y + 1
+                
+                minx = minx < cell.x ? minx : cell.x
+                miny = miny < cell.y ? miny : cell.y
+                maxx = maxx > rpos ? maxx : rpos
+                maxy = maxy > tpos ? maxy : tpos
+                
+                c.setAnchorPoint(CGPointZero)
+                piece.addChild(c)
+                var x = CGFloat(cell.x) * _blockSize.width
+                var y = CGFloat(cell.y) * _blockSize.height
+                c.setPosition(CGPointMake(x, y))
+                //Debug.getInstance.log("place cell \(x), \(y)")
             }
             
-            for x in 0...3 {
-                
-                // read bits from left to right
-                var r = byte & (1 << (3 - x))
-                if (r > 0)
-                {
-                    var block = loadColoredBlock(color)
-                    
-                    var rpos = xpos + _blockSize.width
-                    var tpos = ypos + _blockSize.height
-                    
-                    minx = minx < xpos ? minx : xpos
-                    maxx = maxx > rpos ? maxx : rpos
-                    miny = miny < ypos ? miny : ypos
-                    maxy = maxy > tpos ? maxy : tpos
-                    
-                    block.setPosition(CGPointMake(xpos, ypos))
-                    block.setAnchorPoint(CGPointZero)
-                    
-                    parent.addChild(block)
-                }
-                
-                xpos += _blockSize.width
-            }
+            //Debug.getInstance.log("dims \(maxx - minx), \(maxy - miny)")
+            
+            piece.setDimensions(FixedPoint(x:maxx - minx, y:maxy - miny),
+                                bl: FixedPoint(x: minx, y: miny),
+                                tr: FixedPoint(x: maxx, y: maxy))
+            
+            var contentWidth  = maxx - minx
+            var contentHeight = maxy - miny
+            
+            //Debug.getInstance.log("min max \(minx), \(maxx) -> \(miny), \(maxy)")
+            //Debug.getInstance.log("contentSize \(contentWidth), \(contentHeight)")
+            
+            var contentSize = CGSizeMake(CGFloat(contentWidth) * _blockSize.width, CGFloat(contentHeight) * _blockSize.height)
+            piece.setContentSize(contentSize)
 
-            ypos += _blockSize.height
+            block.rotations.append(piece)
         }
+
+        // default to first piece
+        block.addChild(block.rotations[0])
         
-        var contentWidth  = maxx - minx
-        var contentHeight = maxy - miny
+        //Debug.getInstance.log("done with block creation")
         
-        Debug.getInstance.log("min max \(minx), \(maxx) -> \(miny), \(maxy)")
-        Debug.getInstance.log("contentSize \(contentWidth), \(contentHeight)")
-        
-        var contentSize = CGSizeMake(contentWidth, contentHeight)
-    
-        var dimWidth  = Int(contentWidth) / Int(parent.cellSize().width)
-        var dimHeight = Int(contentHeight) / Int(parent.cellSize().height)
-        
-        Debug.getInstance.log("Dims \(dimWidth), \(dimHeight)")
-        
-        parent.setDimensions(CGSizeMake(CGFloat(dimWidth), CGFloat(dimHeight)))
-        
-        parent.setAnchorPoint(CGPointZero)
-        parent.setContentSize(contentSize)
-        
-        return parent;
+        return block
     }
     
     func loadBlock(name : String) -> Sprite

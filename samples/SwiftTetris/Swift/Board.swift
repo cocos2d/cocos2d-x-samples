@@ -24,7 +24,7 @@ class Board : Node
     var _map : MapEntry[] = []
 
     var _accelerometer : EventListenerAcceleration?
-    var _pieces    : Block[] = []
+    var _blocks : Block[] = []
     var _currentBlock : Block?
 
     var _lastDropSpeed : Float = 0.5
@@ -39,8 +39,8 @@ class Board : Node
     var _size : CGSize = CGSizeZero
     var _blockSize : CGSize = CGSizeZero
     
-    var _cellBL : Point = Point(v: 0, h: 0)
-    var _cellTR : Point = Point(v: 0, h: 0)
+    var _cellBL : FixedPoint = FixedPoint(x: 0, y: 0)
+    var _cellTR : FixedPoint = FixedPoint(x: 0, y: 0)
     
     var _board : Node = Node()
     
@@ -99,7 +99,7 @@ class Board : Node
             
             for c in 0...COLUMNS-1
             {
-                var index = cellToIndex(Point(v : CShort((ROWS-1) - r), h : CShort(c)))
+                var index = cellToIndex(FixedPoint(x : Fixed((ROWS-1) - r), y : Fixed(c)))
                 var block = _map[index].block
                 if !block
                 {
@@ -126,15 +126,15 @@ class Board : Node
     
     func bottomLeftInPoints() -> CGPoint
     {
-        var l = CGFloat(_cellBL.h) * _blockSize.width
-        var b = CGFloat(_cellBL.v) * _blockSize.height
+        var l = CGFloat(_cellBL.x) * _blockSize.width
+        var b = CGFloat(_cellBL.y) * _blockSize.height
         return CGPointMake(l, b)
     }
     
     func topRightInPoints() -> CGPoint
     {
-        var t = CGFloat(_cellTR.h) * _blockSize.width
-        var r = CGFloat(_cellTR.v) * _blockSize.height
+        var t = CGFloat(_cellTR.x) * _blockSize.width
+        var r = CGFloat(_cellTR.y) * _blockSize.height
         return CGPointMake(t, r)
     }
     
@@ -169,7 +169,7 @@ class Board : Node
     func gameOver()
     {
         self.unscheduleUpdate()
-        _pieces = []
+        _blocks = []
         _currentBlock = nil
         _map = []
         _board.removeFromParentAndCleanup(true)
@@ -189,8 +189,8 @@ class Board : Node
         var b = 1
         var t = b + ROWS - 1
         
-        _cellBL = Point(v: CShort(b), h: CShort(l))
-        _cellTR = Point(v: CShort(t), h: CShort(r))
+        _cellBL = FixedPoint(x: Fixed(b), y: Fixed(l))
+        _cellTR = FixedPoint(x: Fixed(r), y: Fixed(t))
         
         Debug.getInstance.log("across \(across) down \(down) l \(l) r \(r) t \(t) b \(b)")
         
@@ -223,20 +223,20 @@ class Board : Node
         self.addChild(_board)
     }
 
-    func convertWorldPositionToCell(pos : CGPoint) -> Point
-    {
-        var cx : Int = Int((pos.x - _origin.x) / _blockSize.width) - Int(_cellBL.h)
-        var cy : Int = Int((pos.y - _origin.y) / _blockSize.height) - Int(_cellBL.v)
-        //Debug.getInstance.log("converting \(pos.x - _origin.x), \(pos.y - _origin.y) to \(cx), \(cy)")
-        return Point(v: CShort(cy), h: CShort(cx))
-    }
-    
-    func convertCellToWorldPosition(cell : Point) -> CGPoint
-    {
-        var px : CGFloat = (CGFloat(cell.h) * _blockSize.width) + _origin.x
-        var py : CGFloat = (CGFloat(cell.v) * _blockSize.height) + _origin.y
-        return CGPointMake(px, py)
-    }
+//    func convertWorldPositionToCell(pos : CGPoint) -> Point
+//    {
+//        var cx : Int = Int((pos.x - _origin.x) / _blockSize.width) - Int(_cellBL.x)
+//        var cy : Int = Int((pos.y - _origin.y) / _blockSize.height) - Int(_cellBL.y)
+//        //Debug.getInstance.log("converting \(pos.x - _origin.x), \(pos.y - _origin.y) to \(cx), \(cy)")
+//        return Point(v: CShort(cy), h: CShort(cx))
+//    }
+//    
+//    func convertCellToWorldPosition(cell : FixedPoint) -> CGPoint
+//    {
+//        var px : CGFloat = (CGFloat(cell.x) * _blockSize.width) + _origin.x
+//        var py : CGFloat = (CGFloat(cell.y) * _blockSize.height) + _origin.y
+//        return CGPointMake(px, py)
+//    }
     
     func start()
     {
@@ -299,37 +299,47 @@ class Board : Node
         --_countDown
     }
     
-    func cellToIndex(cell : Point) -> Int
+    func cellToIndex(cell : FixedPoint) -> Int
     {
-        if Int(cell.h) >= COLUMNS || Int(cell.v) >= ROWS
+        if Int(cell.x) >= COLUMNS || Int(cell.y) >= ROWS
         {
             //Debug.getInstance.log("invalid cell \(cell.h), \(cell.v) clamping")
         }
-        var x = Int(cell.h) >= COLUMNS ? COLUMNS - 1 : Int(cell.h)
-        var y = Int(cell.v) >= ROWS    ? ROWS - 1    : Int(cell.v)
+        var x = Int(cell.x) >= COLUMNS ? COLUMNS - 1 : Int(cell.x)
+        var y = Int(cell.y) >= ROWS    ? ROWS - 1    : Int(cell.y)
         return Int(y * COLUMNS + x)
     }
     
     func canPlaceBlock(block : Block) -> Bool
     {
-        var cells : Array<Point> = block.getCells()
+        var cells : Array<FixedPoint> = block.getCells()
         for p in cells
         {
-            //Debug.getInstance.log("checking cell \(p.h), \(p.v) against \(_cellBL.h), \(_cellTR.h)")
-            if p.h < 0 || p.h >= CShort(COLUMNS)
+            //Debug.getInstance.log("checking cell \(p.x), \(p.y) against \(_cellBL.x), \(_cellBL.y) -> \(_cellTR.x), \(_cellTR.y)")
+            if p.x < 0 || p.x >= Fixed(COLUMNS)
             {
+                Debug.getInstance.log("canPlaceBlock x: out of range \(p.x), \(p.y)")
                 return false;
             }
-            
+            if p.y < 0 || p.y >= Fixed(ROWS)
+            {
+                Debug.getInstance.log("canPlaceBlock y: out of range \(p.x), \(p.y)")
+                return false;
+            }
             var index = cellToIndex(p)
             if index >= _map.count
             {
                 Debug.getInstance.log("canPlaceBlock: invalid index \(index)")
                 return false
             }
+            if (index < 0)
+            {
+                Debug.getInstance.log("canPlaceBlock: invalid index \(index)")
+                return false
+            }
             if nil != _map[index].block
             {
-                Debug.getInstance.log("cell \(p.h), \(p.v) is occupied")
+                Debug.getInstance.log("cell \(p.x), \(p.y) is occupied")
                 return false
             }
         }
@@ -361,6 +371,8 @@ class Board : Node
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(touchListener, block)
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(keybdListener, block)
         
+        Debug.getInstance.log("Spawned a new block type \(block.type!)")
+        
         return true
     }
     
@@ -374,62 +386,76 @@ class Board : Node
     
     func placeBlockInPlayArea(inout block : Block)
     {
-        var s = block.getSize()
-        var o = block.getOrigin()
-        var d = block.getDimensions()
+        var piece = block.getPiece()
         
-        var bl = bottomLeftInPoints()
-        var tr = topRightInPoints()
+        Debug.getInstance.log("dimensions   \(piece.slotWidth()), \(piece.slotHeight())")
         
-        Debug.getInstance.log("LB in points \(bl.x), \(bl.y)")
-        Debug.getInstance.log("RT in points \(tr.x), \(tr.y)")
-        Debug.getInstance.log("size         \(s.width), \(s.height)")
-        Debug.getInstance.log("dimensions   \(d.width), \(d.height)")
-        Debug.getInstance.log("board size   \(_size.width), \(_size.height)")
+        var l = 0 - piece.BL().x
+        var r = Fixed(COLUMNS) - piece.TR().x
         
-        var t = tr.y - s.height
+        var slot = Int(Utilities.random(Double(l), Double(r)))
         
-        var slot = Int(Utilities.random(Double(0), Double(COLUMNS - Int(d.width))))
+        Debug.getInstance.log("l \(l) -> \(slot) -> r\(r)")
         
-        Debug.getInstance.log("slot         \(slot)")
+        var x = slot
+        var y = ROWS - Int(piece.TR().y)
         
-        var x = bl.x + CGFloat(slot) * block.cellSize().width + o.x
-        var y = t + o.y
-        
-        Debug.getInstance.log("x,y          \(x), \(y)")
-        
-        block.setPosition(CGPointMake(CGFloat(x), CGFloat(y)))
+        block.setPos(FixedPoint(x: Fixed(x), y: Fixed(y)))
         
         _board.addChild(block)
-        _pieces.append(block)
+        _blocks.append(block)
         _currentBlock = block
         
-        //Debug.getInstance.log("placed new block at \(x), \(y)")
+        Debug.getInstance.log("placed new block at \(x), \(y)")
+    }
+    
+    func clampBlockToPlayArea(block : Block)
+    {
+        var piece = block.getPiece()
+        
+        var l = 0 - piece.BL().x
+        var r = Fixed(COLUMNS) - piece.TR().x
+        var t = Fixed(ROWS) - piece.TR().y
+        var b = 0 - piece.BL().y
+        
+        Debug.getInstance.log("clamping block to \(l), \(r) -> \(t), \(b)")
+        
+        var pos = block.getPos()
+        
+        Debug.getInstance.log("old pos \(pos.x), \(pos.y)")
+        
+        pos.x = pos.x < l ? l : pos.x
+        pos.x = pos.x > r ? r : pos.x
+        pos.y = pos.y < b ? b : pos.y
+        pos.y = pos.y > t ? t : pos.y
+        
+        block.setPos(pos)
+    
+        Debug.getInstance.log("piece pos \(pos.x), \(pos.y)")
     }
     
     func moveCurrentBlock()
     {
         var block = _currentBlock!
-        var wp = block.convertToWorldSpace(CGPointZero)
-        var cell = convertWorldPositionToCell(wp)
-        //Debug.getInstance.log("piece at \(cell.h), \(cell.v)")
+        var cell = block.getPos()
         
-        if cell.v == 0
+        if cell.y == 0
         {
-            Debug.getInstance.log("piece has reached \(cell.h), \(cell.v) setting state to DROP")
+            Debug.getInstance.log("piece has reached \(cell.x), \(cell.y) setting state to DROP")
             _state = .IDLE
             return
         }
         
         block.removeFromMap()
-        var pos = block.getPosition()
+        var pos = block.getPos()
         var newPos = pos
-        newPos.y -= _blockSize.height
-        block.setPosition(newPos)
+        --newPos.y
+        clampBlockToPlayArea(block)
+        block.setPos(newPos)
 
         if !canPlaceBlock(block)
         {
-            block.setPosition(pos)
+            block.setPos(pos)
             _state = .IDLE
         }
         block.addToMap()
@@ -439,14 +465,15 @@ class Board : Node
     {
         var block = _currentBlock!
         block.removeFromMap()
-        var pos = block.getPosition()
+        var pos = block.getPos()
         var newPos = pos
-        newPos.x -= _blockSize.width
+        --newPos.x
+        clampBlockToPlayArea(block)
         Debug.getInstance.log("moveCurrentBlockLeft: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
-        block.setPosition(newPos)
+        block.setPos(newPos)
         if !canPlaceBlock(block)
         {
-            block.setPosition(pos)
+            block.setPos(pos)
         }
         block.addToMap()
     }
@@ -455,21 +482,22 @@ class Board : Node
     {
         var block = _currentBlock!
         block.removeFromMap()
-        var pos = block.getPosition()
+        var pos = block.getPos()
         var newPos = pos
-        newPos.x += _blockSize.width
+        ++newPos.x
+        clampBlockToPlayArea(block)
         Debug.getInstance.log("moveCurrentBlockRight: moving block from \(pos.x), \(pos.y) to \(newPos.x), \(newPos.y)")
-        block.setPosition(newPos)
+        block.setPos(newPos)
         if !canPlaceBlock(block)
         {
-            block.setPosition(pos)
+            block.setPos(pos)
         }
         block.addToMap()
     }
     
     func pickBlockFromLocation(location : CGPoint) -> Block?
     {
-        for block in _pieces
+        for block in _blocks
         {
             for object : AnyObject in block.getChildren()
             {
@@ -485,36 +513,36 @@ class Board : Node
         return nil
     }
     
-    func adjustBlockForBounds(block : Block)
-    {
-        var cells : Array<Point> = block.getCells()
-        var l : CShort = 10000
-        var r : CShort = 0
-        
-        for p in cells
-        {
-            l = p.h < l ? p.h : l
-            r = p.h > r ? p.h : r
-        }
-        
-        Debug.getInstance.log("extents l \(l) r \(r)")
-        
-        var adjust : CGFloat = 0
-        if (l < 0)
-        {
-            adjust = -CGFloat(l) * _blockSize.width
-        }
-        else if (r >= CShort(COLUMNS-1))
-        {
-            adjust = (CGFloat(COLUMNS-1) - CGFloat(r)) * _blockSize.width
-        }
-        
-        Debug.getInstance.log("adjusting block by \(adjust)")
-        
-        var pos = block.getPosition()
-        pos.x += adjust
-        block.setPosition(pos)
-    }
+//    func adjustBlockForBounds(block : Block)
+//    {
+//        var cells : Array<FixedPoint> = block.getCells()
+//        var l : Fixed = 10000
+//        var r : Fixed = 0
+//        
+//        for p in cells
+//        {
+//            l = p.x < l ? p.y : l
+//            r = p.x > r ? p.y : r
+//        }
+//        
+//        Debug.getInstance.log("extents l \(l) r \(r)")
+//        
+//        var adjust : CGFloat = 0
+//        if (l < 0)
+//        {
+//            adjust = -CGFloat(l) * _blockSize.width
+//        }
+//        else if (r >= Fixed(COLUMNS-1))
+//        {
+//            adjust = (CGFloat(COLUMNS-1) - CGFloat(r)) * _blockSize.width
+//        }
+//        
+//        Debug.getInstance.log("adjusting block by \(adjust)")
+//        
+//        var pos = block.getPosition()
+//        pos.x += adjust
+//        block.setPosition(pos)
+//    }
     
     func rotatePiece(touch : Touch!, event : Event!) -> Bool
     {        
@@ -523,30 +551,27 @@ class Board : Node
         {
             return false
         }
-
         var b = block!
-        var rotation = b.getRotation()
-        var position = b.getPosition()
+
+        var rotation = b.getRot()
         
         b.removeFromMap()
         
-        rotation += 90
-        rotation = rotation % 360
-        b.setRotation(rotation)
-        b.quantizeBlockForRotation()
+        var newrot = (rotation + 1) % 4
         
-        adjustBlockForBounds(b)
+        b.setRot(newrot)
+        
+        clampBlockToPlayArea(b)
         
         if !canPlaceBlock(b)
         {
-            b.setPosition(position)
-            b.setRotation(rotation)
+            b.setRot(rotation)
         }
         
         var cells = b.getCells()
         for p in cells
         {
-            Debug.getInstance.log("rotated cell \(p.h), \(p.v)")
+            Debug.getInstance.log("rotated cell \(p.x), \(p.y)")
         }
         
         b.addToMap()
@@ -591,7 +616,7 @@ class Board : Node
         }
     }
     
-    func addToMap(block : Block, cell : Point) -> Bool
+    func addToMap(block : Block, cell : FixedPoint) -> Bool
     {
         var index = cellToIndex(cell)
         if index >= _map.count
@@ -601,14 +626,15 @@ class Board : Node
         }
         if _map[index].block != nil
         {
-            Debug.getInstance.log("addToMap: error cell \(cell.h), \(cell.v) is already occupied")
+            Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) is already occupied")
             return false;
         }
         _map[index].block = block
+        Debug.getInstance.log("add to map      \(cell.x), \(cell.y)")
         return true
     }
     
-    func removeFromMap(block : Block, cell : Point) -> Bool
+    func removeFromMap(block : Block, cell : FixedPoint) -> Bool
     {
         var index = cellToIndex(cell)
         if index >= _map.count
@@ -618,10 +644,11 @@ class Board : Node
         }
         if _map[index].block != block
         {
-            Debug.getInstance.log("removeFromMap: cell \(cell.h), \(cell.v) doesn't belong to block")
+            Debug.getInstance.log("removeFromMap: cell \(cell.x), \(cell.y) doesn't belong to block")
             return false
         }
         _map[index].block = nil
+        Debug.getInstance.log("remove from map \(cell.x), \(cell.y)")
         return true
     }
 
@@ -631,7 +658,7 @@ class Board : Node
         
         for c in 0...COLUMNS
         {
-            var index = cellToIndex(Point(v : CShort(row), h : CShort(c)))
+            var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
             var block = _map[index].block
             if block
             {
@@ -642,6 +669,8 @@ class Board : Node
     
     func checkAndRemoveRows()
     {
+        return
+        
         var row = 0
         for r in 0...ROWS
         {
@@ -651,7 +680,7 @@ class Board : Node
             
             for c in 0...COLUMNS - 1
             {
-                var index = cellToIndex(Point(v : CShort(row), h : CShort(c)))
+                var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
                 if _map[index].block != nil
                 {
                     ++count

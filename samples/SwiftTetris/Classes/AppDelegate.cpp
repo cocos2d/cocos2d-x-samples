@@ -4,6 +4,8 @@
 
 USING_NS_CC;
 
+#define APP_NAME "Swift Tetris"
+
 AppDelegate::AppDelegate() {
 
 }
@@ -16,8 +18,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-    if(!glview) {
-        glview = GLView::create("My Game");
+    if(!glview)
+    {
+#if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
+        glview = GLView::create(APP_NAME);
+#else
+        glview = GLView::createWithRect(APP_NAME, Rect(0,0,640,1136));
+        glview->setFrameZoomFactor(.5f);
+#endif
         director->setOpenGLView(glview);
     }
 

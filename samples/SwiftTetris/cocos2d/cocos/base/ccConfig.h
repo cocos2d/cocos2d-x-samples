@@ -207,7 +207,7 @@ Only valid for cocos2d-mac. Not supported on cocos2d-ios.
  2 -- draw texture box
 */
 #ifndef CC_SPRITE_DEBUG_DRAW
-#define CC_SPRITE_DEBUG_DRAW 0
+#define CC_SPRITE_DEBUG_DRAW 1
 #endif
 
 /** @def CC_SPRITEBATCHNODE_DEBUG_DRAW

@@ -57,6 +57,8 @@
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
+		D03DA6011969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
+		D03DA6021969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
 		D06FB7B51968A93A00193410 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77B1968A93A00193410 /* Action.mm */; };
 		D06FB7B61968A93A00193410 /* Action.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77B1968A93A00193410 /* Action.mm */; };
 		D06FB7B71968A93A00193410 /* ActionInterval.mm in Sources */ = {isa = PBXBuildFile; fileRef = D06FB77D1968A93A00193410 /* ActionInterval.mm */; };
@@ -334,6 +336,7 @@
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		D03DA6001969C6E400F57039 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		D06FB77A1968A93A00193410 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		D06FB77B1968A93A00193410 /* Action.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Action.mm; sourceTree = "<group>"; };
 		D06FB77C1968A93A00193410 /* ActionInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionInterval.h; sourceTree = "<group>"; };
@@ -726,6 +729,7 @@
 				D06FB7E91968A98C00193410 /* BlockFactory.swift */,
 				D06FB7EA1968A98C00193410 /* Board.swift */,
 				D06FB7EB1968A98C00193410 /* Debug.swift */,
+				D03DA6001969C6E400F57039 /* Piece.swift */,
 				D06FB7EC1968A98C00193410 /* SceneGame.swift */,
 				D06FB7ED1968A98C00193410 /* SceneMenu.swift */,
 				D06FB7EE1968A98C00193410 /* SceneSplash.swift */,
@@ -1001,6 +1005,7 @@
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D06FB7B71968A93A00193410 /* ActionInterval.mm in Sources */,
 				D06FB7E31968A93A00193410 /* Utilities.mm in Sources */,
+				D03DA6011969C6E400F57039 /* Piece.swift in Sources */,
 				D06FB7CF1968A93A00193410 /* Touch.mm in Sources */,
 				D06FB7EF1968A98C00193410 /* Block.swift in Sources */,
 				D06FB7BD1968A93A00193410 /* AudioEngine.mm in Sources */,
@@ -1031,6 +1036,7 @@
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D06FB7F81968A98C00193410 /* SceneGame.swift in Sources */,
 				D06FB7B81968A93A00193410 /* ActionInterval.mm in Sources */,
+				D03DA6021969C6E400F57039 /* Piece.swift in Sources */,
 				D06FB7BA1968A93A00193410 /* ActionSequence.mm in Sources */,
 				D06FB7FC1968A98C00193410 /* SceneSplash.swift in Sources */,
 				D06FB7DA1968A93A00193410 /* Sprite.mm in Sources */,

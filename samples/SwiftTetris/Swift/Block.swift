@@ -6,43 +6,22 @@ import Foundation
 
 class Block : Node
 {
-    var dimensions : CGSize = CGSizeZero
+    var rotations : Piece[] = []
+    var rotation : Int = 0
+    var position : FixedPoint = FixedPoint(x: 0,y: 0)
     var type : Int?
     
-    func getOrigin() -> CGPoint
+    func getPiece() -> Piece
     {
-        var s = getRotatedDimensions()
-        if nil == s
-        {
-            Debug.getInstance.log("getRotatedDimensions returned nil :(")
-            return CGPointZero
-        }
-        var size = s!
-        size.width *= cellSize().width
-        size.height *= cellSize().height
-        var ap = getAnchorPoint()
-        return CGPointMake(ap.x * size.width, ap.y * size.height)
+        return rotations[rotation]
     }
     
-    func getSize() -> CGSize
+    func getPieceDescription() -> Array<FixedPoint>
     {
-        return getContentSize()
-    }
-    
-    func cellSize() -> CGSize
-    {
-        return getChildren()[0].getContentSize()
-    }
-    
-    func setDimensions(size : CGSize)
-    {
-        dimensions = size
-    }
-    
-    func getDimensions() -> CGSize
-    {
-        Debug.getInstance.log("getting dimensions \(dimensions.width), \(dimensions.height)")
-        return dimensions
+        let blockFactory = BlockFactory.getInstance
+        let blocks = blockFactory.BLOCKS
+        var blockDesc = blocks[type!]
+        return blockDesc[rotation]
     }
     
     func getType() -> Int
@@ -50,86 +29,16 @@ class Block : Node
         return type!
     }
     
-    func getRotatedDimensions() -> CGSize?
+    func getCells() -> Array<FixedPoint>
     {
-        var rot : Int = Int(getRotation())
-        rot = rot % 360
-        
-        switch (rot)
+        var pieceDesc = getPieceDescription()
+        var pos = getPos()
+        var cells : Array<FixedPoint> = []
+        for c in pieceDesc
         {
-        case 0:
-            return dimensions
-        case 180:
-            return dimensions
-        case 90:
-            return CGSizeMake(dimensions.height, dimensions.width)
-        case 270:
-            return CGSizeMake(dimensions.height, dimensions.width)
-        default:
-            Debug.getInstance.log("invalid rotation for block \(rot)")
-        }
-        return nil
-    }
-    
-    func adjustAnchorsForRotation()
-    {
-        var rot : Int = Int(getRotation())
-        rot = rot % 360
-        
-        for a : AnyObject in getChildren()
-        {
-            var n = a as Node
-        
-            switch (rot)
-            {
-            case 0:
-                n.setAnchorPoint(CGPointMake(0, 0))
-            case 90:
-                n.setAnchorPoint(CGPointMake(1, 0))
-            case 180:
-                n.setAnchorPoint(CGPointMake(1, 1))
-            case 270:
-                n.setAnchorPoint(CGPointMake(0, 1))
-            default:
-                Debug.getInstance.log("invalid rotation for block \(rot)")
-            }
-        }
-    }
-    
-    func quantizeBlockForRotation()
-    {
-        var o = getOrigin()
-Debug.getInstance.log("origin \(o.x), \(o.y)")
-        var s = getSize()
-        var l = cellSize().width  + o.x
-        var b = cellSize().height + o.y
-        
-        var pos = getPosition()
-Debug.getInstance.log("old position \(pos.x), \(pos.y)")
-        
-        var slotx = (Int(pos.x) - Int(l)) / Int(cellSize().width)
-        var sloty = (Int(pos.y) - Int(b)) / Int(cellSize().height)
-
-Debug.getInstance.log("cell \(slotx), \(sloty)")
-        
-        var x = l + CGFloat(slotx) * cellSize().width
-        var y = b + CGFloat(sloty) * cellSize().height
-Debug.getInstance.log("new position \(x), \(y)")
-        
-        setPosition(CGPointMake(CGFloat(x), CGFloat(y)))
-        adjustAnchorsForRotation()
-    }
-    
-    func getCells() -> Array<Point>
-    {
-        var cells : Array<Point> = []
-        var children = getChildren()
-        for o : AnyObject in children
-        {
-            var node = o as Node
-            var position = node.convertToWorldSpace(CGPointZero)
-            var p = Board.getInstance.convertWorldPositionToCell(position)
-            cells.append(p)
+            var cc = FixedPoint(x:pos.x + c.x, y:pos.y + c.y)
+            //Debug.getInstance.log("appending \(cc.x), \(cc.y)")
+            cells.append(cc)
         }
         return cells
     }
@@ -150,5 +59,38 @@ Debug.getInstance.log("new position \(x), \(y)")
         {
             Board.getInstance.removeFromMap(self, cell: c)
         }
+    }
+    
+    func setRot(rot : Int)
+    {
+        if rot != rotation
+        {
+            removeAllChildren()
+            rotation = rot
+            Debug.getInstance.log("Rotation set to \(rotation)")
+            addChild(rotations[rotation])
+        }
+    }
+    
+    func getRot() -> Int
+    {
+        return rotation
+    }
+    
+    func setPos(pos : FixedPoint)
+    {
+        if position.x != pos.x || position.y != pos.y
+        {
+            position = pos
+            for p in rotations
+            {
+                p.setPos(pos)
+            }
+        }
+    }
+    
+    func getPos() -> FixedPoint
+    {
+        return position
     }
 }
