@@ -94,4 +94,11 @@ class Block : Node
     {
         return position
     }
+    
+    // this function is only ever called once the block has stopped
+    // so we only need to deal with the current rotation
+    func removeCell(cell : FixedPoint)
+    {
+        var piece = getPiece()
+    }
 }

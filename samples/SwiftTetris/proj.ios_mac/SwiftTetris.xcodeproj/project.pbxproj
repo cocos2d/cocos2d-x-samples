@@ -145,6 +145,8 @@
 		D098FE761968DEEC0009723C /* startbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D098FE601968DEEC0009723C /* startbutton.png */; };
 		D09F3FFB1968AB8E007FEC67 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D09F3FF91968AB8E007FEC67 /* MainScene.cpp */; };
 		D09F3FFC1968AB8E007FEC67 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D09F3FF91968AB8E007FEC67 /* MainScene.cpp */; };
+		D0EC23A1196B5C12002A92B6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC23A0196B5C12002A92B6 /* background.png */; };
+		D0EC23A2196B5C12002A92B6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC23A0196B5C12002A92B6 /* background.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
 		D44C620E132DFF430009C878 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620D132DFF430009C878 /* AVFoundation.framework */; };
 		D44C6210132DFF4E0009C878 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620F132DFF4E0009C878 /* AudioToolbox.framework */; };
@@ -409,6 +411,7 @@
 		D098FE601968DEEC0009723C /* startbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startbutton.png; sourceTree = "<group>"; };
 		D09F3FF91968AB8E007FEC67 /* MainScene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		D09F3FFA1968AB8E007FEC67 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
+		D0EC23A0196B5C12002A92B6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		D44C620F132DFF4E0009C878 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -607,6 +610,7 @@
 				D098FE561968DEEC0009723C /* blocks */,
 				D098FE5F1968DEEC0009723C /* splash_640x1136.png */,
 				D098FE601968DEEC0009723C /* startbutton.png */,
+				D0EC23A0196B5C12002A92B6 /* background.png */,
 			);
 			name = Resources;
 			path = ../Resources;
@@ -930,6 +934,7 @@
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				D0EC23A1196B5C12002A92B6 /* background.png in Resources */,
 				D098FE611968DEEC0009723C /* Apple_Swift_Logo.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
@@ -957,6 +962,7 @@
 			files = (
 				D098FE6C1968DEEC0009723C /* magenta.png in Resources */,
 				D098FE6E1968DEEC0009723C /* orange.png in Resources */,
+				D0EC23A2196B5C12002A92B6 /* background.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D098FE741968DEEC0009723C /* splash_640x1136.png in Resources */,
 				D098FE701968DEEC0009723C /* red.png in Resources */,

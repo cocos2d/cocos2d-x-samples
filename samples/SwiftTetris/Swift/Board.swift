@@ -228,6 +228,10 @@ class Board : Node
         var director = Director.getInstance()
         var size = director.getWinSize()
         
+        var sprite = Sprite.create("background.png")
+        sprite.setAnchorPoint(CGPointZero)
+        self.addChild(sprite)
+        
         self.fillBackground()
         self.scheduleUpdate(update)
         
@@ -588,7 +592,7 @@ class Board : Node
         return true
     }
 
-    func removeRow(row : Int)
+    func removeRow(row : Fixed)
     {
         Debug.getInstance.log("Removing row \(row)")
         
@@ -598,7 +602,15 @@ class Board : Node
             var block = _map[index].block
             if block
             {
-                
+                var cells = block!.getCells()
+                var y = block!.getPos().y
+                for c in cells
+                {
+                    if y + c.y == row
+                    {
+                        block!.removeCell(c)
+                    }
+                }
             }
         }
     }
@@ -625,7 +637,7 @@ class Board : Node
             
             if count == COLUMNS
             {
-                removeRow(row)
+                removeRow(Fixed(row))
             }
             else
             {
