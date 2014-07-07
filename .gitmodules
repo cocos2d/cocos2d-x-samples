@@ -4,6 +4,7 @@
 [submodule "libs/liquidfun/liquidfun"]
 	path = libs/liquidfun/liquidfun
 	url = https://github.com/google/liquidfun.git
-[submodule "samples/SwiftTetris/Bindings"]
-	path = samples/SwiftTetris/Bindings
-	url = git@github.com:cocos2d/cocos2d-x-swift-bindings.git
+[submodule "libs/GAF"]
+	path = libs/GAF
+	url = https://github.com/CatalystApps/Cocos2dxGAFPlayer.git
+	branch = release-cocos2dx-3-managed-folders
