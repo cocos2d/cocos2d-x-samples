@@ -31,5 +31,5 @@ class SceneMenu : Scene
         var listener = EventListenerTouchOneByOne()
         listener.onTouchBegan = startGame
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, sprite)
-    }    
+    }
 }

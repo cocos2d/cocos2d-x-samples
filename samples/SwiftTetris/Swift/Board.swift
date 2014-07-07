@@ -172,6 +172,7 @@ class Board : Node
         _blocks = []
         _currentBlock = nil
         _map = []
+        _board.removeAllChildren()
         _board.removeFromParentAndCleanup(true)
         Director.getInstance().popScene()
     }
