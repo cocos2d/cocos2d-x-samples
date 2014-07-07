@@ -72,9 +72,9 @@ class BlockFactory
       [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1)] ],
     /*S*/
     [ [FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)],
-      [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)],
       [FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:0),   FixedPoint(x:1,y:0)],
-      [FixedPoint(x:-1,y:1),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)] ],
+      [FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:0,y:-1),  FixedPoint(x:0,y:-2)] ],
     /*T*/
     [ [FixedPoint(x:-2,y:0),  FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1)],
       [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:0)],
@@ -82,13 +82,11 @@ class BlockFactory
       [FixedPoint(x:-1,y:0),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2), FixedPoint(x:0,y:-1)] ],
     /*Z*/
     [ [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
-      [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)],
+      [FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)],
       [FixedPoint(x:-1,y:0),  FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:1,y:-1)],
-      [FixedPoint(x:0,y:1),   FixedPoint(x:0,y:0),   FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)] ] ]
+      [FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)] ]
+    ]
     
-    //typealias PieceDescription = Array<FixedPoint>
-    //typealias BlockDescription = Array<PieceDescription>
-
     enum PieceName : Int
     {
         case I = 0
