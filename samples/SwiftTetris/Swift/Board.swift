@@ -107,6 +107,25 @@ class Board : Node
                 }
             }
             
+            line += "    "
+            
+            for c in 0..<COLUMNS
+            {
+                var cell = FixedPoint(x : Fixed(c), y : Fixed((ROWS-1) - r))
+                var index = cellToIndex(cell)
+                var cc = _map[index].cell
+                if !cc
+                {
+                    line += "."
+                }
+                else
+                {
+                    var type = _map[index].block!.getType()
+                    var s = String(types[type])
+                    line += s
+                }
+            }
+            
             Debug.getInstance.log(line)
         }
         
@@ -308,6 +327,11 @@ class Board : Node
             if nil != _map[index].block
             {
                 Debug.getInstance.log("cell \(p.x), \(p.y) is occupied")
+                commandDumpMap(0, s: "")
+                for pp in cells
+                {
+                    Debug.getInstance.log("    cell \(pp.x), \(pp.y)")
+                }
                 return false
             }
         }
@@ -408,6 +432,14 @@ class Board : Node
         
         if cell.y == 0
         {
+            // remove the block from the map once it reaches here to avoid anyone being able to use it
+            // the block is no frozen and only its cells matter from this point on
+            var cells = block.getCells()
+            for cc in cells
+            {
+                var index = cellToIndex(cc)
+                _map[index].block = nil;
+            }
             Debug.getInstance.log("piece has reached \(cell.x), \(cell.y) setting state to DROP")
             _state = .IDLE
             return
@@ -634,7 +666,6 @@ class Board : Node
             if block
             {
                 var cells = block!.getCells()
-                var y = block!.getPos().y
                 for c in cells
                 {
                     if c.y == row
@@ -645,22 +676,36 @@ class Board : Node
             }
         }
         
-//        // now move all the rows above down
-//        var start = Int(row + 1)
-//        for r in start..<ROWS
-//        {
-//            for c in 0..<COLUMNS
-//            {
-//                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
-//                var c = _map[index].cell
-//                if (c)
-//                {
-//                    var pos = c!.getPosition()
-//                    pos.y -= _blockSize.height
-//                    c!.setPosition(pos)
-//                }
-//            }
-//        }
+        // now move all the rows above down
+        var start = Int(row)
+        for r in start..<ROWS
+        {
+            for c in 0..<COLUMNS
+            {
+                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r)))
+
+                // move the cell above to match
+                if r < (ROWS - 1)
+                {
+                    var above = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r + 1)))
+                    
+                    var cc = _map[above].cell
+                    if (cc)
+                    {
+                        var pos = cc!.getPosition()
+                        pos.y -= _blockSize.height
+                        cc!.setPosition(pos)
+                    }
+
+                    _map[index] = _map[above]
+                    _map[above] = MapEntry()
+                }
+                else
+                {
+                    _map[index] = MapEntry()
+                }
+            }
+        }
     }
     
     func checkAndRemoveRows()
