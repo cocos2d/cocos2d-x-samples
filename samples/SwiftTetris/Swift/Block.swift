@@ -99,6 +99,16 @@ class Block : Node
     // so we only need to deal with the current rotation
     func removeCell(cell : FixedPoint)
     {
-        var piece = getPiece()
+        if _board
+        {
+            var index = _board!.cellToIndex(cell)
+            var piece = _board!._map[index].piece
+            if piece
+            {
+                removeChild(piece)
+                _board!._map[index] = Board.MapEntry()
+                //Debug.getInstance.log("removing cell \(cell.x), \(cell.y)")
+            }
+        }
     }
 }

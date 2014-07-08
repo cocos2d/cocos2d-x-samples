@@ -19,6 +19,7 @@ class Board : Node
     struct MapEntry
     {
         var block : Block? = nil
+        var piece : Piece? = nil
     }
     
     var _map : [MapEntry] = []
@@ -566,6 +567,19 @@ class Board : Node
             Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) is already occupied")
             return false;
         }
+        for c in block.getChildren()
+        {
+            var piece = c as Piece
+            var pos = piece.getPos()
+            if cell.x == pos.x && cell.y == pos.y
+            {
+                _map[index].piece = piece
+            }
+        }
+        if !_map[index].piece
+        {
+            Debug.getInstance.log("missing piece in \(cell.x), \(cell.y)")
+        }
         _map[index].block = block
         return true
     }
@@ -589,8 +603,6 @@ class Board : Node
 
     func removeRow(row : Fixed)
     {
-        Debug.getInstance.log("Removing row \(row)")
-        
         for c in 0..<COLUMNS
         {
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
@@ -601,10 +613,27 @@ class Board : Node
                 var y = block!.getPos().y
                 for c in cells
                 {
-                    if y + c.y == row
+                    if c.y == row
                     {
                         block!.removeCell(c)
                     }
+                }
+            }
+        }
+        
+        // now move all the rows above down
+        var start = Int(row + 1)
+        for r in start..<ROWS
+        {
+            for c in 0..<COLUMNS
+            {
+                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
+                var piece = _map[index].piece
+                if (piece)
+                {
+                    var pos = piece!.getPos()
+                    pos.y -= 1
+                    piece!.setPos(pos)
                 }
             }
         }
@@ -615,8 +644,6 @@ class Board : Node
         var row = 0
         for r in 0..<ROWS
         {
-            Debug.getInstance.log("checking row \(row)")
-            
             var count = 0
             
             for c in 0..<COLUMNS
