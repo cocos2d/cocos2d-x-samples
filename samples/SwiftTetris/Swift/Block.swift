@@ -102,12 +102,12 @@ class Block : Node
         if _board
         {
             var index = _board!.cellToIndex(cell)
-            var piece = _board!._map[index].piece
-            if piece
+            var c = _board!._map[index].cell
+            if c
             {
-                removeChild(piece)
+                Debug.getInstance.log("removing cell \(cell.x), \(cell.y) \(c)")
+                c!.removeFromParentAndCleanup(true)
                 _board!._map[index] = Board.MapEntry()
-                //Debug.getInstance.log("removing cell \(cell.x), \(cell.y)")
             }
         }
     }

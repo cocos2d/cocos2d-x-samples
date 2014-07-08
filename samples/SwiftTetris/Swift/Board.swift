@@ -19,7 +19,7 @@ class Board : Node
     struct MapEntry
     {
         var block : Block? = nil
-        var piece : Piece? = nil
+        var cell  : Node?  = nil
     }
     
     var _map : [MapEntry] = []
@@ -556,6 +556,29 @@ class Board : Node
         }
     }
     
+    func convertWorldPositionToCell(pos : CGPoint) -> FixedPoint
+    {
+        var cx = Fixed((pos.x - _origin.x) / _blockSize.width) - Fixed(_cellBL.x)
+        var cy = Fixed((pos.y - _origin.y) / _blockSize.height) - Fixed(_cellBL.y)
+        return FixedPoint(x: cx, y: cy)
+    }
+
+    func getSpriteForCellFromBlock(block : Block, cell : FixedPoint) -> Sprite?
+    {
+        var piece = block.getPiece()
+        for c in piece.getChildren()
+        {
+            var sprite = c as Sprite
+            var wp = sprite.convertToWorldSpace(CGPointZero)
+            var cc = convertWorldPositionToCell(wp)
+            if cc.x == cell.x && cc.y == cell.y
+            {
+                return sprite
+            }
+        }
+        return nil
+    }
+    
     func addToMap(block : Block, cell : FixedPoint) -> Bool
     {
         var index = cellToIndex(cell)
@@ -566,23 +589,22 @@ class Board : Node
         }
         if _map[index].block != nil
         {
-            Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) is already occupied")
+            Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) block is already occupied")
             return false;
         }
-        for c in block.getChildren()
+        if _map[index].cell != nil
         {
-            var piece = c as Piece
-            var pos = piece.getPos()
-            if cell.x == pos.x && cell.y == pos.y
-            {
-                _map[index].piece = piece
-            }
+            Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) cell is already occupied")
+            return false;
         }
-        if !_map[index].piece
+        var sprite = getSpriteForCellFromBlock(block, cell:cell)
+        if sprite == nil
         {
-            Debug.getInstance.log("missing piece in \(cell.x), \(cell.y)")
+            Debug.getInstance.log("addToMap: error cell \(cell.x), \(cell.y) could not find sprite for cell")
+            return false;
         }
         _map[index].block = block
+        _map[index].cell = sprite
         return true
     }
     
@@ -599,7 +621,7 @@ class Board : Node
             Debug.getInstance.log("removeFromMap: cell \(cell.x), \(cell.y) doesn't belong to block")
             return false
         }
-        _map[index].block = nil
+        _map[index] = MapEntry()
         return true
     }
 
@@ -623,22 +645,22 @@ class Board : Node
             }
         }
         
-        // now move all the rows above down
-        var start = Int(row + 1)
-        for r in start..<ROWS
-        {
-            for c in 0..<COLUMNS
-            {
-                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
-                var piece = _map[index].piece
-                if (piece)
-                {
-                    var pos = piece!.getPos()
-                    pos.y -= 1
-                    piece!.setPos(pos)
-                }
-            }
-        }
+//        // now move all the rows above down
+//        var start = Int(row + 1)
+//        for r in start..<ROWS
+//        {
+//            for c in 0..<COLUMNS
+//            {
+//                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
+//                var c = _map[index].cell
+//                if (c)
+//                {
+//                    var pos = c!.getPosition()
+//                    pos.y -= _blockSize.height
+//                    c!.setPosition(pos)
+//                }
+//            }
+//        }
     }
     
     func checkAndRemoveRows()
