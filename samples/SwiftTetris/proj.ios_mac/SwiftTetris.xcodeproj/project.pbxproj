@@ -165,6 +165,8 @@
 		D098FE761968DEEC0009723C /* startbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = D098FE601968DEEC0009723C /* startbutton.png */; };
 		D09F3FFB1968AB8E007FEC67 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D09F3FF91968AB8E007FEC67 /* MainScene.cpp */; };
 		D09F3FFC1968AB8E007FEC67 /* MainScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D09F3FF91968AB8E007FEC67 /* MainScene.cpp */; };
+		D0E167FE196B744E00005057 /* Color.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0E167FD196B744E00005057 /* Color.mm */; };
+		D0E167FF196B744E00005057 /* Color.mm in Sources */ = {isa = PBXBuildFile; fileRef = D0E167FD196B744E00005057 /* Color.mm */; };
 		D0EC23A1196B5C12002A92B6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC23A0196B5C12002A92B6 /* background.png */; };
 		D0EC23A2196B5C12002A92B6 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D0EC23A0196B5C12002A92B6 /* background.png */; };
 		D44C620C132DFF330009C878 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C620B132DFF330009C878 /* OpenAL.framework */; };
@@ -441,6 +443,8 @@
 		D098FE601968DEEC0009723C /* startbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = startbutton.png; sourceTree = "<group>"; };
 		D09F3FF91968AB8E007FEC67 /* MainScene.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; name = MainScene.cpp; path = ../Classes/MainScene.cpp; sourceTree = "<group>"; };
 		D09F3FFA1968AB8E007FEC67 /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScene.h; path = ../Classes/MainScene.h; sourceTree = "<group>"; };
+		D0E167FA196B720D00005057 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		D0E167FD196B744E00005057 /* Color.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Color.mm; sourceTree = "<group>"; };
 		D0EC23A0196B5C12002A92B6 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		D44C620B132DFF330009C878 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		D44C620D132DFF430009C878 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -748,6 +752,8 @@
 				D06FB7AD1968A93A00193410 /* Ref.mm */,
 				D06FB7AE1968A93A00193410 /* Utilities.h */,
 				D06FB7AF1968A93A00193410 /* Utilities.mm */,
+				D0E167FA196B720D00005057 /* Color.h */,
+				D0E167FD196B744E00005057 /* Color.mm */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -1083,6 +1089,7 @@
 				D06FB7F11968A98C00193410 /* BlockFactory.swift in Sources */,
 				D06FB7DD1968A93A00193410 /* Console.mm in Sources */,
 				D06FB7CD1968A93A00193410 /* EventListenerTouch.mm in Sources */,
+				D0E167FE196B744E00005057 /* Color.mm in Sources */,
 				D06FB7D51968A93A00193410 /* Node.mm in Sources */,
 				D06FB7CB1968A93A00193410 /* EventListenerKeyboard.mm in Sources */,
 				D06FB7FB1968A98C00193410 /* SceneSplash.swift in Sources */,
@@ -1123,6 +1130,7 @@
 				D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7CA1968A93A00193410 /* EventListenerAcceleration.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
+				D0E167FF196B744E00005057 /* Color.mm in Sources */,
 				D06FB7F81968A98C00193410 /* SceneGame.swift in Sources */,
 				D06FB7B81968A93A00193410 /* ActionInterval.mm in Sources */,
 				D03DA6021969C6E400F57039 /* Piece.swift in Sources */,
