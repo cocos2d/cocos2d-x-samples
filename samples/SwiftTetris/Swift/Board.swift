@@ -248,7 +248,7 @@ class Board : Node
         var size = director.getWinSize()
         
         var text = _countDown > 0 ? "\(_countDown)" : ""
-        var label = Label.createWithSystemFont(text, "MarkerFelt-Wide", 120)
+        var label = Label.createWithSystemFont(text, "edunline.ttf", 180)
         label.setPosition(CGPointMake(size.width / 2, size.height / 2))
         self.addChild(label)
         
@@ -441,6 +441,10 @@ class Board : Node
         {
             block.setPos(pos)
         }
+        else
+        {
+            AudioEngine.getInstance().playEffect("move.mp3", false, 0, 100)
+        }
         block.addToMap()
     }
     
@@ -457,6 +461,10 @@ class Board : Node
         if !canPlaceBlock(block)
         {
             block.setPos(pos)
+        }
+        else
+        {
+            AudioEngine.getInstance().playEffect("move.mp3", false, 0, 100)
         }
         block.addToMap()
     }
@@ -585,7 +593,7 @@ class Board : Node
         
         for c in 0..<COLUMNS
         {
-            var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
+            var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
             var block = _map[index].block
             if block
             {
@@ -613,7 +621,7 @@ class Board : Node
             
             for c in 0..<COLUMNS
             {
-                var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
+                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
                 if _map[index].block != nil
                 {
                     ++count
