@@ -151,7 +151,6 @@ class BlockFactory
         var c = Double(NUM_SHAPES)
         var i = r * c / m
         var index : Int = Int(i)
-index = 3
         return createBlockFromData(index)
     }
     
