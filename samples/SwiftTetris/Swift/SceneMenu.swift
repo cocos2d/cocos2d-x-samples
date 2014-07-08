@@ -24,12 +24,17 @@ class SceneMenu : Scene
         var director = Director.getInstance()
         var size = director.getWinSize()
         
-        var sprite = Sprite.create("startbutton.png")
-        sprite.setPosition(CGPointMake(size.width / 2, size.height / 2))
-        self.addChild(sprite)
-    
+        var bg = Sprite.create("background.png")
+        bg.setAnchorPoint(CGPointZero)
+        addChild(bg)
+
+        var label = Label.createWithTTF("Play", "edunline.ttf", 150)
+        label.setAnchorPoint(CGPointMake(0.5, 0.5))
+        label.setPosition(CGPointMake(0.5 * size.width, 700.0))
+        addChild(label)
+            
         var listener = EventListenerTouchOneByOne()
         listener.onTouchBegan = startGame
-        director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, sprite)
+        director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, label)
     }
 }

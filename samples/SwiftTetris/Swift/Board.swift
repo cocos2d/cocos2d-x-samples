@@ -235,20 +235,6 @@ class Board : Node
         
         self.fillBackground()
         self.scheduleUpdate(update)
-        
-        var label = Label.createWithSystemFont("SwiftresS", "MarkerFelt-Wide", 80)
-        label.setPosition(CGPointMake(size.width / 2, 1050))
-        self.addChild(label)
-        
-        var bounce = ClosureAction.createWithDuration(2, { (time : Float) -> Void in
-            label.setScale(time)
-            })
-        label.runAction(bounce)
-        
-//        self._accelerometer = EventListenerAcceleration.create { (acceleration : Acceleration!, event : Event!) in
-//            Debug.getInstance.log("acceleration \(acceleration.x) \(acceleration.y) \(acceleration.z)")
-//        }
-//        director.eventDispatcher.addEventListenerWithSceneGraphPriority(self._accelerometer, self)
     }
     
     func startCountDown()
