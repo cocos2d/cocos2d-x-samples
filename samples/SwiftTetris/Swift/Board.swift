@@ -141,7 +141,8 @@ class Board : Node
         
         if pickBlockFromLocation(touch.getLocation())
         {
-            return false;
+            rotatePiece(touch, event: event)
+            return true;
         }
         
         // the board has been touched
@@ -330,7 +331,6 @@ class Board : Node
         var touchListener = EventListenerTouchOneByOne()
         var keybdListener = EventListenerKeyboard()
         
-        touchListener.onTouchBegan = rotatePiece
         keybdListener.onKeyPressed = keyboardPressed
         keybdListener.onKeyReleased = keyboardReleased
         
@@ -385,11 +385,11 @@ class Board : Node
         var t = Fixed(ROWS) - piece.TR().y
         var b = 0 - piece.BL().y
         
-        Debug.getInstance.log("clamping block to \(l), \(r) -> \(t), \(b)")
+        //Debug.getInstance.log("clamping block to \(l), \(r) -> \(t), \(b)")
         
         var pos = block.getPos()
         
-        Debug.getInstance.log("old pos \(pos.x), \(pos.y)")
+        //Debug.getInstance.log("old pos \(pos.x), \(pos.y)")
         
         pos.x = pos.x < l ? l : pos.x
         pos.x = pos.x > r ? r : pos.x
@@ -398,7 +398,7 @@ class Board : Node
         
         block.setPos(pos)
     
-        Debug.getInstance.log("piece pos \(pos.x), \(pos.y)")
+        //Debug.getInstance.log("piece pos \(pos.x), \(pos.y)")
     }
     
     func moveCurrentBlock()
@@ -474,7 +474,9 @@ class Board : Node
     {
         for block in _blocks
         {
-            for object : AnyObject in block.getChildren()
+            var piece  = block.getPiece()
+            
+            for object : AnyObject in piece.getChildren()
             {
                 var cell = object as Sprite
                 var size = cell.getContentSize()

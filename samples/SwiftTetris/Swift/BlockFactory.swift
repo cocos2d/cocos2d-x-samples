@@ -151,7 +151,7 @@ class BlockFactory
         var c = Double(NUM_SHAPES)
         var i = r * c / m
         var index : Int = Int(i)
-        Debug.getInstance.log("GENERATING RANDOM INDEX \(index)")
+        //Debug.getInstance.log("GENERATING RANDOM INDEX \(index)")
         return createBlockFromData(index)
     }
     
