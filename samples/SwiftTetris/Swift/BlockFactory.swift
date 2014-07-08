@@ -23,7 +23,7 @@ class BlockFactory
     
     let NUM_SHAPES : Int = 7
     
-    let MASKS : Int[] =
+    let MASKS : [Int] =
                         [0x08080808,
                          0x00000E02,
                          0x0008080C,
@@ -120,7 +120,7 @@ class BlockFactory
     
     init()
     {
-        var block = loadColoredBlock(Color.Red)
+        var block = loadColoredBlock(0)
         _blockSize = block.getContentSize()
     }
     
@@ -141,7 +141,7 @@ class BlockFactory
     func createColoredBlock(color : Color) -> Node
     {
         var index = color.toRaw()
-        return createBlockFromData(BLOCKS[index], color: color)
+        return createBlockFromData(index)
     }
     
     func createRandomBlock() -> Block
@@ -151,14 +151,17 @@ class BlockFactory
         var c = Double(NUM_SHAPES)
         var i = r * c / m
         var index : Int = Int(i)
-        return createBlockFromData(BLOCKS[index], color: Color.fromRaw(index)!)
+        Debug.getInstance.log("GENERATING RANDOM INDEX \(index)")
+        return createBlockFromData(index)
     }
     
-    func createBlockFromData(blockDescription : Array<Array<FixedPoint>>, color : Color) -> Block
+    func createBlockFromData(index : Int) -> Block
     {
+        var blockDescription = BLOCKS[index]
+        
         var block = Block()
         block._board = _board!
-        block.type = color.toRaw()
+        block.type = index
         block.setAnchorPoint(CGPointZero)
         
         for pieceDesc in blockDescription
@@ -174,7 +177,7 @@ class BlockFactory
             
             for cell in pieceDesc
             {
-                var c = loadColoredBlock(color)
+                var c = loadColoredBlock(index)
                 
                 var rpos = cell.x + 1
                 var tpos = cell.y + 1
@@ -223,9 +226,9 @@ class BlockFactory
         return Sprite.create(name)
     }
     
-    func loadColoredBlock(color : Color) ->Sprite
+    func loadColoredBlock(index : Int) ->Sprite
     {
-        var sprite = Sprite.create(Names[Int(color.toRaw())])
+        var sprite = Sprite.create(Names[index])
         sprite.setAnchorPoint(CGPointMake(0, 0))
         return sprite;
     }

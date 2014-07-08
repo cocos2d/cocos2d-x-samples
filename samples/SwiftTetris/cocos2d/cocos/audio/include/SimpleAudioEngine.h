@@ -32,6 +32,7 @@ THE SOFTWARE.
 #include <typeinfo>
 #include <ctype.h>
 #include <string.h>
+#include "CCRef.h"
 
 #if defined(__GNUC__) && ((__GNUC__ >= 4) || ((__GNUC__ == 3) && (__GNUC_MINOR__ >= 1)))
 #define CC_DEPRECATED_ATTRIBUTE __attribute__((deprecated))
@@ -51,6 +52,7 @@ namespace CocosDenshion {
  */
 
 class EXPORT_DLL SimpleAudioEngine
+    : public cocos2d::Ref
 {
 public:
     /**

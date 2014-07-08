@@ -14,6 +14,8 @@ class SceneGame : Scene
     
     override func onEnter()
     {
+        AudioEngine.getInstance().playBackgroundMusic("tetris.mp3", true)
+
         _board = Board()
         addChild(_board!)
         _board!.start()
@@ -21,6 +23,8 @@ class SceneGame : Scene
     
     override func onExit()
     {
+        AudioEngine.getInstance().stopBackgroundMusic()
+        
         removeAllChildren()
         _board = nil
     }

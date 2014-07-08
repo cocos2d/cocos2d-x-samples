@@ -21,10 +21,10 @@ class Board : Node
         var block : Block? = nil
     }
     
-    var _map : MapEntry[] = []
+    var _map : [MapEntry] = []
 
     var _accelerometer : EventListenerAcceleration?
-    var _blocks : Block[] = []
+    var _blocks : [Block] = []
     var _currentBlock : Block?
 
     var _lastDropSpeed : Float = 0.5
@@ -65,7 +65,7 @@ class Board : Node
         super.init()
         
         BlockFactory.getInstance.setBoard(self)
-        var block = BlockFactory.getInstance.loadColoredBlock(BlockFactory.Color.Grey)
+        var block = BlockFactory.getInstance.loadColoredBlock(7)
         var blockSize = block.getContentSize()
         _blockSize = blockSize
         
@@ -85,17 +85,18 @@ class Board : Node
         var t = "IJLOSTZE"
         var types = Array(t)
         var line : String
-        for r in 0...ROWS-1
+        for r in 0..<ROWS
         {
             line = ""
             
-            for c in 0...COLUMNS-1
+            for c in 0..<COLUMNS
             {
-                var index = cellToIndex(FixedPoint(x : Fixed((ROWS-1) - r), y : Fixed(c)))
+                var cell = FixedPoint(x : Fixed(c), y : Fixed((ROWS-1) - r))
+                var index = cellToIndex(cell)
                 var block = _map[index].block
                 if !block
                 {
-                    line += "_"
+                    line += "."
                 }
                 else
                 {
@@ -188,16 +189,16 @@ class Board : Node
         
         Debug.getInstance.log("across \(across) down \(down) l \(l) r \(r) t \(t) b \(b)")
         
-        for d in 0...down - 1
+        for d in 0..<down
         {
-            for a in 0...across - 1
+            for a in 0..<across
             {
                 if d >= b && d <= t && a >= l && a <= r
                 {
                     continue
                 }
                 
-                var block = BlockFactory.getInstance.loadColoredBlock(BlockFactory.Color.Grey)
+                var block = BlockFactory.getInstance.loadColoredBlock(7)
                 block.setPosition(CFloat(a * Int(_blockSize.width)), CFloat(d * Int(_blockSize.height)))
                 _board.addChild(block)
             }
@@ -219,7 +220,7 @@ class Board : Node
     
     func start()
     {
-        for i in 0...COLUMNS * ROWS - 1
+        for i in 0..<COLUMNS * ROWS
         {
             _map.append(MapEntry())
         }
@@ -596,7 +597,7 @@ class Board : Node
     {
         Debug.getInstance.log("Removing row \(row)")
         
-        for c in 0...COLUMNS
+        for c in 0..<COLUMNS
         {
             var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
             var block = _map[index].block
@@ -618,13 +619,13 @@ class Board : Node
     func checkAndRemoveRows()
     {
         var row = 0
-        for r in 0...ROWS
+        for r in 0..<ROWS
         {
             Debug.getInstance.log("checking row \(row)")
             
             var count = 0
             
-            for c in 0...COLUMNS - 1
+            for c in 0..<COLUMNS
             {
                 var index = cellToIndex(FixedPoint(x : Fixed(row), y : Fixed(c)))
                 if _map[index].block != nil

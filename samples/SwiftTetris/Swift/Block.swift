@@ -7,7 +7,7 @@ import Foundation
 class Block : Node
 {
     var _board : Board? = nil
-    var rotations : Piece[] = []
+    var rotations : [Piece] = []
     var rotation : Int = 0
     var position : FixedPoint = FixedPoint(x: 0,y: 0)
     var type : Int?

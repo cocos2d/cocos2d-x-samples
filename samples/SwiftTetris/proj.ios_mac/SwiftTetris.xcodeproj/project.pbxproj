@@ -121,6 +121,26 @@
 		D06FB7FA1968A98C00193410 /* SceneMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FB7ED1968A98C00193410 /* SceneMenu.swift */; };
 		D06FB7FB1968A98C00193410 /* SceneSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FB7EE1968A98C00193410 /* SceneSplash.swift */; };
 		D06FB7FC1968A98C00193410 /* SceneSplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06FB7EE1968A98C00193410 /* SceneSplash.swift */; };
+		D081E481196B63CD00D8887C /* drop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E479196B63CD00D8887C /* drop.mp3 */; };
+		D081E482196B63CD00D8887C /* drop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E479196B63CD00D8887C /* drop.mp3 */; };
+		D081E483196B63CD00D8887C /* go.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47A196B63CD00D8887C /* go.mp3 */; };
+		D081E484196B63CD00D8887C /* go.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47A196B63CD00D8887C /* go.mp3 */; };
+		D081E485196B63CD00D8887C /* level_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47B196B63CD00D8887C /* level_complete.mp3 */; };
+		D081E486196B63CD00D8887C /* level_complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47B196B63CD00D8887C /* level_complete.mp3 */; };
+		D081E487196B63CD00D8887C /* line.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47C196B63CD00D8887C /* line.mp3 */; };
+		D081E488196B63CD00D8887C /* line.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47C196B63CD00D8887C /* line.mp3 */; };
+		D081E489196B63CD00D8887C /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47D196B63CD00D8887C /* move.mp3 */; };
+		D081E48A196B63CD00D8887C /* move.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47D196B63CD00D8887C /* move.mp3 */; };
+		D081E48B196B63CD00D8887C /* no.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47E196B63CD00D8887C /* no.mp3 */; };
+		D081E48C196B63CD00D8887C /* no.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47E196B63CD00D8887C /* no.mp3 */; };
+		D081E48D196B63CD00D8887C /* oh_yeah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47F196B63CD00D8887C /* oh_yeah.mp3 */; };
+		D081E48E196B63CD00D8887C /* oh_yeah.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E47F196B63CD00D8887C /* oh_yeah.mp3 */; };
+		D081E48F196B63CD00D8887C /* tetris.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E480196B63CD00D8887C /* tetris.mp3 */; };
+		D081E490196B63CD00D8887C /* tetris.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D081E480196B63CD00D8887C /* tetris.mp3 */; };
+		D081E496196B63D900D8887C /* edunline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D081E494196B63D900D8887C /* edunline.ttf */; };
+		D081E497196B63D900D8887C /* edunline.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D081E494196B63D900D8887C /* edunline.ttf */; };
+		D081E498196B63D900D8887C /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D081E495196B63D900D8887C /* Marker Felt.ttf */; };
+		D081E499196B63D900D8887C /* Marker Felt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D081E495196B63D900D8887C /* Marker Felt.ttf */; };
 		D098FE611968DEEC0009723C /* Apple_Swift_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D098FE551968DEEC0009723C /* Apple_Swift_Logo.png */; };
 		D098FE621968DEEC0009723C /* Apple_Swift_Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D098FE551968DEEC0009723C /* Apple_Swift_Logo.png */; };
 		D098FE631968DEEC0009723C /* blue.png in Resources */ = {isa = PBXBuildFile; fileRef = D098FE571968DEEC0009723C /* blue.png */; };
@@ -398,6 +418,16 @@
 		D06FB7EC1968A98C00193410 /* SceneGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneGame.swift; sourceTree = "<group>"; };
 		D06FB7ED1968A98C00193410 /* SceneMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneMenu.swift; sourceTree = "<group>"; };
 		D06FB7EE1968A98C00193410 /* SceneSplash.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneSplash.swift; sourceTree = "<group>"; };
+		D081E479196B63CD00D8887C /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
+		D081E47A196B63CD00D8887C /* go.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = go.mp3; sourceTree = "<group>"; };
+		D081E47B196B63CD00D8887C /* level_complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = level_complete.mp3; sourceTree = "<group>"; };
+		D081E47C196B63CD00D8887C /* line.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = line.mp3; sourceTree = "<group>"; };
+		D081E47D196B63CD00D8887C /* move.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = move.mp3; sourceTree = "<group>"; };
+		D081E47E196B63CD00D8887C /* no.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = no.mp3; sourceTree = "<group>"; };
+		D081E47F196B63CD00D8887C /* oh_yeah.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oh_yeah.mp3; sourceTree = "<group>"; };
+		D081E480196B63CD00D8887C /* tetris.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = tetris.mp3; sourceTree = "<group>"; };
+		D081E494196B63D900D8887C /* edunline.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = edunline.ttf; sourceTree = "<group>"; };
+		D081E495196B63D900D8887C /* Marker Felt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Marker Felt.ttf"; sourceTree = "<group>"; };
 		D098FE551968DEEC0009723C /* Apple_Swift_Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Apple_Swift_Logo.png; sourceTree = "<group>"; };
 		D098FE571968DEEC0009723C /* blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue.png; sourceTree = "<group>"; };
 		D098FE581968DEEC0009723C /* cyan.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cyan.png; sourceTree = "<group>"; };
@@ -606,6 +636,8 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D081E493196B63D900D8887C /* fonts */,
+				D081E478196B63CD00D8887C /* audio */,
 				D098FE551968DEEC0009723C /* Apple_Swift_Logo.png */,
 				D098FE561968DEEC0009723C /* blocks */,
 				D098FE5F1968DEEC0009723C /* splash_640x1136.png */,
@@ -744,6 +776,31 @@
 			);
 			name = Swift;
 			path = ../Swift;
+			sourceTree = "<group>";
+		};
+		D081E478196B63CD00D8887C /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				D081E479196B63CD00D8887C /* drop.mp3 */,
+				D081E47A196B63CD00D8887C /* go.mp3 */,
+				D081E47B196B63CD00D8887C /* level_complete.mp3 */,
+				D081E47C196B63CD00D8887C /* line.mp3 */,
+				D081E47D196B63CD00D8887C /* move.mp3 */,
+				D081E47E196B63CD00D8887C /* no.mp3 */,
+				D081E47F196B63CD00D8887C /* oh_yeah.mp3 */,
+				D081E480196B63CD00D8887C /* tetris.mp3 */,
+			);
+			name = audio;
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		D081E493196B63D900D8887C /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D081E494196B63D900D8887C /* edunline.ttf */,
+				D081E495196B63D900D8887C /* Marker Felt.ttf */,
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		D098FE561968DEEC0009723C /* blocks */ = {
@@ -932,20 +989,30 @@
 				D098FE691968DEEC0009723C /* grey.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
+				D081E48F196B63CD00D8887C /* tetris.mp3 in Resources */,
 				5087E78317EB970100C73F5D /* Icon-152.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				D081E498196B63D900D8887C /* Marker Felt.ttf in Resources */,
+				D081E496196B63D900D8887C /* edunline.ttf in Resources */,
 				D0EC23A1196B5C12002A92B6 /* background.png in Resources */,
 				D098FE611968DEEC0009723C /* Apple_Swift_Logo.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */,
 				5087E78017EB970100C73F5D /* Icon-114.png in Resources */,
+				D081E489196B63CD00D8887C /* move.mp3 in Resources */,
+				D081E487196B63CD00D8887C /* line.mp3 in Resources */,
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				D098FE631968DEEC0009723C /* blue.png in Resources */,
 				D098FE651968DEEC0009723C /* cyan.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
+				D081E485196B63CD00D8887C /* level_complete.mp3 in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
+				D081E483196B63CD00D8887C /* go.mp3 in Resources */,
 				D098FE6B1968DEEC0009723C /* magenta.png in Resources */,
+				D081E48B196B63CD00D8887C /* no.mp3 in Resources */,
+				D081E48D196B63CD00D8887C /* oh_yeah.mp3 in Resources */,
+				D081E481196B63CD00D8887C /* drop.mp3 in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				D098FE671968DEEC0009723C /* green.png in Resources */,
 				D098FE6D1968DEEC0009723C /* orange.png in Resources */,
@@ -960,19 +1027,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D081E486196B63CD00D8887C /* level_complete.mp3 in Resources */,
+				D081E490196B63CD00D8887C /* tetris.mp3 in Resources */,
 				D098FE6C1968DEEC0009723C /* magenta.png in Resources */,
 				D098FE6E1968DEEC0009723C /* orange.png in Resources */,
 				D0EC23A2196B5C12002A92B6 /* background.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				D098FE741968DEEC0009723C /* splash_640x1136.png in Resources */,
+				D081E48E196B63CD00D8887C /* oh_yeah.mp3 in Resources */,
+				D081E48C196B63CD00D8887C /* no.mp3 in Resources */,
+				D081E484196B63CD00D8887C /* go.mp3 in Resources */,
 				D098FE701968DEEC0009723C /* red.png in Resources */,
 				D098FE621968DEEC0009723C /* Apple_Swift_Logo.png in Resources */,
 				D098FE6A1968DEEC0009723C /* grey.png in Resources */,
 				D098FE681968DEEC0009723C /* green.png in Resources */,
+				D081E48A196B63CD00D8887C /* move.mp3 in Resources */,
 				D098FE761968DEEC0009723C /* startbutton.png in Resources */,
+				D081E497196B63D900D8887C /* edunline.ttf in Resources */,
 				D098FE721968DEEC0009723C /* yellow.png in Resources */,
 				D098FE661968DEEC0009723C /* cyan.png in Resources */,
+				D081E499196B63D900D8887C /* Marker Felt.ttf in Resources */,
 				D098FE641968DEEC0009723C /* blue.png in Resources */,
+				D081E482196B63CD00D8887C /* drop.mp3 in Resources */,
+				D081E488196B63CD00D8887C /* line.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
