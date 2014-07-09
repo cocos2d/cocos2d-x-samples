@@ -269,7 +269,9 @@ class Board : Node
         {
             return
         }
-        
+
+        AudioEngine.getInstance().playEffect("go.mp3", false, 22050, 0, 1)
+    
         var director = Director.getInstance()
         var size = director.getWinSize()
         
@@ -363,6 +365,8 @@ class Board : Node
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(touchListener, block)
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(keybdListener, block)
         
+        AudioEngine.getInstance().playEffect("drop.mp3", false, 22050, 0, 1)
+
         Debug.getInstance.log("Spawned a new block type \(block.type!)")
         
         return true
@@ -477,7 +481,7 @@ class Board : Node
         }
         else
         {
-            AudioEngine.getInstance().playEffect("move.mp3", false, 0, 100)
+            AudioEngine.getInstance().playEffect("move.mp3", false, 22050, 0, 1)
         }
         block.addToMap()
     }
@@ -498,7 +502,7 @@ class Board : Node
         }
         else
         {
-            AudioEngine.getInstance().playEffect("move.mp3", false, 0, 100)
+            AudioEngine.getInstance().playEffect("move.mp3", false, 22050, 0, 1)
         }
         block.addToMap()
     }
@@ -672,6 +676,8 @@ class Board : Node
             }
         }
         
+        AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
+
         // now move all the rows above down
         var start = Int(row)
         for r in start ..< ROWS
