@@ -10,6 +10,9 @@ import Foundation
 
 class SceneMenu : Scene
 {
+    var _magnitude : Float = 0.0
+    var _direction = CGPointMake(1,1)
+    
     func startGame(touch : Touch!, event : Event!) -> Bool
     {
         var scene = SceneGame()
@@ -32,18 +35,30 @@ class SceneMenu : Scene
         label.setAnchorPoint(CGPointMake(0.5, 0.5))
         label.setPosition(CGPointMake(0.5 * size.width, 700.0))
         var black = Color4B.createWithBlack() as Color4B // wtf?
-        label.enableShadow(black, CGSizeMake(20, -20), 50)
         addChild(label)
 
-        var t : Float = 6
+        var t : Float = 2
         var action = ClosureAction.createWithDuration(t, { (time : Float) -> Void in
-            let offset:Float = 10.0
-            label.enableShadow(black, CGSizeMake(CGFloat(time * offset), CGFloat(time * -offset)), 50)
+            self._magnitude = time
+            var offset = self._direction
+            offset.x *= CGFloat(self._magnitude)
+            offset.y *= CGFloat(self._magnitude)
+            label.enableShadow(black, CGSizeMake(offset.x, offset.y), 50)
         })        
         label.runAction(action)
             
-        var listener = EventListenerTouchOneByOne()
+        var listener = EventListenerTouchOneByOne.create()
         listener.onTouchBegan = startGame
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, label)
+        
+        var accelerator = EventListenerAcceleration.create({ (acceleration : Acceleration?, event : Event?) -> Void in
+            if acceleration
+            {
+                self._direction.x = CGFloat(acceleration!.x)
+                self._direction.y = CGFloat(acceleration!.y)
+                Debug.getInstance.log("direction \(self._direction.x), \(self._direction.y)")
+            }
+        })
+        director.eventDispatcher.addEventListenerWithSceneGraphPriority(accelerator, self)
     }
 }

@@ -94,21 +94,4 @@ class Block : Node
     {
         return position
     }
-    
-    // this function is only ever called once the block has stopped
-    // so we only need to deal with the current rotation
-    func removeCell(cell : FixedPoint)
-    {
-        if _board
-        {
-            var index = _board!.cellToIndex(cell)
-            var c = _board!._map[index].cell
-            if c
-            {
-                Debug.getInstance.log("removing cell \(cell.x), \(cell.y) \(c)")
-                c!.removeFromParentAndCleanup(true)
-                _board!._map[index] = Board.MapEntry()
-            }
-        }
-    }
 }

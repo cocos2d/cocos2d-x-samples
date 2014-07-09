@@ -24,7 +24,6 @@ class SceneSplash : Scene
         self.addChild(sprite)
         
         var scene = SceneMenu()
-        var fade = TransitionFade.create(3, scene)
-        director.pushScene(fade)
+        director.replaceScene(scene)
     }
 }

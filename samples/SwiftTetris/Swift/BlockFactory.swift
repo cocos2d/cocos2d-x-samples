@@ -4,50 +4,11 @@
 
 import Foundation
 
-// blocks
-// all shapes occupy the maximum space of 4x4
-// binary encoding for shapes 32bits required for a single shape
-//
-// I   1000,1000,1000,1000 = 8,8,8,8 red
-// J   0000,0000,1110,0010 = 0,0,E,2 yellow
-// L   0000,1000,1000,1100 = 0,8,8,C magenta
-// O   0000,0000,1100,1100 = 0,0,C,C blue
-// S   0000,0000,0110,1100 = 0,0,6,C cyan
-// T   0000,0000,1110,0100 = 0,0,E,4 green
-// Z   0000,0000,1100,0110 = 0,0,C,6 orange
-
 class BlockFactory
 {
     let NUM_ROWS : Int = 4
     let NUM_COLS : Int = 4
-    
     let NUM_SHAPES : Int = 7
-    
-    let MASKS : [Int] =
-                        [0x08080808,
-                         0x00000E02,
-                         0x0008080C,
-                         0x00000C0C,
-                         0x0000060C, //
-                         0x00000E04,
-                         0x00000C06] //
-
-    /*
-    
-   -2  -1   0   1    2
-    2---+---+---+---+
-    |
-    1---+---+---+---+
-    |
-    0---+---+---+---+
-    |
-   -1---+---+---+---+
-    |
-   -2---+---+---+---+
-
-    let ? : Array<FixedPoint> = [FixedPoint(x:,y:), FixedPoint(x:,y:), FixedPoint(x:,y:), FixedPoint(x:,y:)]
-
-    */
     
     let BLOCKS = [
     /*I*/
@@ -87,19 +48,7 @@ class BlockFactory
       [FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)] ]
     ]
     
-    enum PieceName : Int
-    {
-        case I = 0
-        case J
-        case L
-        case O
-        case S
-        case T
-        case Z
-        case E
-    }
-    
-    enum Color : Int
+        enum Color : Int
     {
         case Red = 0
         case Yellow

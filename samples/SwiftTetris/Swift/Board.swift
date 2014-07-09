@@ -326,12 +326,6 @@ class Board : Node
             }
             if nil != _map[index].block
             {
-                Debug.getInstance.log("cell \(p.x), \(p.y) is occupied")
-                commandDumpMap(0, s: "")
-                for pp in cells
-                {
-                    Debug.getInstance.log("    cell \(pp.x), \(pp.y)")
-                }
                 return false
             }
         }
@@ -397,7 +391,7 @@ class Board : Node
         _blocks.append(block)
         _currentBlock = block
         
-        Debug.getInstance.log("placed new block at \(x), \(y)")
+        //Debug.getInstance.log("placed new block at \(x), \(y)")
     }
     
     func clampBlockToPlayArea(block : Block)
@@ -661,26 +655,21 @@ class Board : Node
     {
         for c in 0..<COLUMNS
         {
+            // first remove the cells in the row
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
-            var block = _map[index].block
-            if block
+            var cell = _map[index].cell
+            if cell
             {
-                var cells = block!.getCells()
-                for c in cells
-                {
-                    if c.y == row
-                    {
-                        block!.removeCell(c)
-                    }
-                }
+                cell!.removeFromParentAndCleanup(true)
+                _map[index].cell = nil
             }
         }
         
         // now move all the rows above down
         var start = Int(row)
-        for r in start..<ROWS
+        for r in start ..< ROWS
         {
-            for c in 0..<COLUMNS
+            for c in 0 ..< COLUMNS
             {
                 var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r)))
 
@@ -723,8 +712,6 @@ class Board : Node
                     ++count
                 }
             }
-            
-            Debug.getInstance.log("column count for row \(row) is \(count)")
             
             if count == COLUMNS
             {
