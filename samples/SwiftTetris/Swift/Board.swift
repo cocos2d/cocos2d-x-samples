@@ -34,7 +34,7 @@ class Board : Node
     
     var _gameDelay : Float = 1
     var _gameTime : Float = 0
-    var _countDown : Int = 3
+    var _countDown : Int = 4
     
     var _origin : CGPoint = CGPointZero
     var _size : CGSize = CGSizeZero
@@ -260,6 +260,11 @@ class Board : Node
     
     func startCountDown()
     {
+        if _countDown > 3
+        {
+            --_countDown
+            return
+        }
         if _countDown < 0
         {
             return
@@ -269,10 +274,12 @@ class Board : Node
         var size = director.getWinSize()
         
         var text = _countDown > 0 ? "\(_countDown)" : ""
-        var label = Label.createWithSystemFont(text, "edunline.ttf", 180)
+        var grey = Color4B.createWithRGBA(128, 128, 128, 128) as Color4B
+        var label = Label.createWithTTF(text, "Arcade.ttf", 180)
         label.setPosition(CGPointMake(size.width / 2, size.height / 2))
+        label.enableShadow(grey, CGSizeMake(0.8 * 5, -5), 50)
         self.addChild(label)
-        
+
         var actions : Array<Action> = []
         
         actions.append(ClosureAction.createWithDuration(_gameDelay, { (time : Float) -> Void in
