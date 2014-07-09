@@ -7281,13 +7281,13 @@
 				HEADER_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../external/glfw3/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/png/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/jpeg/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/tiff/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/webp/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/freetype2/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/websockets/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/glfw3/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/png/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/jpeg/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/tiff/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/webp/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/freetype2/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/websockets/prebuilt/mac\"",
 				);
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/png/include/mac $(SRCROOT)/../external/tiff/include/mac $(SRCROOT)/../external/webp/include/mac $(SRCROOT)/../external/jpeg/include/mac $(SRCROOT)/../external/freetype2/include/mac $(SRCROOT)/../external/websockets/include/mac $(SRCROOT)/../external/glfw3/include/mac";
 			};
@@ -7309,13 +7309,13 @@
 				HEADER_SEARCH_PATHS = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../external/glfw3/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/png/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/jpeg/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/tiff/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/webp/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/freetype2/prebuilt/mac\"",
-					"\"$(SRCROOT)/../external/websockets/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/glfw3/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/png/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/jpeg/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/tiff/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/webp/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/freetype2/prebuilt/mac\"",
+					"\"$(SRCROOT)/../../../../libs/cocos2d-x/external/websockets/prebuilt/mac\"",
 				);
 				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/../external/png/include/mac $(SRCROOT)/../external/tiff/include/mac $(SRCROOT)/../external/webp/include/mac $(SRCROOT)/../external/jpeg/include/mac $(SRCROOT)/../external/freetype2/include/mac $(SRCROOT)/../external/websockets/include/mac $(SRCROOT)/../external/glfw3/include/mac";
 			};
