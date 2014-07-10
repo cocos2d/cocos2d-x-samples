@@ -47,6 +47,9 @@ class Board : Node
     
     var _paused : Bool = false
     
+    let DELAY : Float = 0.25
+    let DURATION : Float = 2.0
+
     enum State
     {
         case COUNTDOWN // Beginning state
@@ -292,7 +295,7 @@ class Board : Node
             label.removeFromParentAndCleanup(true)
             }))
         
-        var sequence = ActionSequence.create(actions)
+        var sequence = Sequence.create(actions)
         
         label.runAction(sequence)
         
@@ -668,10 +671,28 @@ class Board : Node
         {
             // first remove the cells in the row
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
+
             var cell = _map[index].cell
             if cell
             {
-                cell!.removeFromParentAndCleanup(true)
+                var delay = ClosureAction.createWithDuration(DELAY * Float(c), { (time : Float) -> Void in
+                    })
+                
+                var speed : Float = 0.0
+                var flyoff = ClosureAction.createWithDuration(DURATION, { (time : Float) -> Void in
+                    speed = 50.0 * time
+                    var pos = cell!.getPosition()
+                    pos.x += CGFloat(speed)
+                    cell!.setPosition(pos)
+                })
+                
+                var remove = ClosureAction.createWithDuration(DURATION, { (time : Float) -> Void in
+                    cell!.removeFromParentAndCleanup(true)
+                })
+                
+                var sequence = delay + flyoff + remove
+                cell!.runAction(sequence)
+
                 _map[index].cell = nil
             }
         }
@@ -764,7 +785,7 @@ class Board : Node
         case .IDLE:
             checkAndRemoveRows()
             _state = .DROP
-            
+
         case .DROP:
             // remove previous block listeners
             cleanupCurrentBlock()

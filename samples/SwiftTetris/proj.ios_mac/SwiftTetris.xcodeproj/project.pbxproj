@@ -59,6 +59,8 @@
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
 		D03DA6011969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
 		D03DA6021969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
+		D04D66C4196F26AB00E22B1E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C3196F26AB00E22B1E /* Action.swift */; };
+		D04D66C5196F26AB00E22B1E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C3196F26AB00E22B1E /* Action.swift */; };
 		D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D069AD3A196DB9D500664637 /* Arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D069AD39196DB9D500664637 /* Arcade.ttf */; };
@@ -366,6 +368,7 @@
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D03DA6001969C6E400F57039 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		D04D66C3196F26AB00E22B1E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D0669AC2196B36380040E7EE /* SceneTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTest.swift; sourceTree = "<group>"; };
 		D069AD39196DB9D500664637 /* Arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arcade.ttf; sourceTree = "<group>"; };
 		D069ADA5196DF7DA00664637 /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
@@ -658,6 +661,14 @@
 			path = ../Resources;
 			sourceTree = "<group>";
 		};
+		D04D66C2196F268F00E22B1E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D04D66C3196F26AB00E22B1E /* Action.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		D06FB7771968A93A00193410 /* Bindings */ = {
 			isa = PBXGroup;
 			children = (
@@ -665,6 +676,7 @@
 				D06FB7821968A93A00193410 /* Audio */,
 				D06FB7861968A93A00193410 /* Bridging Headers */,
 				D06FB78A1968A93A00193410 /* Events */,
+				D04D66C2196F268F00E22B1E /* Extensions */,
 				D06FB79B1968A93A00193410 /* Nodes */,
 				D06FB7A71968A93A00193410 /* System */,
 				D06FB7B01968A93A00193410 /* UI */,
@@ -1077,6 +1089,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D06FB7BB1968A93A00193410 /* Transitions.mm in Sources */,
+				D04D66C4196F26AB00E22B1E /* Action.swift in Sources */,
 				D06FB7F91968A98C00193410 /* SceneMenu.swift in Sources */,
 				D06FB7B91968A93A00193410 /* ActionSequence.mm in Sources */,
 				D06FB7C11968A93A00193410 /* Acceleration.mm in Sources */,
@@ -1135,6 +1148,7 @@
 				D09F3FFC1968AB8E007FEC67 /* MainScene.cpp in Sources */,
 				D06FB7D01968A93A00193410 /* Touch.mm in Sources */,
 				D06FB7D21968A93A00193410 /* Label.mm in Sources */,
+				D04D66C5196F26AB00E22B1E /* Action.swift in Sources */,
 				D06FB7CC1968A93A00193410 /* EventListenerKeyboard.mm in Sources */,
 				D06FB7BC1968A93A00193410 /* Transitions.mm in Sources */,
 				D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */,
@@ -1383,6 +1397,7 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
@@ -1411,6 +1426,7 @@
 					"$(SRCROOT)/../cocos2d/external",
 					"$(SRCROOT)/../cocos2d/external/chipmunk/include/chipmunk",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
