@@ -12,6 +12,7 @@ class SceneGame : Scene
 {
     var _board : Board = Board()
     var _level : Int = 1
+    var _score : UInt = 0
     
     override func onEnter()
     {
@@ -30,8 +31,11 @@ class SceneGame : Scene
         removeAllChildren()
     }
     
-    func nextLevel()
+    
+    func nextLevel(score : UInt)
     {
+        _score = score
+        
         var fadeout = ClosureAction.createWithDuration(2, { (time : Float) -> Void in
             self._board.setOpacity((1 - time) * 255.0)
         })
@@ -43,6 +47,7 @@ class SceneGame : Scene
             self._board._level = ++self._level
             self.addChild(self._board)
             self._board.start()
+            self._board.addScore(self._score)
         })
         var fadein = ClosureAction.createWithDuration(2, { (time : Float) -> Void in
             self._board.setOpacity(time * 255.0)

@@ -23,6 +23,7 @@ class Board : Node
     }
     
     var _hud : LayerColor? = nil
+    var _scoreLabel : Label? = nil
     
     var _map : [MapEntry] = []
 
@@ -212,7 +213,7 @@ class Board : Node
         AudioEngine.getInstance().playEffect("oh_yeah.mp3", false, 22050, 0, 1)
 
         var parent = getParent() as SceneGame
-        parent.nextLevel()
+        parent.nextLevel(_score)
         _state = .PAUSE
     }
     
@@ -276,22 +277,17 @@ class Board : Node
                 
         self.fillBackground()
         
-        var w : Float = 0.85 * Float(size.width)
-        var h : Float = 0.15 * Float(size.height)
+        var w : Float = 0.75 * Float(size.width)
+        var h : Float = 0.12 * Float(size.height)
         var color = Color4B.createWithRGBA(0, 0, 0, 128) as Color4B
         _hud = LayerColor.create(color, w, h);
-        _hud?.setPosition(CGPointMake(0.5 * (size.width - CGFloat(w)), 0.83 * size.height))
+        _hud?.setPosition(CGPointMake(0.5 * (size.width - CGFloat(w)), 0.845 * size.height))
         addChild(_hud)
         
-        var level = Label.createWithTTF("Level: \(_level)", "Arcade.ttf", 70)
-        level.setAnchorPoint(CGPointMake(0.5, 0.5))
-        _hud!.addChild(level)
-        level.setNormalizedPosition(CGPointMake(0.5, 0.7))
-        
-        var score = Label.createWithTTF("Score: \(_score)", "Arcade.ttf", 70)
-        score.setAnchorPoint(CGPointMake(0.5, 0.5))
-        _hud!.addChild(score)
-        score.setNormalizedPosition(CGPointMake(0.5, 0.3))
+        _scoreLabel = Label.createWithTTF("Score: \(_score)", "Arcade.ttf", 70)
+        _scoreLabel!.setAnchorPoint(CGPointMake(0.5, 0.5))
+        _hud!.addChild(_scoreLabel!)
+        _scoreLabel!.setNormalizedPosition(CGPointMake(0.5, 0.5))
     }
     
     override func onEnterTransitionDidFinish()
@@ -765,6 +761,12 @@ class Board : Node
         }
     }
     
+    func addScore(score : UInt)
+    {
+        _score += score
+        _scoreLabel!.setString("Score: \(_score)")
+    }
+    
     func checkAndRemoveRows() -> Int
     {
         var removed = 0
@@ -786,6 +788,7 @@ class Board : Node
             {
                 ++removed
                 removeRow(Fixed(row))
+                addScore(UInt(COLUMNS))
                 
                 AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
             }
