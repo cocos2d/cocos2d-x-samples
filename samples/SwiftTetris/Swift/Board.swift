@@ -50,6 +50,7 @@ class Board : Node
     var _rowsCleared : Int = 0
     var _level : Int = 1
     var _numRowsNeededForNextLevel : Int = 5
+    var _score : UInt = 0
     
     var _paused : Bool = false
     
@@ -279,6 +280,16 @@ class Board : Node
         _hud = LayerColor.create(color, w, h);
         _hud?.setPosition(CGPointMake(0.5 * (size.width - CGFloat(w)), 0.83 * size.height))
         addChild(_hud)
+        
+        var level = Label.createWithTTF("Level: \(_level)", "Arcade.ttf", 70)
+        level.setAnchorPoint(CGPointMake(0.5, 0.5))
+        _hud!.addChild(level)
+        level.setNormalizedPosition(CGPointMake(0.5, 0.7))
+        
+        var score = Label.createWithTTF("Score: \(_score)", "Arcade.ttf", 70)
+        score.setAnchorPoint(CGPointMake(0.5, 0.5))
+        _hud!.addChild(score)
+        score.setNormalizedPosition(CGPointMake(0.5, 0.3))
     }
     
     override func onEnterTransitionDidFinish()
