@@ -22,6 +22,8 @@ class Board : Node
         var cell  : Node?  = nil
     }
     
+    var _hud : LayerColor? = nil
+    
     var _map : [MapEntry] = []
 
     var _accelerometer : EventListenerAcceleration?
@@ -270,6 +272,13 @@ class Board : Node
         var size = director.getWinSize()
                 
         self.fillBackground()
+        
+        var w : Float = 0.85 * Float(size.width)
+        var h : Float = 0.15 * Float(size.height)
+        var color = Color4B.createWithRGBA(0, 0, 0, 128) as Color4B
+        _hud = LayerColor.create(color, w, h);
+        _hud?.setPosition(CGPointMake(0.5 * (size.width - CGFloat(w)), 0.83 * size.height))
+        addChild(_hud)
     }
     
     override func onEnterTransitionDidFinish()
