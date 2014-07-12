@@ -47,6 +47,7 @@ class Board : Node
     
     var _rowsCleared : Int = 0
     var _level : Int = 1
+    var _numRowsNeededForNextLevel : Int = 5
     
     var _paused : Bool = false
     
@@ -203,6 +204,13 @@ class Board : Node
         Director.getInstance().replaceScene(fade)
     }
     
+    func nextLevel()
+    {
+        var parent = getParent() as SceneGame
+        parent.nextLevel()
+        _state = .PAUSE
+    }
+    
     func fillBackground()
     {
         var director = Director.getInstance()
@@ -260,11 +268,7 @@ class Board : Node
         
         var director = Director.getInstance()
         var size = director.getWinSize()
-        
-        var sprite = Sprite.create("background.png")
-        sprite.setAnchorPoint(CGPointZero)
-        self.addChild(sprite)
-        
+                
         self.fillBackground()
     }
     
@@ -739,8 +743,9 @@ class Board : Node
         }
     }
     
-    func checkAndRemoveRows()
+    func checkAndRemoveRows() -> Int
     {
+        var removed = 0
         var row = 0
         for r in 0..<ROWS
         {
@@ -757,6 +762,7 @@ class Board : Node
             
             if count == COLUMNS
             {
+                ++removed
                 removeRow(Fixed(row))
             }
             else
@@ -764,6 +770,8 @@ class Board : Node
                 ++row
             }
         }
+        
+        return removed
     }
     
     func displayLevel()
@@ -820,8 +828,15 @@ class Board : Node
             }
         
         case .IDLE:
-            checkAndRemoveRows()
-            _state = .DROP
+            _rowsCleared += checkAndRemoveRows()
+            if _rowsCleared >= _numRowsNeededForNextLevel + _level
+            {
+                nextLevel()
+            }
+            else
+            {
+                _state = .DROP
+            }
 
         case .PAUSE:
             return
