@@ -32,6 +32,9 @@ class SceneMenu : Scene
         bg.setAnchorPoint(CGPointZero)
         addChild(bg)
 
+        AudioEngine.getInstance().playBackgroundMusic("tetris.mp3", true)
+        AudioEngine.getInstance().setBackgroundMusicVolume(0.2)
+
         var label = Label.createWithTTF("Play", "Arcade.ttf", 180)
         label.setAnchorPoint(CGPointMake(0.5, 0.5))
         label.setPosition(CGPointMake(0.5 * size.width, 700.0))
@@ -56,14 +59,15 @@ class SceneMenu : Scene
         listener.onTouchBegan = startGame
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, label)
         
-        var accelerator = EventListenerAcceleration.create({ (acceleration : Acceleration?, event : Event?) -> Void in
-            if acceleration
-            {
-                self._direction.x = CGFloat(acceleration!.x)
-                self._direction.y = CGFloat(acceleration!.y)
-                Debug.getInstance.log("direction \(self._direction.x), \(self._direction.y)")
-            }
-        })
-        director.eventDispatcher.addEventListenerWithSceneGraphPriority(accelerator, self)
+// Accelerator doesn't appear to be working in Cocos2d-x
+//        var accelerator = EventListenerAcceleration.create({ (acceleration : Acceleration?, event : Event?) -> Void in
+//            if acceleration
+//            {
+//                self._direction.x = CGFloat(acceleration!.x)
+//                self._direction.y = CGFloat(acceleration!.y)
+//                Debug.getInstance.log("direction \(self._direction.x), \(self._direction.y)")
+//            }
+//        })
+//        director.eventDispatcher.addEventListenerWithSceneGraphPriority(accelerator, self)
     }
 }

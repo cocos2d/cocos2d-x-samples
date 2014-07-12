@@ -61,6 +61,8 @@
 		D03DA6021969C6E400F57039 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03DA6001969C6E400F57039 /* Piece.swift */; };
 		D04D66C4196F26AB00E22B1E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C3196F26AB00E22B1E /* Action.swift */; };
 		D04D66C5196F26AB00E22B1E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C3196F26AB00E22B1E /* Action.swift */; };
+		D04D66C819704D2A00E22B1E /* ActionEase.mm in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C719704D2A00E22B1E /* ActionEase.mm */; };
+		D04D66C919704D2A00E22B1E /* ActionEase.mm in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C719704D2A00E22B1E /* ActionEase.mm */; };
 		D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D069AD3A196DB9D500664637 /* Arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D069AD39196DB9D500664637 /* Arcade.ttf */; };
@@ -369,6 +371,8 @@
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		D03DA6001969C6E400F57039 /* Piece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		D04D66C3196F26AB00E22B1E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
+		D04D66C619704D2A00E22B1E /* ActionEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionEase.h; sourceTree = "<group>"; };
+		D04D66C719704D2A00E22B1E /* ActionEase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ActionEase.mm; sourceTree = "<group>"; };
 		D0669AC2196B36380040E7EE /* SceneTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTest.swift; sourceTree = "<group>"; };
 		D069AD39196DB9D500664637 /* Arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arcade.ttf; sourceTree = "<group>"; };
 		D069ADA5196DF7DA00664637 /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
@@ -690,6 +694,8 @@
 			children = (
 				D06FB77A1968A93A00193410 /* Action.h */,
 				D06FB77B1968A93A00193410 /* Action.mm */,
+				D04D66C619704D2A00E22B1E /* ActionEase.h */,
+				D04D66C719704D2A00E22B1E /* ActionEase.mm */,
 				D06FB77C1968A93A00193410 /* ActionInterval.h */,
 				D06FB77D1968A93A00193410 /* ActionInterval.mm */,
 				D06FB77E1968A93A00193410 /* ActionSequence.h */,
@@ -1107,6 +1113,7 @@
 				D06FB7C31968A93A00193410 /* Event.mm in Sources */,
 				D06FB7F31968A98C00193410 /* Board.swift in Sources */,
 				D06FB7E11968A93A00193410 /* Ref.mm in Sources */,
+				D04D66C819704D2A00E22B1E /* ActionEase.mm in Sources */,
 				D06FB7C51968A93A00193410 /* EventDispatcher.mm in Sources */,
 				D06FB7F71968A98C00193410 /* SceneGame.swift in Sources */,
 				D06FB7F11968A98C00193410 /* BlockFactory.swift in Sources */,
@@ -1153,6 +1160,7 @@
 				D06FB7BC1968A93A00193410 /* Transitions.mm in Sources */,
 				D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7CA1968A93A00193410 /* EventListenerAcceleration.mm in Sources */,
+				D04D66C919704D2A00E22B1E /* ActionEase.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				D0E167FF196B744E00005057 /* Color.mm in Sources */,
 				D06FB7F81968A98C00193410 /* SceneGame.swift in Sources */,

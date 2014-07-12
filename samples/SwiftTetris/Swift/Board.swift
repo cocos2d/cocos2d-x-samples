@@ -34,7 +34,7 @@ class Board : Node
     
     var _gameDelay : Float = 1
     var _gameTime : Float = 0
-    var _countDown : Int = 4
+    var _countDown : Int = 3
     
     var _origin : CGPoint = CGPointZero
     var _size : CGSize = CGSizeZero
@@ -45,6 +45,9 @@ class Board : Node
     
     var _board : Node = Node()
     
+    var _rowsCleared : Int = 0
+    var _level : Int = 1
+    
     var _paused : Bool = false
     
     let DELAY : Float = 0.25
@@ -52,13 +55,15 @@ class Board : Node
 
     enum State
     {
+        case LEVEL // Display level state
         case COUNTDOWN // Beginning state
         case IDLE // enter drop state
+        case PAUSE // do nothing state
         case DROP // spawn a single random piece
         case PLAY // user interaction occurs until the piece has landed
         case DEAD // end case when a piece cannot be dropped
     }
-    var _state : State = .COUNTDOWN
+    var _state : State = .LEVEL
     
     //
     // Methods
@@ -68,6 +73,10 @@ class Board : Node
     {
         super.init()
         
+        var director = Director.getInstance()
+        var size = director.getWinSize()
+        setContentSize(size)
+        
         BlockFactory.getInstance.setBoard(self)
         var block = BlockFactory.getInstance.loadColoredBlock(7)
         var blockSize = block.getContentSize()
@@ -76,7 +85,6 @@ class Board : Node
         var listener = EventListenerTouchOneByOne()
         listener.onTouchBegan = touchBoard
         
-        var director = Director.getInstance()
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, _board)
 
         director.console.addCommand("dumpMap", "dumps the map to console", commandDumpMap)
@@ -193,7 +201,7 @@ class Board : Node
         var scene = SceneMenu()
         var fade = TransitionFade.create(3, scene)
         Director.getInstance().replaceScene(fade)
-}
+    }
     
     func fillBackground()
     {
@@ -258,16 +266,16 @@ class Board : Node
         self.addChild(sprite)
         
         self.fillBackground()
+    }
+    
+    override func onEnterTransitionDidFinish()
+    {
+        displayLevel()
         self.scheduleUpdate(update)
     }
     
     func startCountDown()
     {
-        if _countDown > 3
-        {
-            --_countDown
-            return
-        }
         if _countDown < 0
         {
             return
@@ -758,10 +766,39 @@ class Board : Node
         }
     }
     
+    func displayLevel()
+    {
+        var label = Label.createWithTTF("Level \(_level)", "Arcade.ttf", 120)
+        label.setAnchorPoint(CGPointMake(0.5, 0.5))
+        var grey = Color4B.createWithRGBA(128, 128, 128, 128) as Color4B
+        var blue = Color4B.createWithRGBA(88, 157, 214, 255) as Color4B
+        label.setTextColor(blue)
+        label.setOpacity(0.0)
+        addChild(label)
+        label.setNormalizedPosition(CGPointMake(0.5, 0.6))
+        label.enableShadow(grey, CGSizeMake(0.8 * 20, -20), 50)
+
+        var fadein = FadeIn.create(1)
+        var delay = DelayTime.create(3)
+        var fade = FadeOut.create(1)
+        var remove = ClosureAction.createWithDuration(0, { (time : Float) -> Void in
+            label.removeFromParentAndCleanup(true)
+            })
+        var next = ClosureAction.createWithDuration(0, { (time : Float) -> Void in
+            self._state = .COUNTDOWN
+            })
+        var sequence = fadein + delay + fade + remove + next
+        label.runAction(sequence)
+        _state = .PAUSE
+    }
+    
     func update(delta : Float)
     {
         switch _state
         {
+        case .LEVEL:
+            displayLevel()
+            
         case .COUNTDOWN:
             if _countDown >= 0
             {
@@ -786,6 +823,9 @@ class Board : Node
             checkAndRemoveRows()
             _state = .DROP
 
+        case .PAUSE:
+            return
+            
         case .DROP:
             // remove previous block listeners
             cleanupCurrentBlock()
