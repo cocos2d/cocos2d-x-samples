@@ -209,6 +209,8 @@ class Board : Node
     
     func nextLevel()
     {
+        AudioEngine.getInstance().playEffect("oh_yeah.mp3", false, 22050, 0, 1)
+
         var parent = getParent() as SceneGame
         parent.nextLevel()
         _state = .PAUSE
@@ -784,6 +786,8 @@ class Board : Node
             {
                 ++removed
                 removeRow(Fixed(row))
+                
+                AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
             }
             else
             {
