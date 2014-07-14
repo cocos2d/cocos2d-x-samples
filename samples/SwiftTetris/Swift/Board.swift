@@ -31,8 +31,13 @@ class Board : Node
     var _blocks : [Block] = []
     var _currentBlock : Block?
 
+    var _falling : Bool = false
     var _lastDropSpeed : Float = 0.5
     var _dropSpeed : Float = 0.5
+    var _altDropSpeed : Float = 0.1
+    var _startFallingDelay : Float = 0.1
+    var _fallingDelay : Float = 0
+    var _fallingDelayInc : Float = 0.005
     var _time      : Float = 0
     
     var _gameDelay : Float = 1
@@ -480,7 +485,7 @@ class Board : Node
                 var index = cellToIndex(cc)
                 _map[index].block = nil;
             }
-            Debug.getInstance.log("piece has reached \(cell.x), \(cell.y) setting state to DROP")
+            //Debug.getInstance.log("piece has reached \(cell.x), \(cell.y) setting state to DROP")
             _state = .IDLE
             return
         }
@@ -618,10 +623,14 @@ class Board : Node
             
         case .CodeDOWN_ARROW:
             _lastDropSpeed = _dropSpeed
-            _dropSpeed = 0.1
+            _dropSpeed = _altDropSpeed
             
         case .CodeUP_ARROW:
             rotatePiece(nil, event: event)
+            
+        case .CodeSPACE:
+            _falling = true
+            _fallingDelay = _startFallingDelay
             
         default:
             Debug.getInstance.log("invalid key")
@@ -898,6 +907,8 @@ class Board : Node
             return
             
         case .DROP:
+            _falling = false
+
             if _rowsCleared >= _numRowsNeededForNextLevel + _level
             {
                 nextLevel()
@@ -918,9 +929,20 @@ class Board : Node
             }
             
             _time += delta
-            while _time >= _dropSpeed
+            var speed = _dropSpeed
+            if _falling
             {
-                _time -= _dropSpeed
+                speed = _fallingDelay
+                _fallingDelay -= _fallingDelayInc
+                if _fallingDelay < 0
+                {
+                   _fallingDelay = FLT_MIN
+                }
+                Debug.getInstance.log("delay \(_fallingDelay)")
+            }
+            while _time >= speed
+            {
+                _time -= speed
                 moveCurrentBlock()
             }
             
