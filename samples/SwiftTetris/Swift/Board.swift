@@ -55,10 +55,10 @@ class Board : Node
     
     var _paused : Bool = false
     
-    let DELAY : Float = 0.15
-    let DELAY2 : Float = 0.5
-    let DURATION : Float = 1.0
-    let MOVE_TIME : Float = 0.5
+    let DELAY : Float = 0.015
+    let DELAY2 : Float = 0.05
+    let DURATION : Float = 0.10
+    let MOVE_TIME : Float = 0.05
 
     enum State
     {
