@@ -55,8 +55,10 @@ class Board : Node
     
     var _paused : Bool = false
     
-    let DELAY : Float = 0.25
-    let DURATION : Float = 2.0
+    let DELAY : Float = 0.15
+    let DELAY2 : Float = 0.5
+    let DURATION : Float = 1.0
+    let MOVE_TIME : Float = 0.5
 
     enum State
     {
@@ -618,7 +620,7 @@ class Board : Node
             _lastDropSpeed = _dropSpeed
             _dropSpeed = 0.1
             
-        case .CodeSPACE:
+        case .CodeUP_ARROW:
             rotatePiece(nil, event: event)
             
         default:
@@ -697,15 +699,20 @@ class Board : Node
 
     func removeRow(row : Fixed)
     {
-        for c in 0..<COLUMNS
+        _state = .PAUSE
+        Debug.getInstance.log("Setting state to PAUSE")
+        
+        for c in 0 ..< COLUMNS
         {
+            Debug.getInstance.log("cell \(c)")
+
             // first remove the cells in the row
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
 
             var cell = _map[index].cell
             if cell
             {
-                var delay = ClosureAction.createWithDuration(DELAY * Float(c), { (time : Float) -> Void in
+                var delay = ClosureAction.createWithDuration(DELAY * Float(COLUMNS - c), { (time : Float) -> Void in
                     })
                 
                 var speed : Float = 0.0
@@ -716,7 +723,8 @@ class Board : Node
                     cell!.setPosition(pos)
                 })
                 
-                var remove = ClosureAction.createWithDuration(DURATION, { (time : Float) -> Void in
+                var remove = ClosureAction.createWithDuration(0, { (time : Float) -> Void in
+                    self.addScore(1)
                     cell!.removeFromParentAndCleanup(true)
                 })
                 
@@ -727,38 +735,62 @@ class Board : Node
             }
         }
         
-        AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
+        // we don't move the row down until the pieces have flown off
+        // and we stay in a paused state while this happens.
+        var rowDelay = DELAY * Float(COLUMNS)
+        var delay = DelayTime.create(rowDelay)
+        
+        Debug.getInstance.log("move rows down delay \(rowDelay)")
 
-        // now move all the rows above down
-        var start = Int(row)
-        for r in start ..< ROWS
-        {
-            for c in 0 ..< COLUMNS
+        var moveRows = ClosureAction.createWithDuration(0, { (time : Float) in
+            Debug.getInstance.log("begin move rows")
+            // now move all the rows above down
+            var start = Int(row)
+            for r in start ..< ROWS
             {
-                var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r)))
-
-                // move the cell above to match
-                if r < (ROWS - 1)
+                Debug.getInstance.log("begin move columns")
+                for c in 0 ..< COLUMNS
                 {
-                    var above = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r + 1)))
+                    var index = self.cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r)))
                     
-                    var cc = _map[above].cell
-                    if (cc)
+                    // move the cell above to match
+                    if r < (ROWS - 1)
                     {
-                        var pos = cc!.getPosition()
-                        pos.y -= _blockSize.height
-                        cc!.setPosition(pos)
+                        var above = self.cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r + 1)))
+                        
+                        var cc = self._map[above].cell
+                        if (cc)
+                        {
+                            var pos = cc!.getPosition()
+                            pos.y -= self._blockSize.height
+                            var move = MoveTo.create(self.MOVE_TIME, pos)
+                            cc!.runAction(move)
+                            Debug.getInstance.log("move \(r), \(c)")
+                        }
+                        
+                        self._map[index] = self._map[above]
+                        self._map[above] = MapEntry()
                     }
-
-                    _map[index] = _map[above]
-                    _map[above] = MapEntry()
-                }
-                else
-                {
-                    _map[index] = MapEntry()
+                    else
+                    {
+                        self._map[index] = MapEntry()
+                    }
                 }
             }
-        }
+        })
+        
+        var delay2 = DelayTime.create(DELAY2)
+        
+        var nextState = ClosureAction.createWithDuration(0, { (time : Float) in
+            AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
+            self._state = .IDLE
+            Debug.getInstance.log("Setting state back to IDLE")
+        })
+        
+        var actions = delay + moveRows + delay2 + nextState
+        
+        Debug.getInstance.log("Running row move actions")
+        runAction(actions)
     }
     
     func addScore(score : UInt)
@@ -788,9 +820,7 @@ class Board : Node
             {
                 ++removed
                 removeRow(Fixed(row))
-                addScore(UInt(COLUMNS))
-                
-                AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
+                return removed
             }
             else
             {
@@ -798,6 +828,7 @@ class Board : Node
             }
         }
         
+        Debug.getInstance.log("rows removed \(removed)")
         return removed
     }
     
@@ -855,20 +886,23 @@ class Board : Node
             }
         
         case .IDLE:
-            _rowsCleared += checkAndRemoveRows()
-            if _rowsCleared >= _numRowsNeededForNextLevel + _level
-            {
-                nextLevel()
-            }
-            else
+            var numRows = checkAndRemoveRows()
+            _rowsCleared += numRows
+            if numRows == 0
             {
                 _state = .DROP
+                Debug.getInstance.log("Setting state back to DROP")
             }
 
         case .PAUSE:
             return
             
         case .DROP:
+            if _rowsCleared >= _numRowsNeededForNextLevel + _level
+            {
+                nextLevel()
+            }
+
             // remove previous block listeners
             cleanupCurrentBlock()
             if spawnBlock()
