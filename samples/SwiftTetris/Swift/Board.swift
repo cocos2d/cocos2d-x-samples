@@ -40,6 +40,7 @@ class Board : Node
     var _fallingDelayInc : Float = 0.005
     var _time      : Float = 0
     
+    var _countdownDelay : Float = 0.5
     var _gameDelay : Float = 1
     var _gameTime : Float = 0
     var _countDown : Int = 3
@@ -324,11 +325,11 @@ class Board : Node
 
         var actions : Array<Action> = []
         
-        actions.append(ClosureAction.createWithDuration(_gameDelay, { (time : Float) -> Void in
+        actions.append(ClosureAction.createWithDuration(_countdownDelay, { (time : Float) -> Void in
             label.setScale(1 / time)
             }))
         
-        actions.append(ClosureAction.createWithDuration(_gameDelay, { (time : Float) -> Void in
+        actions.append(ClosureAction.createWithDuration(_countdownDelay, { (time : Float) -> Void in
             label.removeFromParentAndCleanup(true)
             }))
         
@@ -853,9 +854,9 @@ class Board : Node
         label.setNormalizedPosition(CGPointMake(0.5, 0.6))
         label.enableShadow(grey, CGSizeMake(0.8 * 20, -20), 50)
 
-        var fadein = FadeIn.create(1)
-        var delay = DelayTime.create(3)
-        var fade = FadeOut.create(1)
+        var fadein = FadeIn.create(0.25)
+        var delay = DelayTime.create(1)
+        var fade = FadeOut.create(0.25)
         var remove = ClosureAction.createWithDuration(0, { (time : Float) -> Void in
             label.removeFromParentAndCleanup(true)
             })
@@ -878,9 +879,9 @@ class Board : Node
             if _countDown >= 0
             {
                 _gameTime += delta
-                while _gameTime >= _gameDelay
+                while _gameTime >= _countdownDelay
                 {
-                    _gameTime -= _gameDelay
+                    _gameTime -= _countdownDelay
                     startCountDown()
                 }
                 
