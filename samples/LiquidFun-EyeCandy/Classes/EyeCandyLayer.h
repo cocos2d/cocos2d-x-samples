@@ -41,8 +41,8 @@ public:
 
 protected:
 
-    virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, bool transformUpdated) override;
-    void onDraw(const cocos2d::Mat4 &transform, bool transformUpdated);
+    virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t transformFlags) override;
+    void onDraw(const cocos2d::Mat4 &transform, uint32_t transformFlags);
 
     GLESDebugDraw *_debugDraw;
     cocos2d::CustomCommand _customCmd;

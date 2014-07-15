@@ -235,16 +235,16 @@ std::string Box2DView::title() const
     return std::string(m_entry->name);
 }
 
-void Box2DView::draw(Renderer *renderer, const Mat4 &transform, bool transformUpdated)
+void Box2DView::draw(Renderer *renderer, const Mat4 &transform, uint32_t transformFlags)
 {
-    Layer::draw(renderer, transform, transformUpdated);
+    Layer::draw(renderer, transform, transformFlags);
 
     _customCmd.init(_globalZOrder);
-    _customCmd.func = CC_CALLBACK_0(Box2DView::onDraw, this, transform, transformUpdated);
+    _customCmd.func = CC_CALLBACK_0(Box2DView::onDraw, this, transform, transformFlags);
     renderer->addCommand(&_customCmd);
 }
 
-void Box2DView::onDraw(const Mat4 &transform, bool transformUpdated)
+void Box2DView::onDraw(const Mat4 &transform, uint32_t transformFlags)
 {
     kmGLPushMatrix();
     kmGLLoadMatrix(&transform);

@@ -124,14 +124,14 @@ void LFParticleSystemNode::setupVBO()
 
 // draw
 
-void LFParticleSystemNode::draw(Renderer *renderer, const Mat4 &transform, bool transformUpdated)
+void LFParticleSystemNode::draw(Renderer *renderer, const Mat4 &transform, uint32_t transformFlags)
 {
     _customCommand.init(_globalZOrder);
-    _customCommand.func = CC_CALLBACK_0(LFParticleSystemNode::onDraw, this, transform, transformUpdated);
+    _customCommand.func = CC_CALLBACK_0(LFParticleSystemNode::onDraw, this, transform, transformFlags);
     renderer->addCommand(&_customCommand);
 }
 
-void LFParticleSystemNode::onDraw(const Mat4 &transform, bool transformUpdated)
+void LFParticleSystemNode::onDraw(const Mat4 &transform, uint32_t transformFlags)
 {
     // transform everything to PTM_RATIO
     Mat4 newMV;

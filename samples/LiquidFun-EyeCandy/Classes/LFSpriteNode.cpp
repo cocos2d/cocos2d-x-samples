@@ -246,11 +246,11 @@ void LFSpriteNode::setRotation(float fRotation)
     }
 }
 
-void LFSpriteNode::visit(Renderer *renderer, const cocos2d::Mat4& parentTransform, bool parentTransformUpdated)
+void LFSpriteNode::visit(Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentTransformFlags)
 {
     // box2d controls the position, so set the transform as dirty
     _transformUpdated = true;
-    Sprite::visit(renderer, parentTransform, parentTransformUpdated);
+    Sprite::visit(renderer, parentTransform, parentTransformFlags);
 }
 
 // returns the transform matrix according the Chipmunk Body values

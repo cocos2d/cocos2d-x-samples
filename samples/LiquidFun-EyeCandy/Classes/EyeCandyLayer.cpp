@@ -242,16 +242,16 @@ void EyeCandyLayer::onTouchesEnded(const std::vector<Touch*>& touches, Event* ev
 
 // Draw
 
-void EyeCandyLayer::draw(Renderer *renderer, const Mat4 &transform, bool transformUpdated)
+void EyeCandyLayer::draw(Renderer *renderer, const Mat4 &transform, uint32_t transformFlags)
 {
-    Layer::draw(renderer, transform, transformUpdated);
+    Layer::draw(renderer, transform, transformFlags);
 
     _customCmd.init(_globalZOrder);
-    _customCmd.func = CC_CALLBACK_0(EyeCandyLayer::onDraw, this, transform, transformUpdated);
+    _customCmd.func = CC_CALLBACK_0(EyeCandyLayer::onDraw, this, transform, transformFlags);
     renderer->addCommand(&_customCmd);
 }
 
-void EyeCandyLayer::onDraw(const Mat4 &transform, bool transformUpdated)
+void EyeCandyLayer::onDraw(const Mat4 &transform, uint32_t transformFlags)
 {
     kmGLPushMatrix();
     kmGLLoadMatrix(&transform);

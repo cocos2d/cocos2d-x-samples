@@ -102,7 +102,7 @@ public:
     virtual float getRotation() const override;
     virtual void setRotation(float fRotation) override;
     virtual const cocos2d::Mat4& getNodeToParentTransform() const override;
-    virtual void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, bool parentTransformUpdated) override;
+    virtual void visit(cocos2d::Renderer *renderer, const cocos2d::Mat4& parentTransform, uint32_t parentTransformFlags) override;
 
 protected:
     const cocos2d::Point& getPosFromPhysics() const;

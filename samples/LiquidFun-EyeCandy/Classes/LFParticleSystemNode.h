@@ -34,8 +34,8 @@ class LFParticleSystemNode : public cocos2d::Node, public cocos2d::BlendProtocol
 public:
     static LFParticleSystemNode* create(b2ParticleSystem* particleSystem, float ratio=1);
 
-    virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, bool transformUpdated) override;
-    void onDraw(const cocos2d::Mat4 &transform, bool transformUpdated);
+    virtual void draw(cocos2d::Renderer *renderer, const cocos2d::Mat4 &transform, uint32_t transformFlags) override;
+    void onDraw(const cocos2d::Mat4 &transform, uint32_t transformFlags);
 
     const cocos2d::BlendFunc& getBlendFunc() const override;
     void setBlendFunc(const cocos2d::BlendFunc &var) override;
