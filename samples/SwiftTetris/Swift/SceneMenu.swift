@@ -26,21 +26,17 @@ THE SOFTWARE.
 //  SceneMenu.swift
 //  Created by Justin Graham on 6/27/14.
 
-import Foundation
-
 class SceneMenu : Scene
 {
     var _extent : Float = 20
     var _magnitude : Float = 0
     var _direction = CGPointMake(0.8,-1)
     
-    func startGame(touch : Touch!, event : Event!) -> Bool
+    func startGame()
     {
         var scene = SceneGame()
         var fade = TransitionFade.create(3, scene)
         Director.getInstance().replaceScene(fade)
-
-        return true
     }
     
     override func onEnter()
@@ -76,18 +72,16 @@ class SceneMenu : Scene
         label.runAction(action)
             
         var listener = EventListenerTouchOneByOne.create()
-        listener.onTouchBegan = startGame
+        listener.onTouchBegan = { (Touch, Event) -> Bool in self.startGame() ; return true }
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(listener, label)
         
-// Accelerator doesn't appear to be working in Cocos2d-x
-//        var accelerator = EventListenerAcceleration.create({ (acceleration : Acceleration?, event : Event?) -> Void in
-//            if acceleration
-//            {
-//                self._direction.x = CGFloat(acceleration!.x)
-//                self._direction.y = CGFloat(acceleration!.y)
-//                Debug.getInstance.log("direction \(self._direction.x), \(self._direction.y)")
-//            }
-//        })
-//        director.eventDispatcher.addEventListenerWithSceneGraphPriority(accelerator, self)
+        var keybdListener = EventListenerKeyboard()
+        keybdListener.onKeyPressed = { (KeyCode, Event) in self.startGame() }
+        director.eventDispatcher.addEventListenerWithSceneGraphPriority(keybdListener, self)
+    }
+    
+    override func onExit()
+    {
+        Director.getInstance().eventDispatcher.removeEventListenersForTarget(self, true)
     }
 }

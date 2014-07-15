@@ -26,8 +26,6 @@ THE SOFTWARE.
 //  SceneSplash.swift
 //  Created by Justin Graham on 6/27/14.
 
-import Foundation
-
 // displays the same image as the loading image,
 // and immediately fades to the menu scene
 class SceneSplash : Scene

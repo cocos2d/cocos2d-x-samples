@@ -26,8 +26,6 @@ THE SOFTWARE.
 //  Piece.swift
 //  Created by Justin Graham on 7/6/14.
 
-import Foundation
-
 class Piece : Node
 {
     var _board : Board? = nil

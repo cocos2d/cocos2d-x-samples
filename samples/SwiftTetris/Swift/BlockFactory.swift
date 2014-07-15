@@ -26,8 +26,6 @@ THE SOFTWARE.
 //  BlockFactory.swift
 //  Created by Justin Graham on 6/20/14.
 
-import Foundation
-
 class BlockFactory
 {
     let NUM_ROWS : Int = 4

@@ -26,8 +26,6 @@ THE SOFTWARE.
 //  SceneGame.swift
 //  Created by Justin Graham on 6/20/14.
 
-import Foundation
-
 class SceneGame : Scene
 {
     var _board : Board = Board()
@@ -50,7 +48,6 @@ class SceneGame : Scene
     {
         removeAllChildren()
     }
-    
     
     func nextLevel(score : UInt)
     {

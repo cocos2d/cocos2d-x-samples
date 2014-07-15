@@ -26,8 +26,6 @@ THE SOFTWARE.
 //  Board.swift
 //  Created by Justin Graham on 6/27/14.
 
-import Foundation
-
 //
 // Constants
 //
@@ -93,6 +91,7 @@ class Board : Node
         case DROP // spawn a single random piece
         case PLAY // user interaction occurs until the piece has landed
         case DEAD // end case when a piece cannot be dropped
+        case NEXTLEVEL // state cannot be changed once in this state
     }
     var _state : State = .LEVEL
     
@@ -240,7 +239,7 @@ class Board : Node
 
         var parent = getParent() as SceneGame
         parent.nextLevel(_score)
-        _state = .PAUSE
+        setState(.NEXTLEVEL)
     }
     
     func fillBackground()
@@ -405,7 +404,7 @@ class Board : Node
         if false == canPlaceBlock(block)
         {
             Debug.getInstance.log("DEAD")
-            _state = .DEAD
+            setState(.DEAD)
             return false
         }
         
@@ -493,8 +492,7 @@ class Board : Node
                 var index = cellToIndex(cc)
                 _map[index].block = nil;
             }
-            //Debug.getInstance.log("piece has reached \(cell.x), \(cell.y) setting state to DROP")
-            _state = .IDLE
+            setState(.IDLE)
             return
         }
         
@@ -508,7 +506,7 @@ class Board : Node
         if !canPlaceBlock(block)
         {
             block.setPos(pos)
-            _state = .IDLE
+            setState(.IDLE)
         }
         block.addToMap()
     }
@@ -612,7 +610,7 @@ class Board : Node
             _dropSpeed = _lastDropSpeed
         
         default:
-            Debug.getInstance.log("invalid key")
+            break
         }
     }
     
@@ -640,7 +638,7 @@ class Board : Node
             startFallingPiece()
 
         default:
-            Debug.getInstance.log("invalid key")
+            break
         }
     }
     
@@ -715,7 +713,7 @@ class Board : Node
 
     func removeRow(row : Fixed)
     {
-        _state = .PAUSE
+        setState(.PAUSE)
         
         for c in 0 ..< COLUMNS
         {
@@ -774,7 +772,6 @@ class Board : Node
                             pos.y -= self._blockSize.height
                             var move = MoveTo.create(self.MOVE_TIME, pos)
                             cc!.runAction(move)
-                            Debug.getInstance.log("move \(r), \(c)")
                         }
                         
                         self._map[index] = self._map[above]
@@ -792,7 +789,8 @@ class Board : Node
         
         var nextState = ClosureAction.createWithDuration(0, { (time : Float) in
             AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
-            self._state = .IDLE
+            self.setState(.IDLE)
+            Debug.getInstance.log("SET STATE TO IDLE")
         })
         
         var actions = delay + moveRows + delay2 + nextState
@@ -856,7 +854,7 @@ class Board : Node
             pos.y = newPos.y
         }
         block.addToMap()
-        _state = .PLAY
+        setState(.PLAY)
         _time = 0
     }
     
@@ -879,11 +877,19 @@ class Board : Node
             label.removeFromParentAndCleanup(true)
             })
         var next = ClosureAction.createWithDuration(0, { (time : Float) -> Void in
-            self._state = .COUNTDOWN
+            self.setState(.COUNTDOWN)
             })
         var sequence = fadein + delay + fade + remove + next
         label.runAction(sequence)
-        _state = .PAUSE
+        setState(.PAUSE)
+    }
+    
+    func setState(state : State)
+    {
+        if _state != .NEXTLEVEL
+        {
+            _state = state
+        }
     }
     
     func update(delta : Float)
@@ -910,33 +916,30 @@ class Board : Node
             }
             else
             {
-                _state = .IDLE
+                setState(.IDLE)
             }
         
         case .IDLE:
             var numRows = checkAndRemoveRows()
             _rowsCleared += numRows
+            if _rowsCleared >= _numRowsNeededForNextLevel + _level
+            {
+                nextLevel()
+            }
             if numRows == 0
             {
-                _state = .DROP
-                Debug.getInstance.log("Setting state back to DROP")
+                setState(.DROP)
             }
 
         case .PAUSE:
             return
             
         case .DROP:
-            if _rowsCleared >= _numRowsNeededForNextLevel + _level
-            {
-                nextLevel()
-            }
-
             // remove previous block listeners
             cleanupCurrentBlock()
             if spawnBlock()
             {
-                Debug.getInstance.log("setting state to PLAY")
-                _state = .PLAY
+                setState(.PLAY)
             }
             
         case .PLAY:
@@ -955,6 +958,9 @@ class Board : Node
             
         case .DEAD:
             gameOver()
+            
+        case .NEXTLEVEL:
+            return
             
         default:
             Debug.getInstance.log("invalid state")
