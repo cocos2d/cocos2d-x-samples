@@ -239,7 +239,7 @@ class Board : Node
         _cellBL = FixedPoint(x: Fixed(b), y: Fixed(l))
         _cellTR = FixedPoint(x: Fixed(r), y: Fixed(t))
         
-        Debug.getInstance.log("across \(across) down \(down) l \(l) r \(r) t \(t) b \(b)")
+        //Debug.getInstance.log("across \(across) down \(down) l \(l) r \(r) t \(t) b \(b)")
         
         for d in 0..<down
         {
@@ -265,8 +265,6 @@ class Board : Node
         _origin = CGPointMake(left, bott)
         _size = CGSizeMake(CGFloat(r - l) * _blockSize.width, CGFloat(t - b) * _blockSize.height)
         
-        Debug.getInstance.log("origin \(_origin) size \(_size)")
-        
         self.addChild(_board)
     }
     
@@ -276,7 +274,6 @@ class Board : Node
         {
             _map.append(MapEntry())
         }
-        Debug.getInstance.log("map size \(_map.count)")
         
         var director = Director.getInstance()
         var size = director.getWinSize()
@@ -406,8 +403,6 @@ class Board : Node
         
         AudioEngine.getInstance().playEffect("drop.mp3", false, 22050, 0, 1)
 
-        Debug.getInstance.log("Spawned a new block type \(block.type!)")
-        
         return true
     }
     
@@ -423,14 +418,10 @@ class Board : Node
     {
         var piece = block.getPiece()
         
-        Debug.getInstance.log("dimensions   \(piece.slotWidth()), \(piece.slotHeight())")
-        
         var l = 0 - piece.BL().x
         var r = Fixed(COLUMNS) - piece.TR().x
         
         var slot = Int(Utilities.random(Double(l), Double(r)))
-        
-        Debug.getInstance.log("l \(l) -> \(slot) -> r\(r)")
         
         var x = slot
         var y = ROWS - Int(piece.TR().y)
@@ -440,8 +431,6 @@ class Board : Node
         _board.addChild(block)
         _blocks.append(block)
         _currentBlock = block
-        
-        //Debug.getInstance.log("placed new block at \(x), \(y)")
     }
     
     func clampBlockToPlayArea(block : Block)
@@ -707,12 +696,9 @@ class Board : Node
     func removeRow(row : Fixed)
     {
         _state = .PAUSE
-        Debug.getInstance.log("Setting state to PAUSE")
         
         for c in 0 ..< COLUMNS
         {
-            Debug.getInstance.log("cell \(c)")
-
             // first remove the cells in the row
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
 
@@ -747,15 +733,11 @@ class Board : Node
         var rowDelay = DELAY * Float(COLUMNS)
         var delay = DelayTime.create(rowDelay)
         
-        Debug.getInstance.log("move rows down delay \(rowDelay)")
-
         var moveRows = ClosureAction.createWithDuration(0, { (time : Float) in
-            Debug.getInstance.log("begin move rows")
             // now move all the rows above down
             var start = Int(row)
             for r in start ..< ROWS
             {
-                Debug.getInstance.log("begin move columns")
                 for c in 0 ..< COLUMNS
                 {
                     var index = self.cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r)))
@@ -791,12 +773,10 @@ class Board : Node
         var nextState = ClosureAction.createWithDuration(0, { (time : Float) in
             AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
             self._state = .IDLE
-            Debug.getInstance.log("Setting state back to IDLE")
         })
         
         var actions = delay + moveRows + delay2 + nextState
         
-        Debug.getInstance.log("Running row move actions")
         runAction(actions)
     }
     
@@ -835,7 +815,6 @@ class Board : Node
             }
         }
         
-        Debug.getInstance.log("rows removed \(removed)")
         return removed
     }
     
@@ -848,7 +827,6 @@ class Board : Node
         while newPos.y > 0
         {
             --newPos.y
-            Debug.getInstance.log("falling \(newPos.y)")
             block.setPos(newPos)
             if !canPlaceBlock(block)
             {
