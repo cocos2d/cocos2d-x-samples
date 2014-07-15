@@ -63,8 +63,6 @@
 		D04D66C5196F26AB00E22B1E /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C3196F26AB00E22B1E /* Action.swift */; };
 		D04D66C819704D2A00E22B1E /* ActionEase.mm in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C719704D2A00E22B1E /* ActionEase.mm */; };
 		D04D66C919704D2A00E22B1E /* ActionEase.mm in Sources */ = {isa = PBXBuildFile; fileRef = D04D66C719704D2A00E22B1E /* ActionEase.mm */; };
-		D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
-		D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0669AC2196B36380040E7EE /* SceneTest.swift */; };
 		D069AD3A196DB9D500664637 /* Arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D069AD39196DB9D500664637 /* Arcade.ttf */; };
 		D069AD3B196DB9D500664637 /* Arcade.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D069AD39196DB9D500664637 /* Arcade.ttf */; };
 		D069ADAC196DF7DA00664637 /* drop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D069ADA5196DF7DA00664637 /* drop.mp3 */; };
@@ -373,7 +371,6 @@
 		D04D66C3196F26AB00E22B1E /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		D04D66C619704D2A00E22B1E /* ActionEase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionEase.h; sourceTree = "<group>"; };
 		D04D66C719704D2A00E22B1E /* ActionEase.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ActionEase.mm; sourceTree = "<group>"; };
-		D0669AC2196B36380040E7EE /* SceneTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneTest.swift; sourceTree = "<group>"; };
 		D069AD39196DB9D500664637 /* Arcade.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Arcade.ttf; sourceTree = "<group>"; };
 		D069ADA5196DF7DA00664637 /* drop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = drop.mp3; sourceTree = "<group>"; };
 		D069ADA6196DF7DA00664637 /* go.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = go.mp3; sourceTree = "<group>"; };
@@ -802,7 +799,6 @@
 				D06FB7EC1968A98C00193410 /* SceneGame.swift */,
 				D06FB7ED1968A98C00193410 /* SceneMenu.swift */,
 				D06FB7EE1968A98C00193410 /* SceneSplash.swift */,
-				D0669AC2196B36380040E7EE /* SceneTest.swift */,
 			);
 			name = Swift;
 			path = ../Swift;
@@ -1125,7 +1121,6 @@
 				D06FB7FB1968A98C00193410 /* SceneSplash.swift in Sources */,
 				D06FB7D71968A93A00193410 /* Scene.mm in Sources */,
 				D06FB7C71968A93A00193410 /* EventListener.mm in Sources */,
-				D0669AC3196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7B51968A93A00193410 /* Action.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				D06FB7B71968A93A00193410 /* ActionInterval.mm in Sources */,
@@ -1158,7 +1153,6 @@
 				D04D66C5196F26AB00E22B1E /* Action.swift in Sources */,
 				D06FB7CC1968A93A00193410 /* EventListenerKeyboard.mm in Sources */,
 				D06FB7BC1968A93A00193410 /* Transitions.mm in Sources */,
-				D0669AC4196B36380040E7EE /* SceneTest.swift in Sources */,
 				D06FB7CA1968A93A00193410 /* EventListenerAcceleration.mm in Sources */,
 				D04D66C919704D2A00E22B1E /* ActionEase.mm in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
