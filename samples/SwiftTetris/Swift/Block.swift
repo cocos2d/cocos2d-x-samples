@@ -26,6 +26,8 @@ THE SOFTWARE.
 //  Block.swift
 //  Created by Justin Graham on 6/25/14.
 
+import Foundation
+
 class Block : Node
 {
     var _board : Board? = nil
