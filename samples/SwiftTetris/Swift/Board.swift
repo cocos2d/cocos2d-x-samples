@@ -36,8 +36,6 @@ class Board : Node
     var _dropSpeed : Float = 0.5
     var _altDropSpeed : Float = 0.1
     var _startFallingDelay : Float = 0.1
-    var _fallingDelay : Float = 0
-    var _fallingDelayInc : Float = 0.005
     var _time      : Float = 0
     
     var _countdownDelay : Float = 0.5
@@ -630,9 +628,8 @@ class Board : Node
             rotatePiece(nil, event: event)
             
         case .CodeSPACE:
-            _falling = true
-            _fallingDelay = _startFallingDelay
-            
+            startFallingPiece()
+
         default:
             Debug.getInstance.log("invalid key")
         }
@@ -842,6 +839,29 @@ class Board : Node
         return removed
     }
     
+    func startFallingPiece()
+    {
+        var block = _currentBlock!
+        block.removeFromMap()
+        var pos = block.getPos()
+        var newPos = pos
+        while newPos.y > 0
+        {
+            --newPos.y
+            Debug.getInstance.log("falling \(newPos.y)")
+            block.setPos(newPos)
+            if !canPlaceBlock(block)
+            {
+                block.setPos(pos)
+                break
+            }
+            pos.y = newPos.y
+        }
+        block.addToMap()
+        _state = .PLAY
+        _time = 0
+    }
+    
     func displayLevel()
     {
         var label = Label.createWithTTF("Level \(_level)", "Arcade.ttf", 120)
@@ -908,8 +928,6 @@ class Board : Node
             return
             
         case .DROP:
-            _falling = false
-
             if _rowsCleared >= _numRowsNeededForNextLevel + _level
             {
                 nextLevel()
@@ -931,16 +949,6 @@ class Board : Node
             
             _time += delta
             var speed = _dropSpeed
-            if _falling
-            {
-                speed = _fallingDelay
-                _fallingDelay -= _fallingDelayInc
-                if _fallingDelay < 0
-                {
-                   _fallingDelay = FLT_MIN
-                }
-                Debug.getInstance.log("delay \(_fallingDelay)")
-            }
             while _time >= speed
             {
                 _time -= speed
