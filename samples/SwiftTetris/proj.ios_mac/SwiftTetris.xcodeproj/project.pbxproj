@@ -568,7 +568,7 @@
 			children = (
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
-				D06FB7E71968A98C00193410 /* Swift */,
+				D06FB7E71968A98C00193410 /* Tetris */,
 				D06FB7771968A93A00193410 /* Bindings */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				080E96DDFE201D6D7F000001 /* ios */,
@@ -788,7 +788,7 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		D06FB7E71968A98C00193410 /* Swift */ = {
+		D06FB7E71968A98C00193410 /* Tetris */ = {
 			isa = PBXGroup;
 			children = (
 				D06FB7E81968A98C00193410 /* Block.swift */,
@@ -800,7 +800,7 @@
 				D06FB7ED1968A98C00193410 /* SceneMenu.swift */,
 				D06FB7EE1968A98C00193410 /* SceneSplash.swift */,
 			);
-			name = Swift;
+			name = Tetris;
 			path = ../Swift;
 			sourceTree = "<group>";
 		};
