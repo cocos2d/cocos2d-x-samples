@@ -790,7 +790,6 @@ class Board : Node
         var nextState = ClosureAction.createWithDuration(0, { (time : Float) in
             AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
             self.setState(.IDLE)
-            Debug.getInstance.log("SET STATE TO IDLE")
         })
         
         var actions = delay + moveRows + delay2 + nextState
