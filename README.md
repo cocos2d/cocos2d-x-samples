@@ -62,6 +62,7 @@ From [GAF](http://gafmedia.com/about) homepage:
 
 _"GAF stands for Generic Animation Format. GAF is designed to store Flash animations in an open cross platform format for further playback in a multitude of game development frameworks and devices. GAF enables artists and animators to use Flash CS for creating complex animations and seamlessly use them with various game development frameworks."_
 
+This sample shows how to use GAF with cocos2d-x. It has 5 different GAF samples and shows how to play sound events with GAF.
 
 Supported platforms:
 
