@@ -29,7 +29,9 @@ THE SOFTWARE.
 static const int MAX_PARTICLES = 10000;
 
 // Custom Shader
-static const GLchar* shaderVert = R"(
+
+// Vertex shader
+static const GLchar* _shaderVert = R"(
 attribute vec4 a_position;
 attribute vec4 a_color;
 attribute float a_size;
@@ -42,12 +44,13 @@ varying vec4 v_fragmentColor;
 void main()
 {
     gl_Position = CC_PMatrix * CC_MVMatrix * a_position;
-    gl_PointSize = CC_MVMatrix[0][0] * a_size;
+    gl_PointSize = CC_MVMatrix[0][0] * a_size * 1.5;
     v_fragmentColor = a_color;
 }
 )";
 
-static const GLchar* shaderFrag = R"(
+// Fragment shader
+static const GLchar* _shaderFrag = R"(
 
 #ifdef GL_ES
 precision lowp float;
@@ -56,7 +59,8 @@ precision lowp float;
 varying vec4 v_fragmentColor;
 void main()
 {
-    gl_FragColor = v_fragmentColor * texture2D(CC_Texture0, gl_PointCoord);
+//    gl_FragColor = v_fragmentColor * texture2D(CC_Texture0, gl_PointCoord);
+    gl_FragColor = texture2D(CC_Texture0, gl_PointCoord);
 }
 )";
 
@@ -89,16 +93,24 @@ bool LFParticleSystemNode::init(b2ParticleSystem* particleSystem, float ratio)
     _ratio = ratio;
 
     // own shader
-    GLProgram *p = GLProgram::createWithByteArrays(shaderVert, shaderFrag);
-    GLProgramState *state = GLProgramState::getOrCreateWithGLProgram(p);
+
+    auto glprogram = GLProgram::createWithByteArrays(_shaderVert, _shaderFrag);
+
+    GLProgramState *state = GLProgramState::getOrCreateWithGLProgram(glprogram);
     setGLProgramState(state);
 
     setupVBO();
 
     auto textureCache = Director::getInstance()->getTextureCache();
-    _texture = textureCache->addImage("Images/fire.png");
+    _texture = textureCache->addImage("Images/circle.png");
 
-    _blendFunc = BlendFunc::ADDITIVE;
+//    Size size = _texture->getContentSizeInPixels();
+//    state->setUniformVec2("resolution", size);
+//    state->setUniformFloat("blurRadius", 1);
+//    state->setUniformFloat("sampleNum", 1);
+
+//    _blendFunc = BlendFunc::ADDITIVE;
+    _blendFunc = BlendFunc::ALPHA_NON_PREMULTIPLIED;
 
     return true;
 }
@@ -107,8 +119,7 @@ void LFParticleSystemNode::setupVBO()
 {
     _sizes = (GLfloat*)malloc(MAX_PARTICLES * sizeof(_sizes[0]));
     for(int i=0; i<MAX_PARTICLES; i++) {
-        float s = _particleSystem->GetRadius() * 2;
-        _sizes[i] = s + CCRANDOM_0_1() * s;
+        _sizes[i] = _particleSystem->GetRadius() * 2;
     }
 
     auto glProgramState = getGLProgramState();
