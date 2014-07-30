@@ -1,7 +1,7 @@
-cocos2d-x-samples
+Cocos2d-x-samples
 =================
 
-Contains different samples that show how to use cocos2d-x v3.2 with 3rd party libraries:
+Contains different samples that show how to use Cocos2d-x v3.2 with 3rd party libraries:
 
 ## Running the samples
 
