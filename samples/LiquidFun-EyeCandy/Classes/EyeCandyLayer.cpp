@@ -51,14 +51,19 @@ EyeCandyLayer::EyeCandyLayer()
     // init physics
     this->initPhysics();
 
-    auto p = LFParticleSystemNode::create(_particleSystem, PTM_RATIO);
-    this->addChild(p);
+    auto s = Director::getInstance()->getWinSize();
+
+    // background color
+    auto color = LayerColor::create(Color4B::GRAY);
+    this->addChild(color,-1);
+
+    auto particle = LFParticleSystemNode::create(_particleSystem, PTM_RATIO);
+    this->addChild(particle);
 
     //Set up sprite
     auto parent = Node::create();
     addChild(parent, 0, kTagParentNode);
 
-    auto s = director->getWinSize();
     addNewSpriteAtPosition(Point(s.width/2, s.height/2));
 
     auto label = Label::createWithTTF("Tap screen", "fonts/Marker Felt.ttf", 32.0f);
@@ -137,14 +142,13 @@ void EyeCandyLayer::initPhysics()
     // particles
     b2ParticleSystemDef particleSystemDef;
     particleSystemDef.dampingStrength = 0.2f;
-    particleSystemDef.radius = 0.3f;
+    particleSystemDef.radius = 0.7f;
     _particleSystem = _world->CreateParticleSystem(&particleSystemDef);
     _particleSystem->SetGravityScale(0.4f);
     _particleSystem->SetDensity(1.2f);
 
     b2ParticleGroupDef pd;
-    pd.flags = b2_waterParticle | b2_colorMixingParticle;
-    pd.color.Set(30, 64, 194, 255);
+    pd.flags = b2_waterParticle;
 
     b2PolygonShape shape2;
     shape2.SetAsBox(9.0f, 9.0f, b2Vec2(0.0f, 0.0f), 0.0);
@@ -246,6 +250,11 @@ void EyeCandyLayer::draw(Renderer *renderer, const Mat4 &transform, uint32_t tra
 {
     Layer::draw(renderer, transform, transformFlags);
 
+//    _renderTexture->begin();
+//    _renderTexture->beginWithClear(0, 0, 0, 1);
+//    _particle->visit(renderer, transform, transformFlags);
+//    _renderTexture->end();
+
     _customCmd.init(_globalZOrder);
     _customCmd.func = CC_CALLBACK_0(EyeCandyLayer::onDraw, this, transform, transformFlags);
     renderer->addCommand(&_customCmd);
@@ -258,6 +267,7 @@ void EyeCandyLayer::onDraw(const Mat4 &transform, uint32_t transformFlags)
 
     GL::enableVertexAttribs( cocos2d::GL::VERTEX_ATTRIB_FLAG_POSITION );
     _world->DrawDebugData();
+
     CHECK_GL_ERROR_DEBUG();
 
     kmGLPopMatrix();

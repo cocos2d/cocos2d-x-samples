@@ -45,7 +45,7 @@ protected:
     ~LFParticleSystemNode();
 
     bool init(b2ParticleSystem* particleSystem, float ratio=1);
-    void setupVBO();
+    void setup();
 
     cocos2d::CustomCommand _customCommand;
     b2ParticleSystem* _particleSystem; // weak ref
@@ -56,6 +56,7 @@ protected:
 
     cocos2d::BlendFunc _blendFunc;
     cocos2d::Texture2D *_texture;
+    cocos2d::RenderTexture *_renderTexture;
 };
 
 #endif /* defined(__LiquidFun_EyeCandy__LFParticleSystemNode__) */

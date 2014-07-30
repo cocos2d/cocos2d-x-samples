@@ -24,6 +24,7 @@
 #include <Box2D/Box2D.h>
 
 class GLESDebugDraw;
+class LFParticleSystemNode;
 
 class EyeCandyLayer : public cocos2d::Layer
 {
