@@ -44,6 +44,7 @@ Supported platforms:
 ### LiquidFun - EyeCandy
 
 ![Eye Candy](https://lh6.googleusercontent.com/-ngcGTSiyuX0/U9lakbgNXbI/AAAAAAAA_Xk/Xin2q8MuRiA/s400/screenshot-2014-07-29-19-02-07.png)
+
 The Eye Candy demo that comes with LiquidFun, adapted for cocos2d-x. Includes two useful classes:
 
 - `LFParticleSystemNode`: Wraps a LiquidFun `b2ParticleSystem` into a cocos2d-x node.
