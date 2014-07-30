@@ -27,57 +27,6 @@ using namespace cocos2d;
 
 #define PTM_RATIO 32
 
-
-// Custom Shader for RenderTexture
-
-// Vertex shader
-static const GLchar* _shaderVert = R"(
-attribute vec4 a_position;
-attribute vec2 a_texCoord;
-attribute vec4 a_color;
-
-#ifdef GL_ES
-varying lowp vec4 v_fragmentColor;
-varying mediump vec2 v_texCoord;
-#else
-varying vec4 v_fragmentColor;
-varying vec2 v_texCoord;
-#endif
-
-void main()
-{
-    gl_Position = CC_PMatrix * a_position;
-    v_fragmentColor = a_color;
-    v_texCoord = a_texCoord;
-}
-)";
-
-// Fragment shader
-static const GLchar* _shaderFrag = R"(
-
-#ifdef GL_ES
-precision lowp float;
-#endif
-
-varying vec4 v_fragmentColor;
-varying vec2 v_texCoord;
-
-void main()
-{
-//    gl_FragColor = v_fragmentColor * texture2D(CC_Texture0, v_texCoord);
-    vec4 color = v_fragmentColor * texture2D(CC_Texture0, v_texCoord);
-    if( color.r < 0.01)
-        color = vec4(0,0,0,0);
-    else if( color.r < 0.15)
-        color = vec4(1,1,1,1);
-//    else if( color.r < 0.7 )
-//        color = vec4(0,1,0,1);
-    else
-        color = vec4(0.6,0.6,0.6,1);
-    gl_FragColor = color;
-})";
-
-
 enum {
     kTagParentNode = 1,
 };
@@ -104,21 +53,12 @@ EyeCandyLayer::EyeCandyLayer()
 
     auto s = Director::getInstance()->getWinSize();
 
-    // create a render texture, this is what we are going to draw into
-    _renderTexture = cocos2d::RenderTexture::create(s.width, s.height, Texture2D::PixelFormat::RGBA8888);
-    this->addChild(_renderTexture);
-    _renderTexture->setAnchorPoint(Point::ANCHOR_MIDDLE);
-    _renderTexture->setPosition(Point(s.width/2, s.height/2));
+    // background color
+    auto color = LayerColor::create(Color4B::GRAY);
+    this->addChild(color,-1);
 
-    // Change RenderTexture Sprite shader
-    auto program = GLProgram::createWithByteArrays(_shaderVert, _shaderFrag);
-    auto programState = GLProgramState::getOrCreateWithGLProgram(program);
-    _renderTexture->getSprite()->setGLProgramState(programState);
-
-    _particle = LFParticleSystemNode::create(_particleSystem, PTM_RATIO);
-    _particle->retain();
-//    this->addChild(_particle);
-//    _renderTexture->addChild(p);
+    auto particle = LFParticleSystemNode::create(_particleSystem, PTM_RATIO);
+    this->addChild(particle);
 
     //Set up sprite
     auto parent = Node::create();
@@ -202,14 +142,13 @@ void EyeCandyLayer::initPhysics()
     // particles
     b2ParticleSystemDef particleSystemDef;
     particleSystemDef.dampingStrength = 0.2f;
-    particleSystemDef.radius = 0.3f;
+    particleSystemDef.radius = 0.7f;
     _particleSystem = _world->CreateParticleSystem(&particleSystemDef);
     _particleSystem->SetGravityScale(0.4f);
     _particleSystem->SetDensity(1.2f);
 
     b2ParticleGroupDef pd;
-    pd.flags = b2_waterParticle | b2_colorMixingParticle;
-    pd.color.Set(30, 64, 194, 255);
+    pd.flags = b2_waterParticle;
 
     b2PolygonShape shape2;
     shape2.SetAsBox(9.0f, 9.0f, b2Vec2(0.0f, 0.0f), 0.0);
@@ -312,11 +251,9 @@ void EyeCandyLayer::draw(Renderer *renderer, const Mat4 &transform, uint32_t tra
     Layer::draw(renderer, transform, transformFlags);
 
 //    _renderTexture->begin();
-    _renderTexture->beginWithClear(0, 0, 0, 1);
-
-    _particle->visit(renderer, transform, transformFlags);
-
-    _renderTexture->end();
+//    _renderTexture->beginWithClear(0, 0, 0, 1);
+//    _particle->visit(renderer, transform, transformFlags);
+//    _renderTexture->end();
 
     _customCmd.init(_globalZOrder);
     _customCmd.func = CC_CALLBACK_0(EyeCandyLayer::onDraw, this, transform, transformFlags);

@@ -25,44 +25,90 @@ THE SOFTWARE.
 
 #include "LFParticleSystemNode.h"
 
+//
+// --------- Custom Shaders ---------
+//          Particle System
+//
 
-static const int MAX_PARTICLES = 10000;
-
-// Custom Shader
-
-// Vertex shader
-static const GLchar* _shaderVert = R"(
+static const GLchar* _particleShaderVert = R"(
 attribute vec4 a_position;
-attribute vec4 a_color;
-attribute float a_size;
+uniform float u_size;
 
-#ifdef GL_ES
-varying lowp vec4 v_fragmentColor;
-#else
-varying vec4 v_fragmentColor;
-#endif
 void main()
 {
     gl_Position = CC_PMatrix * CC_MVMatrix * a_position;
-    gl_PointSize = CC_MVMatrix[0][0] * a_size * 1.5;
-    v_fragmentColor = a_color;
+    gl_PointSize = CC_MVMatrix[0][0] * u_size * 1.5;
 }
 )";
 
 // Fragment shader
-static const GLchar* _shaderFrag = R"(
+static const GLchar* _particleShaderFrag = R"(
+
+#ifdef GL_ES
+precision lowp float;
+#endif
+
+void main()
+{
+    gl_FragColor = texture2D(CC_Texture0, gl_PointCoord);
+}
+)";
+
+//
+// --------- Custom Shaders ---------
+//           Render Texture
+//
+
+// Vertex shader
+static const GLchar* _renderTextureShaderVert = R"(
+attribute vec4 a_position;
+attribute vec2 a_texCoord;
+attribute vec4 a_color;
+
+#ifdef GL_ES
+varying lowp vec4 v_fragmentColor;
+varying mediump vec2 v_texCoord;
+#else
+varying vec4 v_fragmentColor;
+varying vec2 v_texCoord;
+#endif
+
+void main()
+{
+    gl_Position = CC_PMatrix * a_position;
+    v_fragmentColor = a_color;
+    v_texCoord = a_texCoord;
+}
+)";
+
+// Fragment shader
+static const GLchar* _renderTextureShaderFrag = R"(
 
 #ifdef GL_ES
 precision lowp float;
 #endif
 
 varying vec4 v_fragmentColor;
+varying vec2 v_texCoord;
+uniform float u_threshold_discard;
+uniform float u_threshold_border;
+
 void main()
 {
-//    gl_FragColor = v_fragmentColor * texture2D(CC_Texture0, gl_PointCoord);
-    gl_FragColor = texture2D(CC_Texture0, gl_PointCoord);
-}
-)";
+    //    gl_FragColor = v_fragmentColor * texture2D(CC_Texture0, v_texCoord);
+    vec4 color = v_fragmentColor * texture2D(CC_Texture0, v_texCoord);
+    if( color.r < u_threshold_discard)
+        // black or discard
+        color = vec4(0,0,0,0);
+    else if( color.r < u_threshold_border)
+        // blue for the border
+        color = vec4(0.2,0.2,0.9,1);
+    else
+        // white for the center
+        color = vec4(1,1,1,1);
+    gl_FragColor = color;
+})";
+
 
 
 using namespace cocos2d;
@@ -94,41 +140,46 @@ bool LFParticleSystemNode::init(b2ParticleSystem* particleSystem, float ratio)
 
     // own shader
 
-    auto glprogram = GLProgram::createWithByteArrays(_shaderVert, _shaderFrag);
+    auto glprogram = GLProgram::createWithByteArrays(_particleShaderVert, _particleShaderFrag);
 
     GLProgramState *state = GLProgramState::getOrCreateWithGLProgram(glprogram);
     setGLProgramState(state);
 
-    setupVBO();
+    setup();
 
     auto textureCache = Director::getInstance()->getTextureCache();
-    _texture = textureCache->addImage("Images/circle.png");
+    _texture = textureCache->addImage("Images/fire-grayscale.png");
 
-//    Size size = _texture->getContentSizeInPixels();
-//    state->setUniformVec2("resolution", size);
-//    state->setUniformFloat("blurRadius", 1);
-//    state->setUniformFloat("sampleNum", 1);
-
-//    _blendFunc = BlendFunc::ADDITIVE;
     _blendFunc = BlendFunc::ALPHA_NON_PREMULTIPLIED;
+//    _blendFunc = BlendFunc::ADDITIVE;
+
+
+    // create a render texture, this is what we are going to draw into
+    auto s = Director::getInstance()->getWinSize();
+    _renderTexture = cocos2d::RenderTexture::create(s.width, s.height, Texture2D::PixelFormat::RGBA8888);
+    this->addChild(_renderTexture);
+    _renderTexture->setAnchorPoint(Point::ANCHOR_MIDDLE);
+    _renderTexture->setPosition(Point(s.width/2, s.height/2));
+
+    // Change RenderTexture shader
+    auto program = GLProgram::createWithByteArrays(_renderTextureShaderVert, _renderTextureShaderFrag);
+    auto programState = GLProgramState::getOrCreateWithGLProgram(program);
+    programState->setUniformFloat("u_threshold_discard", 0.15);
+    programState->setUniformFloat("u_threshold_border", 0.3);
+
+    _renderTexture->getSprite()->setGLProgramState(programState);
 
     return true;
 }
 
-void LFParticleSystemNode::setupVBO()
+void LFParticleSystemNode::setup()
 {
-    _sizes = (GLfloat*)malloc(MAX_PARTICLES * sizeof(_sizes[0]));
-    for(int i=0; i<MAX_PARTICLES; i++) {
-        _sizes[i] = _particleSystem->GetRadius() * 2;
-    }
-
     auto glProgramState = getGLProgramState();
+    float size = _particleSystem->GetRadius()*2;
 
     // Update Positions
     glProgramState->setVertexAttribPointer("a_position", 2, GL_FLOAT, GL_FALSE, 0, _particleSystem->GetPositionBuffer());
-    glProgramState->setVertexAttribPointer("a_color", 4, GL_UNSIGNED_BYTE, GL_TRUE, 0, _particleSystem->GetColorBuffer());
-    glProgramState->setVertexAttribPointer("a_size", 1, GL_FLOAT, GL_FALSE, 0, _sizes);
-
+    glProgramState->setUniformFloat("u_size", size);
 
     CHECK_GL_ERROR_DEBUG();
 }
@@ -137,9 +188,13 @@ void LFParticleSystemNode::setupVBO()
 
 void LFParticleSystemNode::draw(Renderer *renderer, const Mat4 &transform, uint32_t transformFlags)
 {
+    _renderTexture->beginWithClear(0,0,0,0);
+
     _customCommand.init(_globalZOrder);
     _customCommand.func = CC_CALLBACK_0(LFParticleSystemNode::onDraw, this, transform, transformFlags);
     renderer->addCommand(&_customCommand);
+
+    _renderTexture->end();
 }
 
 void LFParticleSystemNode::onDraw(const Mat4 &transform, uint32_t transformFlags)
@@ -150,12 +205,10 @@ void LFParticleSystemNode::onDraw(const Mat4 &transform, uint32_t transformFlags
 
     _glProgramState->apply(newMV);
 
-//    GL::blendFunc(_blendFunc.src, _blendFunc.dst);
     GL::bindTexture2D(_texture->getName());
     GL::blendFunc(_blendFunc.src, _blendFunc.dst);
 
     int totalParticles = _particleSystem->GetParticleCount();
-    CCASSERT(totalParticles<MAX_PARTICLES, "too many particles, increase VBO size");
 
     // Update Positions
     glDrawArrays(GL_POINTS, 0, totalParticles);

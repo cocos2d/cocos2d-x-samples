@@ -48,9 +48,6 @@ protected:
     GLESDebugDraw *_debugDraw;
     cocos2d::CustomCommand _customCmd;
 
-    cocos2d::RenderTexture *_renderTexture;
-    LFParticleSystemNode *_particle;
-
     //
     b2World* _world;
     b2ParticleSystem *_particleSystem;
