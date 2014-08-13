@@ -72,18 +72,18 @@ class BlockFactory
       [FixedPoint(x:0,y:0),   FixedPoint(x:0,y:-1),  FixedPoint(x:-1,y:-1), FixedPoint(x:-1,y:-2)] ]
     ]
     
-        enum Color : Int
-    {
-        case Red = 0
-        case Yellow
-        case Magenta
-        case Blue
-        case Cyan
-        case Lime
-        case Orange
-        case Grey
-        case MaxColors
-    }
+//    enum Color : Int
+//    {
+//        case Red = 0
+//        case Yellow
+//        case Magenta
+//        case Blue
+//        case Cyan
+//        case Lime
+//        case Orange
+//        case Grey
+//        case MaxColors
+//    }
     
     let Names = ["red.png", "yellow.png", "magenta.png", "blue.png", "cyan.png", "green.png", "orange.png", "grey.png"]
     
@@ -111,10 +111,9 @@ class BlockFactory
         _board = board
     }
     
-    func createColoredBlock(color : Color) -> Node
+    func createColoredBlock(color : Int) -> Node
     {
-        var index = color.toRaw()
-        return createBlockFromData(index)
+        return createBlockFromData(color)
     }
     
     func createRandomBlock() -> Block
