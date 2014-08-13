@@ -26,6 +26,8 @@ THE SOFTWARE.
 //  SceneMenu.swift
 //  Created by Justin Graham on 6/27/14.
 
+import CoreGraphics
+
 class SceneMenu : Scene
 {
     var _extent : Float = 20

@@ -26,6 +26,8 @@ THE SOFTWARE.
 //  BlockFactory.swift
 //  Created by Justin Graham on 6/20/14.
 
+import CoreGraphics
+
 class BlockFactory
 {
     let NUM_ROWS : Int = 4
@@ -159,8 +161,8 @@ class BlockFactory
                 
                 c.setAnchorPoint(CGPointZero)
                 piece.addChild(c)
-                var x = CGFloat(cell.x) * _blockSize.width
-                var y = CGFloat(cell.y) * _blockSize.height
+                var x = CGFloat(Float(cell.x)) * _blockSize.width
+                var y = CGFloat(Float(cell.y)) * _blockSize.height
                 c.setPosition(CGPointMake(x, y))
                 //Debug.getInstance.log("place cell \(x), \(y)")
             }
@@ -177,7 +179,7 @@ class BlockFactory
             //Debug.getInstance.log("min max \(minx), \(maxx) -> \(miny), \(maxy)")
             //Debug.getInstance.log("contentSize \(contentWidth), \(contentHeight)")
             
-            var contentSize = CGSizeMake(CGFloat(contentWidth) * _blockSize.width, CGFloat(contentHeight) * _blockSize.height)
+            var contentSize = CGSizeMake(CGFloat(Float(contentWidth)) * _blockSize.width, CGFloat(Float(contentHeight)) * _blockSize.height)
             piece.setContentSize(contentSize)
 
             block.rotations.append(piece)

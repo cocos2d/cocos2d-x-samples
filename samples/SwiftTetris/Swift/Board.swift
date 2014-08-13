@@ -26,6 +26,8 @@ THE SOFTWARE.
 //  Board.swift
 //  Created by Justin Graham on 6/27/14.
 
+import CoreGraphics
+
 //
 // Constants
 //
@@ -180,15 +182,15 @@ class Board : Node
     
     func bottomLeftInPoints() -> CGPoint
     {
-        var l = CGFloat(_cellBL.x) * _blockSize.width
-        var b = CGFloat(_cellBL.y) * _blockSize.height
+        var l = CGFloat(Float(_cellBL.x)) * _blockSize.width
+        var b = CGFloat(Float(_cellBL.y)) * _blockSize.height
         return CGPointMake(l, b)
     }
     
     func topRightInPoints() -> CGPoint
     {
-        var t = CGFloat(_cellTR.x) * _blockSize.width
-        var r = CGFloat(_cellTR.y) * _blockSize.height
+        var t = CGFloat(Float(_cellTR.x)) * _blockSize.width
+        var r = CGFloat(Float(_cellTR.y)) * _blockSize.height
         return CGPointMake(t, r)
     }
     
@@ -644,8 +646,8 @@ class Board : Node
     
     func convertWorldPositionToCell(pos : CGPoint) -> FixedPoint
     {
-        var cx = Fixed((pos.x - _origin.x) / _blockSize.width) - Fixed(_cellBL.x)
-        var cy = Fixed((pos.y - _origin.y) / _blockSize.height) - Fixed(_cellBL.y)
+        var cx = Fixed(Int((pos.x - _origin.x) / _blockSize.width)) - Fixed(_cellBL.x)
+        var cy = Fixed(Int((pos.y - _origin.y) / _blockSize.height)) - Fixed(_cellBL.y)
         return FixedPoint(x: cx, y: cy)
     }
 

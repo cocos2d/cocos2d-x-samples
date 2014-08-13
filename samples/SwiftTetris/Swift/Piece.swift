@@ -26,6 +26,8 @@ THE SOFTWARE.
 //  Piece.swift
 //  Created by Justin Graham on 7/6/14.
 
+import CoreGraphics
+
 class Piece : Node
 {
     var _board : Board? = nil
@@ -66,11 +68,11 @@ class Piece : Node
         _position = position
         var BS = BlockFactory.getInstance._blockSize
         var BL = _board!._cellBL
-        BL.x *= Fixed(BS.width)
-        BL.y *= Fixed(BS.height)
-        var x = BS.width  * CGFloat(_position.x)
-        var y = BS.height * CGFloat(_position.y)
-        var pos : CGPoint = CGPointMake(CGFloat(BL.x) + x, CGFloat(BL.y) + y)
+        BL.x *= Fixed(Int(BS.width))
+        BL.y *= Fixed(Int(BS.height))
+        var x = BS.width  * CGFloat(Float(_position.x))
+        var y = BS.height * CGFloat(Float(_position.y))
+        var pos : CGPoint = CGPointMake(CGFloat(Float(BL.x)) + x, CGFloat(Float(BL.y)) + y)
         //Debug.getInstance.log("setPosition: \(pos.x), \(pos.y)")
         setPosition(pos)
     }
