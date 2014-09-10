@@ -101,7 +101,7 @@ class Board : Node
     // Methods
     //
     
-    init()
+    override init()
     {
         super.init()
         
@@ -138,7 +138,7 @@ class Board : Node
                 var cell = FixedPoint(x : Fixed(c), y : Fixed((ROWS-1) - r))
                 var index = cellToIndex(cell)
                 var block = _map[index].block
-                if !block
+                if nil == block
                 {
                     line += "."
                 }
@@ -157,7 +157,7 @@ class Board : Node
                 var cell = FixedPoint(x : Fixed(c), y : Fixed((ROWS-1) - r))
                 var index = cellToIndex(cell)
                 var cc = _map[index].cell
-                if !cc
+                if nil == cc
                 {
                     line += "."
                 }
@@ -201,7 +201,7 @@ class Board : Node
             return false;
         }
         
-        if pickBlockFromLocation(touch.getLocation())
+        if nil != pickBlockFromLocation(touch.getLocation())
         {
             rotatePiece(touch, event: event)
             return true;
@@ -429,7 +429,7 @@ class Board : Node
     
     func cleanupCurrentBlock()
     {
-        if _currentBlock
+        if nil != _currentBlock
         {
             Director.getInstance().eventDispatcher.removeEventListenersForTarget(_currentBlock, false)
         }
@@ -578,7 +578,7 @@ class Board : Node
     func rotatePiece(touch : Touch!, event : Event!) -> Bool
     {        
         let block = _currentBlock
-        if !block
+        if nil == block
         {
             return false
         }
@@ -723,7 +723,7 @@ class Board : Node
             var index = cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(row)))
 
             var cell = _map[index].cell
-            if cell
+            if nil != cell
             {
                 var delay = ClosureAction.createWithDuration(DELAY * Float(COLUMNS - c), { (time : Float) -> Void in
                     })
@@ -768,7 +768,7 @@ class Board : Node
                         var above = self.cellToIndex(FixedPoint(x : Fixed(c), y : Fixed(r + 1)))
                         
                         var cc = self._map[above].cell
-                        if (cc)
+                        if (nil != cc)
                         {
                             var pos = cc!.getPosition()
                             pos.y -= self._blockSize.height
