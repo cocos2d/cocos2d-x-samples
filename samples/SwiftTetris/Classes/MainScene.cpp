@@ -5,7 +5,7 @@
 #include "MainScene.h"
 #import "cocos-Bridge-Contents.h"
 
-#include "base/CCPlatformConfig.h"
+#include "platform/CCPlatformConfig.h"
 #if CC_TARGET_PLATFORM == CC_PLATFORM_MAC
 #   import "SwiftTetris-swift.h"
 #else
