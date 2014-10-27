@@ -21,9 +21,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview)
     {
 #if CC_TARGET_PLATFORM == CC_PLATFORM_IOS
-        glview = GLView::create(APP_NAME);
+        glview = GLViewImpl::create(APP_NAME);
 #else
-        glview = GLView::createWithRect(APP_NAME, Rect(0,0,640,1136));
+        glview = cocos2d::GLViewImpl::createWithRect(APP_NAME, Rect(0,0,640,1136));
         glview->setFrameZoomFactor(.5f);
 #endif
         director->setOpenGLView(glview);
