@@ -29,8 +29,9 @@ THE SOFTWARE.
 // --------- Custom Shaders ---------
 //          Particle System
 //
+#define STRINGIFY(A)  #A
 
-static const GLchar* _particleShaderVert = R"(
+static const GLchar* _particleShaderVert = STRINGIFY(
 attribute vec4 a_position;
 uniform float u_size;
 
@@ -39,10 +40,10 @@ void main()
     gl_Position = CC_PMatrix * CC_MVMatrix * a_position;
     gl_PointSize = CC_MVMatrix[0][0] * u_size * 1.5;
 }
-)";
+);
 
 // Fragment shader
-static const GLchar* _particleShaderFrag = R"(
+static const GLchar* _particleShaderFrag = STRINGIFY(
 
 #ifdef GL_ES
 precision lowp float;
@@ -52,7 +53,7 @@ void main()
 {
     gl_FragColor = texture2D(CC_Texture0, gl_PointCoord);
 }
-)";
+);
 
 //
 // --------- Custom Shaders ---------
@@ -60,7 +61,7 @@ void main()
 //
 
 // Vertex shader
-static const GLchar* _renderTextureShaderVert = R"(
+static const GLchar* _renderTextureShaderVert = STRINGIFY(
 attribute vec4 a_position;
 attribute vec2 a_texCoord;
 attribute vec4 a_color;
@@ -79,10 +80,10 @@ void main()
     v_fragmentColor = a_color;
     v_texCoord = a_texCoord;
 }
-)";
+);
 
 // Fragment shader
-static const GLchar* _renderTextureShaderFrag = R"(
+static const GLchar* _renderTextureShaderFrag = STRINGIFY(
 
 #ifdef GL_ES
 precision lowp float;
@@ -107,7 +108,7 @@ void main()
         // white for the center
         color = vec4(1,1,1,1);
     gl_FragColor = color;
-})";
+});
 
 
 

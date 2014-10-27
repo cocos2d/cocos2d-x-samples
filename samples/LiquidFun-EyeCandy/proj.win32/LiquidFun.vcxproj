@@ -209,18 +209,12 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\libs\cocos2d-x\cocos\2d\cocos2d.vcxproj">
-      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\libs\cocos2d-x\cocos\audio\proj.win32\CocosDenshion.vcxproj">
-      <Project>{f8edd7fa-9a51-4e80-baeb-860825d2eac6}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\libs\cocos2d-x\external\chipmunk\proj.win32\chipmunk.vcxproj">
-      <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>
-    </ProjectReference>
+    <None Include="..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Documentation\footer.html" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Documentation\footer.html" />
+    <ProjectReference Include="..\..\..\libs\cocos2d-x\cocos\2d\libcocos2d.vcxproj">
+      <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4D01E5C2-894B-40DB-8BA6-F11B347B73CE}</ProjectGuid>
@@ -232,13 +226,13 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v110</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -270,7 +264,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>false</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun-EyeCandy\Classes;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\glfw3\include\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\physics;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\math\kazmath;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\base;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d\platform\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\audio;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Classes;..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;..\..\..\libs\cocos2d-x\cocos;..\..\..\libs\cocos2d-x\cocos\platform;..\..\..\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;..\..\..\libs\cocos2d-x\external\glfw3\include\win32;..\..\..\libs\cocos2d-x\cocos\base;..\..\..\libs\cocos2d-x\cocos\2d;..\..\..\libs\cocos2d-x\cocos\math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -290,7 +284,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=0;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Users\Ricardo\progs\cocos2d-x-samples\samples\LiquidFun-EyeCandy\Classes;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\glfw3\include\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\physics;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\math\kazmath;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\base;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d\platform\win32;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\audio;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\cocos2d-x\cocos\2d;C:\Users\Ricardo\progs\cocos2d-x-samples\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Classes;..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;..\..\..\libs\cocos2d-x\cocos;..\..\..\libs\cocos2d-x\cocos\platform;..\..\..\libs\cocos2d-x\external\win32-specific\gles\include\OGLES;..\..\..\libs\cocos2d-x\external\glfw3\include\win32;..\..\..\libs\cocos2d-x\cocos\base;..\..\..\libs\cocos2d-x\cocos\2d;..\..\..\libs\cocos2d-x\cocos\math;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
