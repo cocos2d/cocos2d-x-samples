@@ -1,0 +1,666 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\Cocos2dRenderer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3DContentProvider.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Direct3DInterop.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DirectXBase.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\EditBoxEvent.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\AppDelegate.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Box2dView.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\GLESDebugDraw.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\ParticleParameter.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\Test.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\TestEntries.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Classes\VisibleRect.cpp">
+      <Filter>Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2BroadPhase.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2CollideCircle.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2CollideEdge.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2CollidePolygon.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Collision.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Distance.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2DynamicTree.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2TimeOfImpact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2BlockAllocator.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Draw.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2FreeList.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Math.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Settings.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2StackAllocator.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Stat.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Timer.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2TrackedBlock.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2CircleContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2Contact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ContactSolver.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2PolygonContact.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2DistanceJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2FrictionJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2GearJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2Joint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2MotorJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2MouseJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2PrismaticJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2PulleyJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2RevoluteJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2RopeJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleSystem.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2VoronoiDiagram.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Cocos2dRenderer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3DContentProvider.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Direct3DInterop.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectXBase.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DirectXHelper.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EditBoxEvent.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\AppDelegate.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\pch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Box2dView.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\GLESDebugDraw.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\ParticleEmitter.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\ParticleParameter.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Test.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\VisibleRect.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\AddPair.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\AntiPointy.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ApplyForce.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\BodyTypes.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Breakable.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Bridge.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\BulletTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Cantilever.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Car.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Chain.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\CharacterCollision.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\CollisionFiltering.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\CollisionProcessing.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\CompoundShapes.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Confined.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ContinuousTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ConvexHull.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ConveyorBelt.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\CornerCase.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\DamBreak.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\DistanceTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Dominos.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\DrawingParticles.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\DumpShell.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\DynamicTreeTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\EdgeShapes.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\EdgeTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ElasticParticles.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Faucet.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Fracker.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Gears.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Impulse.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\LiquidTimer.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Maxwell.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Mobile.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\MobileBalanced.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\MotorJoint.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\MultipleParticleSystems.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\OneSidedPlatform.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Particles.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ParticlesSurfaceTension.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Pinball.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Pointy.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\PolyCollision.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\PolyShapes.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Prismatic.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Pulleys.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Pyramid.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Ramp.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\RayCast.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Revolute.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\RigidParticles.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Rope.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\RopeJoint.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Sandbox.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\SensorTest.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\ShapeEditing.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\SliderCrank.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Soup.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\SoupStirrer.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Sparky.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\SphereStack.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\TheoJansen.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Tiles.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\TimeOfImpact.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Tumbler.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\VaryingFriction.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\VaryingRestitution.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\VerticalStack.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\WaveMachine.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Classes\Tests\Web.h">
+      <Filter>Classes\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Box2D.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2BroadPhase.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Collision.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Distance.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2DynamicTree.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2TimeOfImpact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2Shape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2BlockAllocator.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Draw.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2FreeList.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableBuffer.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableStack.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2IntrusiveList.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Math.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Settings.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2SlabAllocator.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2StackAllocator.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Stat.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Timer.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2TrackedBlock.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2TimeStep.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndPolygonContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2CircleContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2Contact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ContactSolver.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2EdgeAndCircleContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2EdgeAndPolygonContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2PolygonAndCircleContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2PolygonContact.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2DistanceJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2FrictionJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2GearJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2Joint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2MotorJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2MouseJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2PrismaticJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2PulleyJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2RevoluteJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2RopeJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleSystem.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2StackQueue.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2VoronoiDiagram.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope\b2Rope.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{ddb0f381-1dc4-44a0-ab28-0f672a551265}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6fcff44b-bb9f-4ed9-8553-558855bc91e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Tests">
+      <UniqueIdentifier>{c7dbd352-287c-433b-80c5-0c07c1493279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\LiquidFun">
+      <UniqueIdentifier>{1d0b3005-8d20-4621-b76c-45628deeb197}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(AngleBinPath)libEGL_phone.dll" />
+    <None Include="$(AngleBinPath)libGLESv2_phone.dll" />
+    <None Include="$(WebsocketsBinPath)libwebsockets.dll" />
+    <None Include="$(SQLiteBinPath)sqlite3.dll" />
+    <None Include="$(CurlBinPath)libcurl.dll" />
+    <None Include="$(CurlBinPath)libeay32.dll" />
+    <None Include="$(CurlBinPath)ssleay32.dll" />
+    <None Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.neon.s">
+      <Filter>Classes\LiquidFun</Filter>
+    </None>
+  </ItemGroup>
+</Project>
