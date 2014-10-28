@@ -47,7 +47,6 @@ endif()
 
 target_link_libraries(${APP_NAME}
   cocos2d
-  liquidfun
   )
 
 set(APP_BIN_DIR "${CMAKE_BINARY_DIR}/bin")
