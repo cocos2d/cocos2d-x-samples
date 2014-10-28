@@ -58,11 +58,11 @@ include_directories(
   ./liquidfun/liquidfun/Box2D
 )
 
-add_library(liquidfun STATIC
+add_library(box2d STATIC
   ${LIQUIDFUN_SRC}
 )
 
-set_target_properties(liquidfun
+set_target_properties(box2d
     PROPERTIES
     ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
     LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
