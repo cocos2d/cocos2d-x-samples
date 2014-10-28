@@ -237,7 +237,7 @@ class Board : Node
     
     func nextLevel()
     {
-        AudioEngine.getInstance().playEffect("oh_yeah.mp3", false, 22050, 0, 1)
+        AudioEngine.playEffect("oh_yeah.mp3", false, 22050, 0, 1)
 
         var parent = getParent() as SceneGame
         parent.nextLevel(_score)
@@ -327,7 +327,7 @@ class Board : Node
             return
         }
 
-        AudioEngine.getInstance().playEffect("go.mp3", false, 22050, 0, 1)
+        AudioEngine.playEffect("go.mp3", false, 22050, 0, 1)
     
         var director = Director.getInstance()
         var size = director.getWinSize()
@@ -422,7 +422,7 @@ class Board : Node
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(touchListener, block)
         director.eventDispatcher.addEventListenerWithSceneGraphPriority(keybdListener, block)
         
-        AudioEngine.getInstance().playEffect("drop.mp3", false, 22050, 0, 1)
+        AudioEngine.playEffect("drop.mp3", false, 22050, 0, 1)
 
         return true
     }
@@ -529,7 +529,7 @@ class Board : Node
         }
         else
         {
-            AudioEngine.getInstance().playEffect("move.mp3", false, 22050, 0, 1)
+            AudioEngine.playEffect("move.mp3", false, 22050, 0, 1)
         }
         block.addToMap()
     }
@@ -550,7 +550,7 @@ class Board : Node
         }
         else
         {
-            AudioEngine.getInstance().playEffect("move.mp3", false, 22050, 0, 1)
+            AudioEngine.playEffect("move.mp3", false, 22050, 0, 1)
         }
         block.addToMap()
     }
@@ -790,7 +790,7 @@ class Board : Node
         var delay2 = DelayTime.create(DELAY2)
         
         var nextState = ClosureAction.createWithDuration(0, { (time : Float) in
-            AudioEngine.getInstance().playEffect("line.mp3", false, 22050, 0, 1)
+            AudioEngine.playEffect("line.mp3", false, 22050, 0, 1)
             self.setState(.IDLE)
         })
         

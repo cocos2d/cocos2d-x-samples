@@ -50,8 +50,8 @@ class SceneMenu : Scene
         bg.setAnchorPoint(CGPointZero)
         addChild(bg)
 
-        AudioEngine.getInstance().playBackgroundMusic("tetris.mp3", true)
-        AudioEngine.getInstance().setBackgroundMusicVolume(0.2)
+        AudioEngine.playBackgroundMusic("tetris.mp3", true)
+        AudioEngine.setBackgroundMusicVolume(0.2)
 
         var label = Label.createWithTTF("Play", "Arcade.ttf", 180)
         label.setAnchorPoint(CGPointMake(0.5, 0.5))
