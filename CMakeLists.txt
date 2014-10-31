@@ -42,6 +42,8 @@ option(BUILD_EXTENSIONS "Build extension library" ON)
 option(BUILD_EDITOR_SPINE "Build editor support for spine" ON)
 option(BUILD_EDITOR_COCOSTUDIO "Build editor support for cocostudio" ON)
 option(BUILD_EDITOR_COCOSBUILDER "Build editor support for cocosbuilder" ON)
+option(BUILD_LIQUIDFUN_TEST "Build LiquidFun test" ON)
+option(BUILD_GAFEXAMPLES "Build GAFExamples" ON)
 
 if(DEBUG_MODE)
   set(CMAKE_BUILD_TYPE DEBUG)
@@ -221,6 +223,14 @@ endif()
 add_subdirectory(libs/cocos2d-x/cocos)
 
 # build LiquidFun-EyeCandy and LiquidFun-Testbed
-add_subdirectory(samples/LiquidFun-EyeCandy)
-add_subdirectory(samples/LiquidFun-Testbed)
+if(BUILD_LIQUIDFUN_TEST)
+  add_subdirectory(samples/LiquidFun-EyeCandy)
+  add_subdirectory(samples/LiquidFun-Testbed)
+endif(BUILD_LIQUIDFUN_TEST)
+
+# build GAFExamples
+if(BUILD_GAFEXAMPLES)
+  add_subdirectory(libs/GAF/Library)
+  add_subdirectory(libs/GAF/Examples)
+endif(BUILD_GAFEXAMPLES)
 
