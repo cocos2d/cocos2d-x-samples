@@ -230,7 +230,10 @@ endif(BUILD_LIQUIDFUN_TEST)
 
 # build GAFExamples
 if(BUILD_GAFEXAMPLES)
-  add_subdirectory(libs/GAF/Library)
+  set(COCOS_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/cocos)
+  set(GAF_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/GAF/Library)
+  include(libs/GAF/Library/CMakeLists.txt)
+  #add_subdirectory(libs/GAF/Library)
   add_subdirectory(libs/GAF/Examples)
 endif(BUILD_GAFEXAMPLES)
 
