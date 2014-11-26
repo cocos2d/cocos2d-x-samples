@@ -1,8 +1,9 @@
 {
     "ndk_module_path" :[
-        "../cocos2d",
-        "../cocos2d/cocos",
-        "../cocos2d/external"
+        "../../../libs/cocos2d-x",
+        "../../../libs/cocos2d-x/cocos",
+        "../../../libs/cocos2d-x/external",
+        "../../../libs/cocos2d-x/.."
     ],
     "copy_resources": [
         {
