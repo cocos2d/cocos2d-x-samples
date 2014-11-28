@@ -40,6 +40,18 @@
     <ClCompile Include="..\..\Classes\VisibleRect.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2BroadPhase.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
@@ -62,18 +74,6 @@
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2TimeOfImpact.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2BlockAllocator.cpp">
@@ -101,24 +101,6 @@
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2TrackedBlock.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.cpp">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.cpp">
@@ -184,10 +166,25 @@
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.cpp">
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.cpp">
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.cpp">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.cpp">
       <Filter>Classes\LiquidFun</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.cpp">
@@ -459,7 +456,19 @@
     <ClInclude Include="..\..\Classes\Tests\Web.h">
       <Filter>Classes\Tests</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Box2D.h">
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2Shape.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2BroadPhase.h">
@@ -477,21 +486,6 @@
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2TimeOfImpact.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2ChainShape.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2CircleShape.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2EdgeShape.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2PolygonShape.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes\b2Shape.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2BlockAllocator.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
@@ -499,15 +493,6 @@
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2FreeList.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableBuffer.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableStack.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2IntrusiveList.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Math.h">
@@ -529,27 +514,6 @@
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2TrackedBlock.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2TimeStep.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.h">
-      <Filter>Classes\LiquidFun</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts\b2ChainAndCircleContact.h">
@@ -615,10 +579,28 @@
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.h">
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Body.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.h">
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2ContactManager.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Fixture.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2Island.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2TimeStep.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2World.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\b2WorldCallbacks.h">
+      <Filter>Classes\LiquidFun</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.h">
       <Filter>Classes\LiquidFun</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.h">
@@ -645,10 +627,10 @@
       <UniqueIdentifier>{6fcff44b-bb9f-4ed9-8553-558855bc91e3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\Tests">
-      <UniqueIdentifier>{c7dbd352-287c-433b-80c5-0c07c1493279}</UniqueIdentifier>
+      <UniqueIdentifier>{6505a12a-8734-4553-92ac-7779db237938}</UniqueIdentifier>
     </Filter>
     <Filter Include="Classes\LiquidFun">
-      <UniqueIdentifier>{1d0b3005-8d20-4621-b76c-45628deeb197}</UniqueIdentifier>
+      <UniqueIdentifier>{702c1434-f9f2-44cc-a2a2-a57f515b944f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -659,8 +641,5 @@
     <None Include="$(CurlBinPath)libcurl.dll" />
     <None Include="$(CurlBinPath)libeay32.dll" />
     <None Include="$(CurlBinPath)ssleay32.dll" />
-    <None Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.neon.s">
-      <Filter>Classes\LiquidFun</Filter>
-    </None>
   </ItemGroup>
 </Project>

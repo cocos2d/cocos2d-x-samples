@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{60ec6889-c3c4-45ad-a006-47d9ee689212}</ProjectGuid>
-    <RootNamespace>PhoneDirect3DXamlAppComponent</RootNamespace>
+    <RootNamespace>cocos2d</RootNamespace>
     <DefaultLanguage>en-US</DefaultLanguage>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <WinMDAssembly>true</WinMDAssembly>
@@ -94,7 +94,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(ProjectDir)..\..\..\..\libs\cocos2d-x\;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\2d;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\math;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\winrt;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\wp8;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,7 +114,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(ProjectDir)..\..\..\..\libs\cocos2d-x\;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\2d;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\math;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\winrt;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\wp8;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,7 +134,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(ProjectDir)..\..\..\..\libs\cocos2d-x\;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\2d;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\math;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\winrt;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\wp8;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,7 +154,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(ProjectDir)..\..\..\..\libs\cocos2d-x\;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\2d;$(ProjectDir)..\..\..\..\libs\cocos2d-x\cocos\math;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\winrt;$(ProjectDir)..\..\..\..\libs\cocos2d-x\platform\wp8;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\Shapes;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Contacts;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle;$(ProjectDir)..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Rope;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -221,7 +221,6 @@
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.cpp" />
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.cpp" />
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.cpp" />
-    <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.cpp" />
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.cpp" />
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleSystem.cpp" />
     <ClCompile Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2VoronoiDiagram.cpp" />
@@ -246,7 +245,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Box2D.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2BroadPhase.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Collision.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Collision\b2Distance.h" />
@@ -260,9 +258,6 @@
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2BlockAllocator.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Draw.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2FreeList.h" />
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableBuffer.h" />
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2GrowableStack.h" />
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2IntrusiveList.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Math.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2Settings.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Common\b2SlabAllocator.h" />
@@ -299,7 +294,6 @@
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WeldJoint.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Dynamics\Joints\b2WheelJoint.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2Particle.h" />
-    <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleGroup.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleSystem.h" />
     <ClInclude Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2StackQueue.h" />
@@ -392,11 +386,11 @@
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\libs\liquidfun\liquidfun\liquidfun\Box2D\Box2D\Particle\b2ParticleAssembly.neon.s" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\libs\cocos2d-x\cocos\2d\libcocos2d_wp8.vcxproj">
       <Project>{7c5dbc42-27f6-4978-aabc-02ba77e2a7f0}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\libs\cocos2d-x\cocos\editor-support\spine\proj.wp8\libSpine.vcxproj">
+      <Project>{7d4fc6eb-9497-4804-98f3-3eaedc896154}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
