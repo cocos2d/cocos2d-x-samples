@@ -1,7 +1,5 @@
 #include "AppDelegate.h"
 
-#include "cocos2d.h"
-
 #include "GafFeatures.h"
 
 #include <vector>
@@ -20,6 +18,13 @@ AppDelegate::AppDelegate()
 
 AppDelegate::~AppDelegate()
 {
+}
+
+void AppDelegate::initGLContextAttrs()
+{
+    GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
+
+    GLView::setGLContextAttrs(glContextAttrs);
 }
 
 bool AppDelegate::applicationDidFinishLaunching()
@@ -41,8 +46,6 @@ bool AppDelegate::applicationDidFinishLaunching()
 #if COCOS2D_VERSION < 0x00030300
         glView = cocos2d::GLView::createWithRect("GAF Animation sample", cocos2d::Rect(0, 0, 1024, 768));
 #else
-        GLContextAttrs glContextAttrs = { 8, 8, 8, 8, 24, 8 };
-        GLView::setGLContextAttrs(glContextAttrs);
         glView = GLViewImpl::create("GAF Animation sample");
 #endif
         pDirector->setOpenGLView(glView);
