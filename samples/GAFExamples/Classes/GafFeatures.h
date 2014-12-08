@@ -84,5 +84,5 @@ public:
 
     virtual void onTexturePreLoad(std::string& path);
     
-    virtual void onFramePlayed(GAFObject* object, int frame);
+    virtual void onFramePlayed(GAFObject* object, uint32_t frame);
 };
