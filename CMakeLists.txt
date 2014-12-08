@@ -29,19 +29,37 @@ cmake_minimum_required(VERSION 2.8)
 # The version number
 set(COCOS2D_X_VERSION 3.3-rc0)
 
-include(libs/cocos2d-x/cmake/BuildHelpers.CMakeLists.txt)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/libs/cocos2d-x/cmake/Modules/")
+include(CocosBuildHelpers)
 
 message(${BUILDING_STRING})
 
-option(USE_CHIPMUNK "Use chipmunk for physics library" ON)
-option(USE_BOX2D "Use box2d for physics library" OFF)
-option(BUILD_STATIC "Build static libraries" ON)
+set(USE_WEBP_DEFAULT ON)
+if(WINRT OR WP8)
+  set(USE_WEBP_DEFAULT OFF)
+endif()
+
+set(USE_PREBUILT_LIBS_DEFAULT ON)
+if(MINGW)
+  set(USE_PREBUILT_LIBS_DEFAULT OFF)
+endif()
+
+option(USE_CHIPMUNK "Use chipmunk for physics library" OFF)
+option(USE_BOX2D "Use box2d for physics library" ON)
+option(USE_WEBP "Use WebP codec" ${USE_WEBP_DEFAULT})
+option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(DEBUG_MODE "Debug or release?" ON)
 option(BUILD_EXTENSIONS "Build extension library" ON)
 option(BUILD_EDITOR_SPINE "Build editor support for spine" ON)
 option(BUILD_EDITOR_COCOSTUDIO "Build editor support for cocostudio" ON)
 option(BUILD_EDITOR_COCOSBUILDER "Build editor support for cocosbuilder" ON)
+option(BUILD_LIQUIDFUN_TEST "Build LiquidFun test" ON)
+option(BUILD_GAFEXAMPLES "Build GAFExamples" ON)
+option(USE_PREBUILT_LIBS "Use prebuilt libraries in external directory" ${USE_PREBUILT_LIBS_DEFAULT})
+
+if(USE_PREBUILT_LIBS AND MINGW)
+  message(FATAL_ERROR "Prebuilt windows libs can't be used with mingw, please use packages.")
+endif()
 
 if(DEBUG_MODE)
   set(CMAKE_BUILD_TYPE DEBUG)
@@ -51,6 +69,9 @@ endif(DEBUG_MODE)
 
 set(CMAKE_C_FLAGS_DEBUG "-DCOCOS2D_DEBUG=1")
 set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
+set(USE_CHIPMUNK 0)
+set(BUILD_GAFEXAMPLES 0)
+set(USE_BOX2D 1)
 
 # Compiler options
 if(MSVC)
@@ -67,11 +88,7 @@ else()
   endif()
 endif(MSVC)
 
-if(BUILD_STATIC)
- set (BUILD_TYPE STATIC)
-else()
- set (BUILD_TYPE SHARED)
-endif()
+set(COCOS_EXTERNAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external)
 
 # Some macro definitions
 if(WINDOWS)
@@ -101,8 +118,6 @@ endif()
 if(MINGW)
   add_definitions(-DGLEW_STATIC)
   add_definitions(-D__SSIZE_T)
-  set(CMAKE_C_STANDARD_LIBRARIES "${CMAKE_C_STANDARD_LIBRARIES} -lws2_32")
-  set(CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} -lws2_32")
 
   if(CLANG)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fno-exceptions ")
@@ -130,97 +145,165 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external
 )
 
-# Specific Link Directories
-if(LINUX)
-  set(PLATFORM_LINK_DIR
-    /usr/local/lib
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/${PLATFORM_FOLDER}-specific/fmod/prebuilt/${ARCH_DIR}
-  )
-  set(PLATFORM_FOLDER_ARCH
-      ${PLATFORM_FOLDER}/${ARCH_DIR}
-  )
-elseif(NOT MINGW)
-  set(PLATFORM_FOLDER_ARCH
-    ${PLATFORM_FOLDER}
-  )
-  set(PLATFORM_LINK_DIR
-   ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/glfw3/prebuilt/${PLATFORM_FOLDER_ARCH}
-  )
+if(USE_PREBUILT_LIBS)
+  include(CocosUsePrebuiltLibs)
 endif()
 
+# GLFW3 used on Mac, Windows and Linux desktop platforms
+if(LINUX OR MACOSX OR WINDOWS)
+   cocos_find_package(OpenGL OPENGL REQUIRED)
+   if(LINUX OR WINDOWS)
+     cocos_find_package(GLEW GLEW REQUIRED)
+   endif()
+   cocos_find_package(GLFW3 GLFW3 REQUIRED)
+   include_directories(${GLFW3_INCLUDE_DIRS})
+   if(LINUX)
+     set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
+     find_package(Threads REQUIRED)
+     set(THREADS_LIBRARIES ${CMAKE_THREAD_LIBS_INIT})
 
-# NB
-# we need to return these to libraries to their official state rather than
-# having our custom cocos2d namespace so that we may use system versions if
-# the platform provides them. It is very important that this
-# is done before we make prebuilt versions of these two libs
+     cocos_find_package(FMODEX FMODEX REQUIRED)
+     cocos_find_package(Fontconfig FONTCONFIG REQUIRED)
+   endif()
+   if(WINDOWS)
+     cocos_find_package(Vorbis VORBIS REQUIRED)
+     cocos_find_package(MPG123 MPG123 REQUIRED)
+     cocos_find_package(OpenAL OPENAL REQUIRED)
+     # because FindOpenAL.cmake set include dir for '#include <al.h>' for portability (not for '#include <AL/al.h>'
+     set(OPENAL_DEFINITIONS "-DOPENAL_PLAIN_INCLUDES")
+   endif()
+endif(LINUX OR MACOSX OR WINDOWS)
 
-include_directories(
+# Freetype required on all platforms
+cocos_find_package(Freetype FREETYPE REQUIRED)
 
-  ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/unzip
-  ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/xxhash
+# Chipmunk
+if(USE_CHIPMUNK)
+  cocos_find_package(Chipmunk CHIPMUNK REQUIRED)
+  add_definitions(-DCC_ENABLE_CHIPMUNK_INTEGRATION=1)
+  if(IOS OR MACOSX)
+    # without this chipmunk will try to use apple defined geometry types, that conflicts with cocos
+    add_definitions(-DCP_USE_CGPOINTS=0)
+  endif()
+  message(STATUS "Chipmunk come in")
+else(USE_CHIPMUNK)
+  add_definitions(-DCC_USE_PHYSICS=0)
+endif(USE_CHIPMUNK)
 
-)
+# Box2d (not prebuilded, exists as source)
+if(USE_BOX2D)
+  if(USE_PREBUILT_LIBS)
+    add_subdirectory(libs/liquidfun)
+    set(Box2D_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}libs/liquidfun/liquidfun/liquidfun/Box2D)
+    set(Box2D_LIBRARIES box2d)
+  else()
+    find_package(Box2D REQUIRED CONFIG)
+    # actually Box2D in next line is not a library, it is target exported from Box2DConfig.cmake
+    set(Box2D_LIBRARIES Box2D)
+  endif()
+  message(STATUS "Box2D include dirs: ${Box2D_INCLUDE_DIRS}")
+  add_definitions(-DCC_ENABLE_BOX2D_INTEGRATION=1)
+else()
+  message(STATUS "Box2d not USE")
+  add_definitions(-DCC_ENABLE_BOX2D_INTEGRATION=0)
+endif(USE_BOX2D)
 
-if(LINUX OR APPLE)
-
-  find_package(GLFW3 REQUIRED)
-  message( STATUS "GLFW3 dirs: ${GLFW3_INCLUDE_DIRS}")
-  include_directories(${GLFW3_INCLUDE_DIRS})
-
-endif(LINUX OR APPLE)
-
-
-if(NOT MINGW)
-
-  include_directories(
-
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/tinyxml2
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/chipmunk/include/chipmunk
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/jpeg/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/png/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/tiff/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/webp/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/glfw3/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/freetype2/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/websockets/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/curl/include/${PLATFORM_FOLDER}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/protobuf-lite/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/freetype2/include/${PLATFORM_FOLDER}/freetype2
-  )
-
-#todo: fix location of freetype includes for linux android on cocos prebuilt repo
-#i.e we should not need to include an extra dir of /freetype2
-
-  link_directories(
-    ${PLATFORM_LINK_DIR}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/tinyxml2/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/jpeg/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/tiff/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/webp/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/png/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/freetype2/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/websockets/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/chipmunk/prebuilt/${PLATFORM_FOLDER_ARCH}
-    ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/curl/prebuilt/${PLATFORM_FOLDER_ARCH}
-  )
-
-
+# Tinyxml2 (not prebuilded, exists as source)
+if(USE_PREBUILT_LIBS)
+  add_subdirectory(libs/cocos2d-x/external/tinyxml2)
+  set(TinyXML2_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/tinyxml2)
+  set(TinyXML2_LIBRARIES tinyxml2)
+else()
+  cocos_find_package(TinyXML2 TinyXML2 REQUIRED)
 endif()
+message(STATUS "TinyXML2 include dirs: ${TinyXML2_INCLUDE_DIRS}")
+
+# libjpeg
+cocos_find_package(JPEG JPEG REQUIRED)
+cocos_find_package(ZLIB ZLIB REQUIRED)
+
+
+# minizip (we try to migrate to minizip from https://github.com/nmoinvaz/minizip)
+# only msys2 currently provides package for this variant, all other
+# dists have packages from zlib, thats very old for us.
+# moreover our embedded version modified to quick provide
+# functionality needed by cocos.
+if(USE_PREBUILT_LIBS OR NOT MINGW)
+  add_subdirectory(libs/cocos2d-x/external/unzip)
+  set(MINIZIP_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/unzip)
+  set(MINIZIP_LIBRARIES unzip)
+  message(STATUS "MINIZIP include dirs: ${MINIZIP_INCLUDE_DIRS}")
+else()
+  cocos_find_package(MINIZIP MINIZIP REQUIRED)
+  # double check that we have needed functions
+  include(CheckLibraryExists)
+  check_library_exists(${MINIZIP_LIBRARIES} "unzGoToFirstFile2" "" MINIZIP_HAS_GOTOFIRSTFILE2)
+  if(NOT MINIZIP_HAS_GOTOFIRSTFILE2)
+    message(FATAL_ERROR "Minizip library on you system very old. Please use recent version from https://github.com/nmoinvaz/minizip or enable USE_PREBUILT_LIBS")
+  endif()
+  add_definitions(-DMINIZIP_FROM_SYSTEM)
+endif()
+
+cocos_find_package(PNG PNG REQUIRED)
+cocos_find_package(TIFF TIFF REQUIRED)
+cocos_find_package(WEBSOCKETS WEBSOCKETS REQUIRED)
+cocos_find_package(CURL CURL REQUIRED)
+
+# protobuf-lite (not prebuilded, exists as source)
+# TODO: for now we can't use upstream protobuf because these files:
+#  cocos/editor-support/cocostudio/CSParseBinary.pb.h
+#  cocos/editor-support/cocostudio/CSParseBinary.pb.cc
+# was generated by concrete version of protobuf compiler
+# and source file not provided. So these files can be
+# compiled only with our in-source version of protobuf-lite
+## if(USE_PREBUILT_LIBS)
+  add_subdirectory(libs/cocos2d-x/external/protobuf-lite)
+  set(PROTOBUF_LITE_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/external/protobuf-lite/src)
+  set(PROTOBUF_LITE_LIBRARIES protobuf)
+## else()
+##  cocos_find_package(Protobuf REQUIRED PROTOBUF_LITE_LIBRARIES)
+##  set(PROTOBUF_LITE_INCLUDE_DIRS ${PROTOBUF_INCLUDE_DIRS})
+## endif()
+message(STATUS "Protobuf lite libs: ${PROTOBUF_LITE_LIBRARIES}")
+message(STATUS "Protobuf include dirs: ${PROTOBUF_LITE_INCLUDE_DIRS}")
+
+# flatbuffers (not prebuilded, exists as source)
+# TODO: for now we can't use upstream flatbuffers because these files:
+#  cocos/editor-support/cocostudio/CSParseBinary_generated.h
+# was generated by concrete version of flatbuffers compiler
+# and source file not provided. So these files can be
+# compiled only with our in-source version of flatbuffers
+## if(USE_PREBUILT_LIBS)
+#  add_subdirectory(external)
+#  set(FLATBUFFERS_INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR}/external)
+#  set(FLATBUFFERS_LIBRARIES flatbuffers)
+## else()
+##  cocos_find_package(Flatbuffers REQUIRED FLATBUFFERS_LIBRARIES)
+##  set(FLATBUFFERS_INCLUDE_DIRS ${FLATBUFFERS_INCLUDE_DIRS})
+## endif()
+#message(STATUS "Flatbuffers libs: ${FLATBUFFERS_LIBRARIES}")
+#message(STATUS "Flatbuffers include dirs: ${FLATBUFFERS_INCLUDE_DIRS}")
 
 # build for 3rd party libraries
 if(LINUX OR APPLE)
-add_subdirectory(libs/cocos2d-x/external/unzip)
 add_subdirectory(libs/cocos2d-x/external/xxhash)
-add_subdirectory(libs/cocos2d-x/external/tinyxml2)
-add_subdirectory(libs/cocos2d-x/external/protobuf-lite)
-add_subdirectory(libs/liquidfun)
 endif()
 
 # libcocos2d.a
 add_subdirectory(libs/cocos2d-x/cocos)
 
 # build LiquidFun-EyeCandy and LiquidFun-Testbed
-add_subdirectory(samples/LiquidFun-EyeCandy)
-add_subdirectory(samples/LiquidFun-Testbed)
+if(BUILD_LIQUIDFUN_TEST)
+  add_subdirectory(samples/LiquidFun-EyeCandy)
+  add_subdirectory(samples/LiquidFun-Testbed)
+endif(BUILD_LIQUIDFUN_TEST)
+
+# build GAFExamples
+if(BUILD_GAFEXAMPLES)
+  set(COCOS_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/cocos)
+  set(GAF_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/GAF/Library)
+  include(libs/GAF/Library/CMakeLists.txt)
+  #add_subdirectory(libs/GAF/Library)
+  add_subdirectory(libs/GAF/Examples)
+endif(BUILD_GAFEXAMPLES)
 

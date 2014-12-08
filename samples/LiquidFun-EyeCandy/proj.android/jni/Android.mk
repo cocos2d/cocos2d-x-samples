@@ -22,5 +22,4 @@ LOCAL_WHOLE_STATIC_LIBRARIES += liquidfun_static
 include $(BUILD_SHARED_LIBRARY)
 
 $(call import-module,.)
-$(call import-module,audio/android)
 $(call import-module,liquidfun)
