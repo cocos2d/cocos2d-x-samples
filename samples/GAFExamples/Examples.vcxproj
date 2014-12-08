@@ -89,7 +89,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>../Classes;../../../cocos/2d/;../../../cocos/platform/win32/;../../../cocos/;../../win32-specific/gles/include/OGLES/;../../glfw3/include/win32/;../../win32-specific/zlib/include/;../../../cocos/math/;../Library/Sources/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../libs/cocos2d-x/cocos/;../../libs/cocos2d-x/cocos/2d/;../../libs/cocos2d-x/cocos/platform/win32/;../../libs/cocos2d-x/external/win32-specific/gles/include/OGLES/;../../libs/cocos2d-x/external/glfw3/include/win32/;../../libs/cocos2d-x/external/win32-specific/zlib/include/;../../libs/cocos2d-x/cocos/math/;../../libs/GAF/Library/Sources/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>
@@ -98,7 +98,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>opengl32.lib;glew32.lib;libzlib.lib;glfw3.lib;freetype250.lib;libwebp.lib;libtiff.lib;libpng.lib;libjpeg.lib;libiconv.lib;libcurl_imp.lib;Ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\Release.win32</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)$(Configuration).win32\</AdditionalLibraryDirectories>
       <Profile>true</Profile>
     </Link>
   </ItemDefinitionGroup>
