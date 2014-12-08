@@ -62,24 +62,28 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\GAF\Library\Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\GAF\Library\Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\GAF\Library\Library.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
-    <Import Project="..\..\cocos2d\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_app.props" />
+    <Import Project="..\..\..\..\libs\cocos2d-x\cocos\2d\wp8_props\cocos2d_wp8_component.props" />
+    <Import Project="..\..\..\..\libs\GAF\Library\Library.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
@@ -94,7 +98,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(GAF_SOURCES_ROOT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -114,7 +118,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(GAF_SOURCES_ROOT)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -134,7 +138,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(GAF_SOURCES_ROOT)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -154,7 +158,7 @@
       <CompileAsWinRT>true</CompileAsWinRT>
       <ForcedIncludeFiles>pch.h</ForcedIncludeFiles>
       <AdditionalOptions>/Zm200 %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\Classes;$(GAF_SOURCES_ROOT)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -173,7 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Classes\AppDelegate.cpp" />
-    <ClCompile Include="..\..\Classes\HelloWorldScene.cpp" />
+    <ClCompile Include="..\..\Classes\GafFeatures.cpp" />
     <ClCompile Include="src\Cocos2dRenderer.cpp" />
     <ClCompile Include="src\Direct3DContentProvider.cpp" />
     <ClCompile Include="src\Direct3DInterop.cpp" />
@@ -188,7 +192,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\Classes\AppDelegate.h" />
-    <ClInclude Include="..\..\Classes\HelloWorldScene.h" />
+    <ClInclude Include="..\..\Classes\GafFeatures.h" />
     <ClInclude Include="src\Cocos2dRenderer.h" />
     <ClInclude Include="src\Direct3DContentProvider.h" />
     <ClInclude Include="src\Direct3DInterop.h" />
@@ -198,14 +202,17 @@
     <ClInclude Include="src\pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\cocos2d\cocos\2d\libcocos2d_wp8.vcxproj">
+    <ProjectReference Include="..\..\..\..\libs\cocos2d-x\cocos\2d\libcocos2d_wp8.vcxproj">
       <Project>{7c5dbc42-27f6-4978-aabc-02ba77e2a7f0}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\cocos\editor-support\spine\proj.wp8\libSpine.vcxproj">
+    <ProjectReference Include="..\..\..\..\libs\cocos2d-x\cocos\editor-support\spine\proj.wp8\libSpine.vcxproj">
       <Project>{7d4fc6eb-9497-4804-98f3-3eaedc896154}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\cocos2d\external\Box2D\proj.wp8\Box2D.vcxproj">
+    <ProjectReference Include="..\..\..\..\libs\cocos2d-x\external\Box2D\proj.wp8\Box2D.vcxproj">
       <Project>{c55734a3-702c-4fa1-b950-32c8e169302f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\libs\GAF\Library\proj.wp8\GAFPlayer.vcxproj">
+      <Project>{ba4c3d1b-4852-489f-bac4-889e0bbe36d9}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
