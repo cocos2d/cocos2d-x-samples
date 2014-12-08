@@ -1,7 +1,7 @@
 #ifndef  _APP_DELEGATE_H_
 #define  _APP_DELEGATE_H_
 
-#include "cocos2d.h"
+#include "platform/CCApplication.h"
 
 class  AppDelegate : private cocos2d::Application
 {

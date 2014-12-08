@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Examples", "Examples.vcxproj", "{EEB05DD6-9AF2-4343-B477-4C43419749EF}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -79,20 +79,16 @@ Global
 		{B7C2A162-DEC9-4418-972E-240AB3CBFCAE}.RelWithDebInfo|x64.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Debug|Win32.ActiveCfg = Debug|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Debug|Win32.Build.0 = Debug|Win32
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Debug|x64.ActiveCfg = Debug|x64
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Debug|x64.Build.0 = Debug|x64
+		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Debug|x64.ActiveCfg = Debug|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.MinSizeRel|Win32.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.MinSizeRel|Win32.Build.0 = Release|Win32
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.MinSizeRel|x64.ActiveCfg = Release|x64
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.MinSizeRel|x64.Build.0 = Release|x64
+		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.MinSizeRel|x64.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Release|Win32.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Release|Win32.Build.0 = Release|Win32
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Release|x64.ActiveCfg = Release|x64
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Release|x64.Build.0 = Release|x64
+		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.Release|x64.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.RelWithDebInfo|Win32.ActiveCfg = Release|Win32
 		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.RelWithDebInfo|Win32.Build.0 = Release|Win32
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.RelWithDebInfo|x64.ActiveCfg = Release|x64
-		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.RelWithDebInfo|x64.Build.0 = Release|x64
+		{4E240210-2D26-4D4C-9329-E912FDAC94CC}.RelWithDebInfo|x64.ActiveCfg = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

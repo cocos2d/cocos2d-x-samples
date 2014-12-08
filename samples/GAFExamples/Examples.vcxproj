@@ -70,7 +70,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;COCOS2D_DEBUG=2;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <PrecompiledHeaderFile />
-      <AdditionalIncludeDirectories>../../libs/cocos2d-x/cocos/2d/;../../libs/cocos2d-x/cocos/platform/win32/;../../libs/cocos2d-x/cocos/;../../libs/cocos2d-x/external/win32-specific/gles/include/OGLES/;../../libs/cocos2d-x/external/glfw3/include/win32/;../../libs/cocos2d-x/external/win32-specific/zlib/include/;../../libs/cocos2d-x/cocos/math/;../../libs/GAF/Library/Sources/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../libs/cocos2d-x/cocos/;../../libs/cocos2d-x/cocos/2d/;../../libs/cocos2d-x/cocos/platform/win32/;../../libs/cocos2d-x/external/win32-specific/gles/include/OGLES/;../../libs/cocos2d-x/external/glfw3/include/win32/;../../libs/cocos2d-x/external/win32-specific/zlib/include/;../../libs/cocos2d-x/cocos/math/;../../libs/GAF/Library/Sources/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>

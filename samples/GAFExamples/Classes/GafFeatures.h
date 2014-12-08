@@ -7,9 +7,15 @@
 #include <vector>
 #include <unordered_map>
 
-class GAFAnimatedObject;
 
-class GafFeatures : public cocos2d::Layer, public GAFSequenceDelegate, public GAFTextureLoadDelegate, public GAFFramePlayedDelegate
+NS_GAF_BEGIN
+class GAFObject;
+class GAFAsset;
+NS_GAF_END
+
+USING_NS_GAF;
+
+class GafFeatures : public cocos2d::Layer
 {
 private:
 
@@ -74,9 +80,9 @@ public:
     void nextSequence(cocos2d::Ref*);
     void prevSequence(cocos2d::Ref*);
 
-    virtual void onFinishSequence(GAFAnimatedObject * object, const std::string& sequenceName);
+    virtual void onFinishSequence(GAFObject* object, const std::string& sequenceName);
 
     virtual void onTexturePreLoad(std::string& path);
     
-    virtual void onFramePlayed(GAFAnimatedObject * object, int frame) override;
+    virtual void onFramePlayed(GAFObject* object, int frame);
 };
