@@ -102,29 +102,45 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Resources\fonts\Marker Felt.ttf">
-      <Link>Assets\Resources\fonts\Marker Felt.ttf</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Assets\Resources\biggreen\biggreen.gaf" />
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\..\Resources\CloseNormal.png">
-      <Link>Assets\Resources\CloseNormal.png</Link>
-    </Content>
-    <Content Include="..\..\Resources\CloseSelected.png">
-      <Link>Assets\Resources\CloseSelected.png</Link>
-    </Content>
-    <Content Include="..\..\Resources\HelloWorld.png">
-      <Link>Assets\Resources\HelloWorld.png</Link>
-    </Content>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Resources\answer.wav" />
+    <Content Include="Assets\Resources\biggreen\biggreen1.png" />
+    <Content Include="Assets\Resources\biggreen\biggreen2.png" />
+    <Content Include="Assets\Resources\buttons\black_bg_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\gaf_logo%402x.png" />
+    <Content Include="Assets\Resources\buttons\left_arrow%402x.png" />
+    <Content Include="Assets\Resources\buttons\left_arrow_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\next_animation_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\next_animation_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\next_frame_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\next_frame_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\pause_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\pause_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\play_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\play_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\previous_animation_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\previous_animation_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\previous_frame_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\previous_frame_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\restart_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\restart_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\right_arrow%402x.png" />
+    <Content Include="Assets\Resources\buttons\right_arrow_pressed%402x.png" />
+    <Content Include="Assets\Resources\buttons\white_bg_button%402x.png" />
+    <Content Include="Assets\Resources\buttons\white_bg_button_pressed%402x.png" />
+    <Content Include="Assets\Resources\car.wav" />
+    <Content Include="Assets\Resources\order.wav" />
+    <Content Include="Assets\Resources\ring.wav" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
