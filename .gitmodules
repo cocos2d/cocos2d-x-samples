@@ -7,7 +7,7 @@
 [submodule "libs/GAF"]
 	path = libs/GAF
 	url = https://github.com/CatalystApps/Cocos2dxGAFPlayer.git
-	branch = release-cocos2dx-3-managed-folders
+	branch = gaf_4_develop
 [submodule "samples/SwiftTetris/Bindings"]
 	path = samples/SwiftTetris/Bindings
 	url = https://github.com/cocos2d/cocos2d-x-swift-bindings
