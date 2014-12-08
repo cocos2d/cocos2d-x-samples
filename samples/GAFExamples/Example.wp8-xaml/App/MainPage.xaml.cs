@@ -122,15 +122,15 @@ namespace cocos2d
             switch (e.Key)
             {
                 case Key.Escape:
-                    m_d3dInterop.OnCocos2dKeyEvent(Cocos2dKeyEvent.Escape);
+                    m_d3dInterop.OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent.Cocos2dKeyEvent.Escape);
                     e.Handled = true;
                     break;
                 case Key.Back:
-                    m_d3dInterop.OnCocos2dKeyEvent(Cocos2dKeyEvent.Back);
+                    m_d3dInterop.OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent.Cocos2dKeyEvent.Back);
                     e.Handled = true;
                     break;
                 case Key.Enter:
-                    m_d3dInterop.OnCocos2dKeyEvent(Cocos2dKeyEvent.Enter);
+                    m_d3dInterop.OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent.Cocos2dKeyEvent.Enter);
                     e.Handled = true;
                     break;
                 default:
@@ -146,7 +146,7 @@ namespace cocos2d
         {
             if (m_textBox.Text.Length > 0)
             {
-                m_d3dInterop.OnCocos2dKeyEvent(Cocos2dKeyEvent.Text, m_textBox.Text);
+                m_d3dInterop.OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent.Cocos2dKeyEvent.Text, m_textBox.Text);
                 m_textBox.Text = "";
             }
         }
@@ -161,17 +161,17 @@ namespace cocos2d
         }
 
         // events called by the Cocos2d-x C++ engine to be handled by C#
-        public void OnCocos2dEvent(Cocos2dEvent theEvent, String text)
+        public void OnCocos2dEvent(PhoneDirect3DXamlAppComponent.Cocos2dEvent theEvent, String text)
         {
             Dispatcher.BeginInvoke(() =>
             {
                 switch (theEvent)
                 {
-                    case Cocos2dEvent.TerminateApp:
+                    case PhoneDirect3DXamlAppComponent.Cocos2dEvent.TerminateApp:
                         Application.Current.Terminate();
                         break;
 
-                    case Cocos2dEvent.ShowKeyboard:
+                    case PhoneDirect3DXamlAppComponent.Cocos2dEvent.ShowKeyboard:
                         if (m_textBox == null)
                         {
                             m_textBox = new TextBox();
@@ -187,7 +187,7 @@ namespace cocos2d
                         m_textBox.Focus();
                         break;
 
-                    case Cocos2dEvent.HideKeyboard:
+                    case PhoneDirect3DXamlAppComponent.Cocos2dEvent.HideKeyboard:
                         if (m_textBox != null)
                         {
                             DrawingSurfaceBackground.Children.Remove(m_textBox);
