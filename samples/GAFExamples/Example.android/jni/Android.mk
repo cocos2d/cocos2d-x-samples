@@ -27,9 +27,10 @@ LOCAL_WHOLE_STATIC_LIBRARIES += gafplayer_static
 
 include $(BUILD_SHARED_LIBRARY)
 
-$(call import-module,.)
+# $(call import-module,.)
 $(call import-module,audio/android)
-$(call import-module,library)
+$(call import-module,cocos)
+$(call import-module,Library)
 
 
 # $(call import-module,Box2D)
