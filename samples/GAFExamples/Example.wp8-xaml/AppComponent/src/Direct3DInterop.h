@@ -57,8 +57,8 @@ public:
     Windows::Foundation::IAsyncAction^ OnSuspending();
 
     void OnBackKeyPress();
-    void OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent::Cocos2dKeyEvent key);
-    void OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent::Cocos2dKeyEvent key, Platform::String^ text);
+    void OnCocos2dKeyEvent(Cocos2dKeyEvent key);
+    void OnCocos2dKeyEvent(Cocos2dKeyEvent key, Platform::String^ text);
     void OnCocos2dEditboxEvent(Platform::Object^ sender, Platform::String^ args, Windows::Foundation::EventHandler<Platform::String^>^ handler);
     void OnOrientationChanged(Windows::Graphics::Display::DisplayOrientations orientation);
     void OnCocos2dOpenURL(Platform::String^ url);
@@ -66,10 +66,10 @@ public:
     property Windows::Graphics::Display::DisplayOrientations WindowOrientation;
     property Windows::Foundation::Size WindowBounds;
 
-    void SetCocos2dEventDelegate(PhoneDirect3DXamlAppComponent::Cocos2dEventDelegate^ delegate);
-    void SetCocos2dMessageBoxDelegate(PhoneDirect3DXamlAppComponent::Cocos2dMessageBoxDelegate ^ delegate);
-    void SetCocos2dEditBoxDelegate(PhoneDirect3DXamlAppComponent::Cocos2dEditBoxDelegate ^ delegate);
-    void SetCocos2dOpenURLDelegate(PhoneDirect3DXamlAppComponent::Cocos2dOpenURLDelegate ^ delegate);
+    void SetCocos2dEventDelegate(Cocos2dEventDelegate^ delegate);
+    void SetCocos2dMessageBoxDelegate(Cocos2dMessageBoxDelegate ^ delegate);
+    void SetCocos2dEditBoxDelegate(Cocos2dEditBoxDelegate ^ delegate);
+    void SetCocos2dOpenURLDelegate(Cocos2dOpenURLDelegate ^ delegate);
 
 
 protected:
@@ -83,17 +83,17 @@ internal:
     void Disconnect();
 	HRESULT PrepareResources(_In_ const LARGE_INTEGER* presentTargetTime, _Inout_ DrawingSurfaceSizeF* desiredRenderTargetSize);
     HRESULT Draw(_In_ ID3D11Device1* device, _In_ ID3D11DeviceContext1* context, _In_ ID3D11RenderTargetView* renderTargetView);
-    bool SendCocos2dEvent(PhoneDirect3DXamlAppComponent::Cocos2dEvent event);
+    bool SendCocos2dEvent(Cocos2dEvent event);
 
 private:
     Cocos2dRenderer^ m_renderer;
     Windows::Graphics::Display::DisplayOrientations mCurrentOrientation;
 
 
-    PhoneDirect3DXamlAppComponent::Cocos2dEventDelegate^ m_delegate;
-    PhoneDirect3DXamlAppComponent::Cocos2dMessageBoxDelegate^ m_messageBoxDelegate;
-    PhoneDirect3DXamlAppComponent::Cocos2dEditBoxDelegate^ m_editBoxDelegate;
-    PhoneDirect3DXamlAppComponent::Cocos2dOpenURLDelegate^ m_openURLDelegate;
+    Cocos2dEventDelegate^ m_delegate;
+    Cocos2dMessageBoxDelegate^ m_messageBoxDelegate;
+    Cocos2dEditBoxDelegate^ m_editBoxDelegate;
+    Cocos2dOpenURLDelegate^ m_openURLDelegate;
 
 };
 
