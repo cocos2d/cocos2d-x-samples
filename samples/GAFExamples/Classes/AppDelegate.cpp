@@ -96,6 +96,7 @@ void AppDelegate::applicationWillEnterForeground()
 
 #ifdef _WIN32
 
+#if (CC_TARGET_PLATFORM != CC_PLATFORM_WP8) && (CC_TARGET_PLATFORM != CC_PLATFORM_WINRT)
 int WINAPI WinMain(__in HINSTANCE hInstance,
     __in_opt HINSTANCE hPrevInstance,
     __in LPSTR lpCmdLine,
@@ -106,4 +107,5 @@ int WINAPI WinMain(__in HINSTANCE hInstance,
 
     return cocos2d::Application::getInstance()->run();
 }
+#endif
 #endif

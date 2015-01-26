@@ -102,45 +102,229 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Resources\biggreen\biggreen.gaf" />
+    <Content Include="..\..\Resources\biggreen\biggreen.gaf">
+      <Link>Assets\Resources\biggreen\biggreen.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba.gaf">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\christmas2013_julia2\christmas2013_julia2.gaf">
+      <Link>Assets\Resources\christmas2013_julia2\christmas2013_julia2.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope.gaf">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\fairy2\fairy2.gaf">
+      <Link>Assets\Resources\fairy2\fairy2.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\fireman_2014_sound\fireman_2014_sound.gaf">
+      <Link>Assets\Resources\fireman_2014_sound\fireman_2014_sound.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\firemen\firemen.gaf">
+      <Link>Assets\Resources\firemen\firemen.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\impiretank_05_oneplace\impiretank_05_oneplace.gaf">
+      <Link>Assets\Resources\impiretank_05_oneplace\impiretank_05_oneplace.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\myshopsgame4\myshopsgame4.gaf">
+      <Link>Assets\Resources\myshopsgame4\myshopsgame4.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\peacock_feb3_natasha\peacock_feb3_natasha.gaf">
+      <Link>Assets\Resources\peacock_feb3_natasha\peacock_feb3_natasha.gaf</Link>
+    </Content>
+    <Content Include="..\..\Resources\tiger\tiger.gaf">
+      <Link>Assets\Resources\tiger\tiger.gaf</Link>
+    </Content>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\Resources\answer.wav">
+      <Link>Assets\Resources\answer.wav</Link>
+    </Content>
+    <Content Include="..\..\Resources\biggreen\biggreen1.png">
+      <Link>Assets\Resources\biggreen\biggreen1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\biggreen\biggreen2.png">
+      <Link>Assets\Resources\biggreen\biggreen2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba1.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba2.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba3.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba3.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba4.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba4.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba5.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba5.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\bird_bezneba\bird_bezneba6.png">
+      <Link>Assets\Resources\bird_bezneba\bird_bezneba6.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\black_bg_button%402x.png">
+      <Link>Assets\Resources\buttons\black_bg_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\gaf_logo%402x.png">
+      <Link>Assets\Resources\buttons\gaf_logo%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\left_arrow%402x.png">
+      <Link>Assets\Resources\buttons\left_arrow%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\left_arrow_pressed%402x.png">
+      <Link>Assets\Resources\buttons\left_arrow_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\next_animation_button%402x.png">
+      <Link>Assets\Resources\buttons\next_animation_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\next_animation_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\next_animation_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\next_frame_button%402x.png">
+      <Link>Assets\Resources\buttons\next_frame_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\next_frame_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\next_frame_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\pause_button%402x.png">
+      <Link>Assets\Resources\buttons\pause_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\pause_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\pause_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\play_button%402x.png">
+      <Link>Assets\Resources\buttons\play_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\play_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\play_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\previous_animation_button%402x.png">
+      <Link>Assets\Resources\buttons\previous_animation_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\previous_animation_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\previous_animation_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\previous_frame_button%402x.png">
+      <Link>Assets\Resources\buttons\previous_frame_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\previous_frame_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\previous_frame_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\restart_button%402x.png">
+      <Link>Assets\Resources\buttons\restart_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\restart_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\restart_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\right_arrow%402x.png">
+      <Link>Assets\Resources\buttons\right_arrow%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\right_arrow_pressed%402x.png">
+      <Link>Assets\Resources\buttons\right_arrow_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\white_bg_button%402x.png">
+      <Link>Assets\Resources\buttons\white_bg_button%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\buttons\white_bg_button_pressed%402x.png">
+      <Link>Assets\Resources\buttons\white_bg_button_pressed%402x.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\car.wav">
+      <Link>Assets\Resources\car.wav</Link>
+    </Content>
+    <Content Include="..\..\Resources\christmas2013_julia2\christmas2013_julia21.png">
+      <Link>Assets\Resources\christmas2013_julia2\christmas2013_julia21.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\christmas2013_julia2\christmas2013_julia22.png">
+      <Link>Assets\Resources\christmas2013_julia2\christmas2013_julia22.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope1.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope2.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope3.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope3.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope4.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope4.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope5.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope5.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\cut_the_hope\cut_the_hope6.png">
+      <Link>Assets\Resources\cut_the_hope\cut_the_hope6.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fairy2\fairy21.png">
+      <Link>Assets\Resources\fairy2\fairy21.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fairy2\fairy22.png">
+      <Link>Assets\Resources\fairy2\fairy22.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fairy2\fairy23.png">
+      <Link>Assets\Resources\fairy2\fairy23.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fairy2\fairy24.png">
+      <Link>Assets\Resources\fairy2\fairy24.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fireman_2014_sound\fireman_2014_sound1.png">
+      <Link>Assets\Resources\fireman_2014_sound\fireman_2014_sound1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\fireman_2014_sound\fireman_2014_sound2.png">
+      <Link>Assets\Resources\fireman_2014_sound\fireman_2014_sound2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\firemen\firemen1.png">
+      <Link>Assets\Resources\firemen\firemen1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\firemen\firemen2.png">
+      <Link>Assets\Resources\firemen\firemen2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\firemen\firemen3.png">
+      <Link>Assets\Resources\firemen\firemen3.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\firemen\firemen4.png">
+      <Link>Assets\Resources\firemen\firemen4.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\impiretank_05_oneplace\impiretank_05_oneplace1.png">
+      <Link>Assets\Resources\impiretank_05_oneplace\impiretank_05_oneplace1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\impiretank_05_oneplace\impiretank_05_oneplace2.png">
+      <Link>Assets\Resources\impiretank_05_oneplace\impiretank_05_oneplace2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\myshopsgame4\myshopsgame41.png">
+      <Link>Assets\Resources\myshopsgame4\myshopsgame41.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\myshopsgame4\myshopsgame42.png">
+      <Link>Assets\Resources\myshopsgame4\myshopsgame42.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\order.wav">
+      <Link>Assets\Resources\order.wav</Link>
+    </Content>
+    <Content Include="..\..\Resources\peacock_feb3_natasha\peacock_feb3_natasha1.png">
+      <Link>Assets\Resources\peacock_feb3_natasha\peacock_feb3_natasha1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\peacock_feb3_natasha\peacock_feb3_natasha2.png">
+      <Link>Assets\Resources\peacock_feb3_natasha\peacock_feb3_natasha2.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\ring.wav">
+      <Link>Assets\Resources\ring.wav</Link>
+    </Content>
+    <Content Include="..\..\Resources\tiger\tiger1.png">
+      <Link>Assets\Resources\tiger\tiger1.png</Link>
+    </Content>
+    <Content Include="..\..\Resources\tiger\tiger2.png">
+      <Link>Assets\Resources\tiger\tiger2.png</Link>
+    </Content>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Assets\Resources\answer.wav" />
-    <Content Include="Assets\Resources\biggreen\biggreen1.png" />
-    <Content Include="Assets\Resources\biggreen\biggreen2.png" />
-    <Content Include="Assets\Resources\buttons\black_bg_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\gaf_logo%402x.png" />
-    <Content Include="Assets\Resources\buttons\left_arrow%402x.png" />
-    <Content Include="Assets\Resources\buttons\left_arrow_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\next_animation_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\next_animation_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\next_frame_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\next_frame_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\pause_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\pause_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\play_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\play_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\previous_animation_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\previous_animation_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\previous_frame_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\previous_frame_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\restart_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\restart_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\right_arrow%402x.png" />
-    <Content Include="Assets\Resources\buttons\right_arrow_pressed%402x.png" />
-    <Content Include="Assets\Resources\buttons\white_bg_button%402x.png" />
-    <Content Include="Assets\Resources\buttons\white_bg_button_pressed%402x.png" />
-    <Content Include="Assets\Resources\car.wav" />
-    <Content Include="Assets\Resources\order.wav" />
-    <Content Include="Assets\Resources\ring.wav" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

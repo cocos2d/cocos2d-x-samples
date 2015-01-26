@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{C089C8C0-30E0-4E22-80C0-CE093F111A43};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PhoneDirect3DXamlAppInterop</RootNamespace>
-    <AssemblyName>PhoneDirect3DXamlAppInterop</AssemblyName>
+    <RootNamespace>cocos2d</RootNamespace>
+    <AssemblyName>LiquidFun-Testbed</AssemblyName>
     <TargetFrameworkIdentifier>WindowsPhone</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
     <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
@@ -19,9 +19,9 @@
     </SupportedCultures>
     <XapOutputs>true</XapOutputs>
     <GenerateSilverlightManifest>true</GenerateSilverlightManifest>
-    <XapFilename>PhoneDirect3DXamlAppInterop_$(Configuration)_$(Platform).xap</XapFilename>
+    <XapFilename>LiquidFun-Testbed_$(Configuration)_$(Platform).xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
-    <SilverlightAppEntry>PhoneDirect3DXamlAppInterop.App</SilverlightAppEntry>
+    <SilverlightAppEntry>cocos2d.App</SilverlightAppEntry>
     <ValidateXaml>true</ValidateXaml>
     <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
     <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
@@ -126,22 +126,22 @@
       <Link>Assets\Resources\HelloWorld.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\b1.png">
-      <Link>Assets\Resources\Images\b1.png</Link>
+      <Link>Assets\Resources\images\b1.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\b2.png">
-      <Link>Assets\Resources\Images\b2.png</Link>
+      <Link>Assets\Resources\images\b2.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\f1.png">
-      <Link>Assets\Resources\Images\f1.png</Link>
+      <Link>Assets\Resources\images\f1.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\f2.png">
-      <Link>Assets\Resources\Images\f2.png</Link>
+      <Link>Assets\Resources\images\f2.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\r1.png">
-      <Link>Assets\Resources\Images\r1.png</Link>
+      <Link>Assets\Resources\images\r1.png</Link>
     </Content>
     <Content Include="..\..\Resources\Images\r2.png">
-      <Link>Assets\Resources\Images\r2.png</Link>
+      <Link>Assets\Resources\images\r2.png</Link>
     </Content>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\ApplicationIcon.png">

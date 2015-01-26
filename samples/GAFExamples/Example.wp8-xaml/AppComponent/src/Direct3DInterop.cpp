@@ -117,14 +117,14 @@ void Direct3DInterop::OnOrientationChanged(Windows::Graphics::Display::DisplayOr
     cocos2d::GLViewImpl::sharedOpenGLView()->QueueEvent(e);
 }
 
-void Direct3DInterop::OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent::Cocos2dKeyEvent key)
+void Direct3DInterop::OnCocos2dKeyEvent(Cocos2dKeyEvent key)
 {
     std::shared_ptr<cocos2d::InputEvent> e(new cocos2d::KeyboardEvent(key));
     cocos2d::GLViewImpl::sharedOpenGLView()->QueueEvent(e);
 }
 
 
-void Direct3DInterop::OnCocos2dKeyEvent(PhoneDirect3DXamlAppComponent::Cocos2dKeyEvent key, Platform::String^ text)
+void Direct3DInterop::OnCocos2dKeyEvent(Cocos2dKeyEvent key, Platform::String^ text)
 {
     std::shared_ptr<cocos2d::InputEvent> e(new cocos2d::KeyboardEvent(key,text));
     cocos2d::GLViewImpl::sharedOpenGLView()->QueueEvent(e);
@@ -162,32 +162,32 @@ HRESULT Direct3DInterop::Draw(_In_ ID3D11Device1* device, _In_ ID3D11DeviceConte
 	return S_OK;
 }
 
-void Direct3DInterop::SetCocos2dEventDelegate(PhoneDirect3DXamlAppComponent::Cocos2dEventDelegate^ delegate)
+void Direct3DInterop::SetCocos2dEventDelegate(Cocos2dEventDelegate^ delegate) 
 { 
     m_delegate = delegate; 
     m_renderer->SetXamlEventDelegate(delegate);
 }
 
-void Direct3DInterop::SetCocos2dMessageBoxDelegate(PhoneDirect3DXamlAppComponent::Cocos2dMessageBoxDelegate ^ delegate)
+void Direct3DInterop::SetCocos2dMessageBoxDelegate(Cocos2dMessageBoxDelegate ^ delegate)
 {
     m_messageBoxDelegate = delegate;
     m_renderer->SetXamlMessageBoxDelegate(delegate);
 }
 
-void Direct3DInterop::SetCocos2dEditBoxDelegate(PhoneDirect3DXamlAppComponent::Cocos2dEditBoxDelegate ^ delegate)
+void Direct3DInterop::SetCocos2dEditBoxDelegate(Cocos2dEditBoxDelegate ^ delegate)
 {
     m_editBoxDelegate = delegate;
     m_renderer->SetXamlEditBoxDelegate(delegate);
 }
 
-void Direct3DInterop::SetCocos2dOpenURLDelegate(PhoneDirect3DXamlAppComponent::Cocos2dOpenURLDelegate ^ delegate)
+void Direct3DInterop::SetCocos2dOpenURLDelegate(Cocos2dOpenURLDelegate ^ delegate)
 {
     m_openURLDelegate = delegate;
     m_renderer->SetXamlOpenURLDelegate(delegate);
 }
 
 
-bool Direct3DInterop::SendCocos2dEvent(PhoneDirect3DXamlAppComponent::Cocos2dEvent event)
+bool Direct3DInterop::SendCocos2dEvent(Cocos2dEvent event)
 {
     Platform::String^ str;
     if(m_delegate)
