@@ -53,7 +53,7 @@ option(BUILD_EXTENSIONS "Build extension library" ON)
 option(BUILD_EDITOR_SPINE "Build editor support for spine" ON)
 option(BUILD_EDITOR_COCOSTUDIO "Build editor support for cocostudio" ON)
 option(BUILD_EDITOR_COCOSBUILDER "Build editor support for cocosbuilder" ON)
-option(BUILD_LIQUIDFUN_TEST "Build LiquidFun test" ON)
+option(BUILD_LIQUIDFUN_TEST "Build LiquidFun test" OFF)
 option(BUILD_GAFEXAMPLES "Build GAFExamples" ON)
 option(USE_PREBUILT_LIBS "Use prebuilt libraries in external directory" ${USE_PREBUILT_LIBS_DEFAULT})
 
@@ -67,11 +67,15 @@ else(DEBUG_MODE)
   set(CMAKE_BUILD_TYPE RELEASE)
 endif(DEBUG_MODE)
 
+#GAFEXAMPLES and LIQUIDFUN_TEST can't be built at the same time for some reason
+#set USE_CHIPMUNK=1 and USE_BOX2D=0 and BUILD_GAFEXAMPLES=1 and BUILD_LIQUIDFUN_TEST=0 to build gafexamples
+#set USE_CHIPMUNK=0 and USE_BOX2D=1 and BUILD_LIQUIDFUN_TEST=1 and BUILD_GAFEXAMPLES=0 to build liquidfun test
 set(CMAKE_C_FLAGS_DEBUG "-DCOCOS2D_DEBUG=1")
 set(CMAKE_CXX_FLAGS_DEBUG ${CMAKE_C_FLAGS_DEBUG})
-set(USE_CHIPMUNK 0)
-set(BUILD_GAFEXAMPLES 0)
-set(USE_BOX2D 1)
+set(USE_CHIPMUNK 1)
+set(BUILD_GAFEXAMPLES 1)
+set(BUILD_LIQUIDFUN_TEST 0)
+set(USE_BOX2D 0)
 
 # Compiler options
 if(MSVC)
@@ -302,8 +306,8 @@ endif(BUILD_LIQUIDFUN_TEST)
 if(BUILD_GAFEXAMPLES)
   set(COCOS_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/cocos2d-x/cocos)
   set(GAF_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/libs/GAF/Library)
-  include(libs/GAF/Library/CMakeLists.txt)
-  #add_subdirectory(libs/GAF/Library)
-  add_subdirectory(libs/GAF/Examples)
+  #include(libs/GAF/Library/CMakeLists.txt)
+  add_subdirectory(libs/GAF/Library)
+  add_subdirectory(samples/GAFExamples)
 endif(BUILD_GAFEXAMPLES)
 
