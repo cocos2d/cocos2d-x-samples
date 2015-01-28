@@ -28,7 +28,7 @@ using namespace Platform;
 
 namespace cocos2d
 {
-	EditBoxEvent::EditBoxEvent( Platform::Object^ sender, Platform::String^ arg, Windows::Foundation::EventHandler<Platform::String^>^ handle ):
+	EditBoxEvent::EditBoxEvent(Platform::Object^ sender, Platform::String^ arg, Windows::Foundation::EventHandler<Platform::String^>^ handle ):
 		m_sender(sender),
 		m_args(arg),
 		m_handler(handle)

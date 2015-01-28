@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace cocos2d.Resources
-{
+namespace cocos2d.Resources {
     using System;
     
     

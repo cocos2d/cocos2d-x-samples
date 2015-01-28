@@ -127,7 +127,6 @@
 		29380EE31980047F00614A06 /* car.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = car.wav; path = ../Resources/car.wav; sourceTree = "<group>"; };
 		29380EE41980047F00614A06 /* order.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = order.wav; path = ../Resources/order.wav; sourceTree = "<group>"; };
 		29380EE51980047F00614A06 /* ring.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = ring.wav; path = ../Resources/ring.wav; sourceTree = "<group>"; };
-		29CC585D1A36147200B31D72 /* Example copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Example copy-Info.plist"; sourceTree = "<group>"; };
 		29CC58631A36167400B31D72 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Mac/main.cpp; sourceTree = SOURCE_ROOT; };
 		29CC58661A36178700B31D72 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
 		29CC58721A3618A200B31D72 /* Example Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,7 +264,6 @@
 				CF59E910187DAB2D003A6524 /* Example */,
 				CF59E909187DAB2D003A6524 /* Frameworks */,
 				CF59E908187DAB2D003A6524 /* Products */,
-				29CC585D1A36147200B31D72 /* Example copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
