@@ -162,7 +162,37 @@ class CocosZipInstaller(object):
         print("==> Extracting files, please wait ...")
         z = zipfile.ZipFile(self._filename)
         try:
-            z.extractall(self._extracted_folder_name)
+            for info in z.infolist():
+                name = info.filename
+
+                # don't extract absolute paths or ones with .. in them
+                if name.startswith('/') or '..' in name:
+                    continue
+
+                target = os.path.join(extract_dir, *name.split('/'))
+                if not target:
+                    continue
+
+                dirname = os.path.dirname(target)
+                if not os.path.exists(dirname):
+                     os.makedirs(dirname)
+
+                if name.endswith('/'):
+                    print '-----------------'+name
+                    # directory
+                    self.ensure_directory(target)
+                else:
+                    # file
+                    data = z.read(info.filename)
+                    f = open(target, 'wb')
+                    try:
+                        f.write(data)
+                    finally:
+                        f.close()
+                        del data
+                unix_attributes = info.external_attr >> 16
+                if unix_attributes:
+                    os.chmod(target, unix_attributes)
         finally:
             z.close()
             print("==> Extraction done!")
@@ -226,7 +256,7 @@ class CocosZipInstaller(object):
         self.download_zip_file()
 
         if not download_only:
-            self.unpack_zipfile(self._workpath)
+            self.unpack_zipfile(self._extracted_folder_name)
             print("==> Copying files...")
             if not os.path.exists(folder_for_extracting):
                 os.mkdir(folder_for_extracting)
