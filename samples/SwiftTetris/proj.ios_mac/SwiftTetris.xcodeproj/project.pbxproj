@@ -46,6 +46,8 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		529E58BF19F9008D00B0EB34 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 529E58B319F8FCD600B0EB34 /* libcocos2d iOS.a */; };
 		529E58C019F901E900B0EB34 /* libcocos2d Mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 529E58B119F8FCD600B0EB34 /* libcocos2d Mac.a */; };
+		B3D361851B943EEB00A06901 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D361841B943EEB00A06901 /* libiconv.dylib */; };
+		B3D361891B943EF500A06901 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D361881B943EF500A06901 /* libiconv.dylib */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -230,6 +232,8 @@
 		50EF62A017ECD613001EB2F8 /* Icon-29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-29.png"; sourceTree = "<group>"; };
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		529E58A919F8FCD500B0EB34 /* cocos2d_libs.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = cocos2d_libs.xcodeproj; path = "../../../libs/cocos2d-x/build/cocos2d_libs.xcodeproj"; sourceTree = "<group>"; };
+		B3D361841B943EEB00A06901 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.2.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		B3D361881B943EF500A06901 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -332,6 +336,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D361851B943EEB00A06901 /* libiconv.dylib in Frameworks */,
 				529E58BF19F9008D00B0EB34 /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -350,6 +355,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D361891B943EF500A06901 /* libiconv.dylib in Frameworks */,
 				529E58C019F901E900B0EB34 /* libcocos2d Mac.a in Frameworks */,
 				503AE11217EB99EE00D1A890 /* libcurl.dylib in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
@@ -423,6 +429,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D361881B943EF500A06901 /* libiconv.dylib */,
+				B3D361841B943EEB00A06901 /* libiconv.dylib */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
