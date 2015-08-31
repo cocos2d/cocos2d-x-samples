@@ -3,7 +3,7 @@
 	url = https://github.com/google/liquidfun.git
 [submodule "libs/GAF"]
 	path = libs/GAF
-	url = https://github.com/CatalystApps/Cocos2dxGAFPlayer.git
+url=https://github.com/jianglong0156/Cocos2dxGAFPlayer.git
 	branch = gaf_4_develop
 [submodule "samples/SwiftTetris/Bindings"]
 	path = samples/SwiftTetris/Bindings
