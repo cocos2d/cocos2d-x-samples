@@ -23,13 +23,13 @@
   </ItemGroup>
   
   <ItemGroup>
-    <_CustomResource Include="..\..\..\..\res\**\*">
+    <_CustomResource Include="..\..\..\res\**\*">
       <Link>Assets\Resources\res\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <DeploymentContent>true</DeploymentContent>
     </_CustomResource>
   </ItemGroup>
   <ItemGroup>
-    <_CustomResource Include="..\..\..\..\src\**\*">
+    <_CustomResource Include="..\..\..\src\**\*">
       <Link>Assets\Resources\src\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <DeploymentContent>true</DeploymentContent>
     </_CustomResource>
@@ -41,13 +41,13 @@
     </_CustomResource>
   </ItemGroup>
   <ItemGroup>
-    <_CustomResource Include="..\..\..\..\main.js">
+    <_CustomResource Include="..\..\..\main.js">
       <Link>Assets\Resources\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <DeploymentContent>true</DeploymentContent>
     </_CustomResource>
   </ItemGroup>
   <ItemGroup>
-    <_CustomResource Include="..\..\..\..\project.json">
+    <_CustomResource Include="..\..\..\project.json">
       <Link>Assets\Resources\%(RecursiveDir)%(FileName)%(Extension)</Link>
       <DeploymentContent>true</DeploymentContent>
     </_CustomResource>
