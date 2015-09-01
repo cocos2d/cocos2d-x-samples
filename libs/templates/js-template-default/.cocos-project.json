@@ -1,0 +1,13 @@
+{
+    "has_native": true, 
+    "project_type": "js",
+    "android_cfg": {
+        "project_path": "runtime-src/proj.android"
+    },
+    "web_cfg": {
+        "project_path": "",
+        "run_root_dir": "../../",
+        "sub_url": "/samples/HelloJavascript/"
+    },
+    "engine_dir": "../../libs/"
+}
