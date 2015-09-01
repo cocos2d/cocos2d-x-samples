@@ -56,6 +56,8 @@
 		29CC58C01A361BAD00B31D72 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF59E91C187DAB2D003A6524 /* Images.xcassets */; };
 		29CC58C11A361BAD00B31D72 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF59E913187DAB2D003A6524 /* InfoPlist.strings */; };
 		29E7527C197EA4CA00A33829 /* buttons in Resources */ = {isa = PBXBuildFile; fileRef = 29E7527B197EA4CA00A33829 /* buttons */; };
+		B3D361751B93FB1000A06901 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D361741B93FB1000A06901 /* libiconv.dylib */; };
+		B3D361771B93FB1800A06901 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B3D361761B93FB1800A06901 /* libiconv.dylib */; };
 		B6A9EF811A36280200CA2E13 /* libcocos2d iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A9EF801A36248200CA2E13 /* libcocos2d iOS.a */; };
 		B6A9EF821A36280700CA2E13 /* libgafplayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B6A9EF761A36247100CA2E13 /* libgafplayer.a */; };
 		B6A9EF831A362C4000CA2E13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CF59E916187DAB2D003A6524 /* main.m */; };
@@ -140,6 +142,8 @@
 		29CC58AC1A3619B500B31D72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
 		29CC58AE1A361A3600B31D72 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Mac/Info.plist; sourceTree = SOURCE_ROOT; };
 		29E7527B197EA4CA00A33829 /* buttons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = buttons; path = ../Resources/buttons; sourceTree = "<group>"; };
+		B3D361741B93FB1000A06901 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.10.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
+		B3D361761B93FB1800A06901 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		CF59E907187DAB2D003A6524 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF59E90A187DAB2D003A6524 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CF59E90C187DAB2D003A6524 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -171,6 +175,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D361751B93FB1000A06901 /* libiconv.dylib in Frameworks */,
 				B6A9EF841A362D0400CA2E13 /* libcocos2d Mac.a in Frameworks */,
 				B6A9EF851A362D0400CA2E13 /* libgafplayer Mac.a in Frameworks */,
 				29CC58AD1A3619B500B31D72 /* Cocoa.framework in Frameworks */,
@@ -189,6 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3D361771B93FB1800A06901 /* libiconv.dylib in Frameworks */,
 				B6A9EF821A36280700CA2E13 /* libgafplayer.a in Frameworks */,
 				B6A9EF811A36280200CA2E13 /* libcocos2d iOS.a in Frameworks */,
 				293951BA1998E30900D42174 /* CoreGraphics.framework in Frameworks */,
@@ -279,6 +285,8 @@
 		CF59E909187DAB2D003A6524 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B3D361761B93FB1800A06901 /* libiconv.dylib */,
+				B3D361741B93FB1000A06901 /* libiconv.dylib */,
 				29CC58AC1A3619B500B31D72 /* Cocoa.framework */,
 				29CC58AA1A3619B100B31D72 /* QuartzCore.framework */,
 				29CC58A81A3619AC00B31D72 /* OpenAL.framework */,
@@ -547,6 +555,7 @@
 		29CC588D1A3618A200B31D72 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -584,6 +593,7 @@
 		29CC588E1A3618A200B31D72 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
