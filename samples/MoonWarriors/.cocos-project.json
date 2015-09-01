@@ -1,0 +1,14 @@
+{
+    "android_cfg": {
+        "project_path": "runtime-src/proj.android"
+    }, 
+    "engine_dir": "../../libs/", 
+    "engine_version": "cocos2d-x-3.7.1", 
+    "has_native": true, 
+    "project_type": "js", 
+    "web_cfg": {
+        "project_path": "", 
+        "run_root_dir": "../../", 
+        "sub_url": "/samples/MoonWarriors/"
+    }
+}
