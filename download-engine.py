@@ -50,7 +50,6 @@ from time import time
 from sys import stdout
 from distutils.errors import DistutilsError
 from distutils.dir_util import copy_tree, remove_tree
-from hashlib import md5
 
 class UnrecognizedFormat:
     def __init__(self, prompt):
@@ -178,7 +177,6 @@ class CocosZipInstaller(object):
                      os.makedirs(dirname)
 
                 if name.endswith('/'):
-                    print '-----------------'+name
                     # directory
                     self.ensure_directory(target)
                 else:
@@ -223,16 +221,9 @@ class CocosZipInstaller(object):
         zipfile = os.path.join(self._workpath, self._filename)
         
         data = self.load_json_file(self._config_path)
-        if os.path.exists(zipfile) and data["MD5"] == self.md5_file(zipfile) and os.path.exists(self._work_folder_name):
+        if os.path.exists(zipfile) and os.path.exists(self._work_folder_name):
             return False
         return True
-
-    def md5_file(self, fileName):
-        mObject = md5()
-        fileData = open(fileName, 'rb')    #需要使用二进制格式读取文件内容
-        mObject.update(fileData.read())
-        fileData.close()
-        return mObject.hexdigest()
 
     def load_json_file(self, file_path):
         if not os.path.isfile(file_path):
