@@ -4,5 +4,250 @@
     "zip_file_size":"387113338",
     "downloadUrl":"http://cocostudio.download.appget.cn/Cocos2D-X/",
     "move_dirs":{
-    }
+    },
+    "modify_mul_line_files": [
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_dir\".*\\n.*\\n.*\\n.*\\n.*\\n.*]",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_x_engine\".*\\n.*\\n.*\\n.*\\}",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_dir\".*\\n.*\\n.*\\n.*\\n.*\\n.*]",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_x_engine\".*\\n.*\\n.*\\n.*\\}",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_x_engine\".*\\n.*\\n.*\\n.*\\}",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-runtime/cocos-project-template.json",
+           "pattern": ",.*\\n.*\"append_x_engine\".*\\n.*\\n.*\\n.*\\}",
+           "replace_string": ""
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/cocos-project-template.json",
+           "pattern": ".*\"append_x_engine\".*\\n.*\\n.*\\n.*\\},",
+           "replace_string": ""
+        }
+    ],
+    "modify_files": [
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.android-studio/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.android-studio/settings.gradle",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.android/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.android/project.properties",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.ios_mac/HelloJavascript.xcodeproj/project.pbxproj",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win32/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.android/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.android/project.properties",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.ios_mac/HelloJavascript.xcodeproj/project.pbxproj",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.win32/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.android-studio/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.android-studio/settings.gradle",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.android/build-cfg.json",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.android/project.properties",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.ios_mac/HelloLua.xcodeproj/project.pbxproj",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.ios_mac/HelloCpp.xcodeproj/project.pbxproj",
+           "pattern": "\\.\\./\\.\\./cocos2d-x",
+           "replace_string": "../../../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android-studio/app/jni/Android.mk",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android-studio/build-cfg.json",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android-studio/settings.gradle",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android/.cproject",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android/build-cfg.json",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android/build_native.py",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android/jni/Android.mk",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.android/project.properties",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.ios_mac/HelloCpp.xcodeproj/project.pbxproj",
+           "pattern": "\\.\\./cocos2d",
+           "replace_string": "../../../libs/cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win32/HelloJavascript.sln",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win32/HelloJavascript.vcxproj",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win8.1-universal/App.Windows/HelloJavascript.Windows.vcxproj",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win8.1-universal/App.WindowsPhone/HelloJavascript.WindowsPhone.vcxproj",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-default/frameworks/runtime-src/proj.win8.1-universal/HelloJavascript.sln",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.win32/HelloJavascript.sln",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/js-template-runtime/frameworks/runtime-src/proj.win32/HelloJavascript.vcxproj",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.win32/HelloLua.sln",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/lua-template-default/frameworks/runtime-src/proj.win32/HelloLua.vcxproj",
+           "pattern": "\\.\\.\\\\\\.\\.\\\\cocos2d-x",
+           "replace_string": "..\\..\\..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win10/App/HelloCpp.vcxproj",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win10/HelloCpp.sln",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win32/HelloCpp.sln",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win32/HelloCpp.vcxproj",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win8.1-universal/App.Windows/HelloCpp.Windows.vcxproj",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win8.1-universal/App.WindowsPhone/HelloCpp.WindowsPhone.vcxproj",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        },
+        {
+           "file_path": "cocos2d-x/templates/cpp-template-default/proj.win8.1-universal/HelloCpp.sln",
+           "pattern": "\\.\\.\\\\cocos2d",
+           "replace_string": "..\\..\\..\\libs\\cocos2d-x"
+        }
+
+    ]
 }

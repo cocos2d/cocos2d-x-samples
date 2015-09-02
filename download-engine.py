@@ -42,15 +42,13 @@ import shutil
 import sys
 import traceback
 import distutils
-import fileinput
 import json
 
 from optparse import OptionParser
 from time import time
-from sys import stdout
-from distutils.errors import DistutilsError
 from distutils.dir_util import copy_tree, remove_tree
 from hashlib import md5
+from libs import format_template
 
 class UnrecognizedFormat:
     def __init__(self, prompt):
@@ -178,7 +176,6 @@ class CocosZipInstaller(object):
                      os.makedirs(dirname)
 
                 if name.endswith('/'):
-                    print '-----------------'+name
                     # directory
                     self.ensure_directory(target)
                 else:
@@ -271,6 +268,10 @@ class CocosZipInstaller(object):
             print("==> Cleaning...")
             if os.path.exists(self._extracted_folder_name):
                 shutil.rmtree(self._extracted_folder_name)
+
+            print("==> Format template!")
+            formatTemplate()
+
             if os.path.isfile(self._filename):
                 if remove_downloaded is not None:
                     if remove_downloaded == 'yes':
@@ -289,6 +290,11 @@ def _check_python_version():
         return False
 
     return True
+
+def formatTemplate():
+    projectObj = format_template.ProjectFormat()
+    projectObj.modify_files(format_template.ProjectFormat.KEY_MODIFY_CFG, projectObj.modify_file)
+    projectObj.modify_files(format_template.ProjectFormat.KEY_MODIFY_MUL_LINE_CFG, projectObj.modify_mul_line_file)
 
 
 def main():
