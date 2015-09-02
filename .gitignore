@@ -60,3 +60,5 @@ Thumbs.db
 
 #Engine
 /libs/cocos2d-x
+
+/.idea
