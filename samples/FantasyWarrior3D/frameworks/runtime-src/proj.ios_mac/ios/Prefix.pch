@@ -1,0 +1,8 @@
+//
+// Prefix header for all source files of the 'FantasyWarrior3D' target in the 'FantasyWarrior3D' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+	#import <UIKit/UIKit.h>
+#endif
