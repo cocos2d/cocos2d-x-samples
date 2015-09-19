@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Notification -->
+
+    <string name="note_title">"英特尔® 连接中心"</string>
+
+    <!-- General / Common -->
+
+    <string name="yes">"是"</string>
+    <string name="no">"否"</string>
+    <string name="cancel_button_label">Cancel</string>
+    <string name="general_wait">Please wait…</string>
+    <string name="continue_button_label">Continue</string>
+    <string name="general_name">"名称："</string>
+    <string name="unable_start_camera">"无法启动摄像头！"</string>
+    <string name="could_not_open_image">"很抱歉，无法打开该图像。"</string>
+    <string name="general_register_now">"现在注册此设备？"</string>
+    <string name="error_gallery_not_stored_picture">"操作失败： 无法选择在线图像。请下载图像至此设备。"</string>
+    <!-- 
+    <string name="online_image_detection">content://com.google.android.gallery3d</string> -->
+    <string name="avatar_description">avatar</string>
+
+	
+    <!-- Reauthentication notification -->
+
+    <string name="notification_renew_registration">"更新注册信息"</string>
+    <string name="notification_reauthen_body">"此设备的英特尔® 连接中心凭据将过期。请点击或单击此处以重新注册此设备。"</string>
+    <string name="reauthen_not_expired_body">"此设备在英特尔® 连接中心上的注册信息将过期。注册信息会向其他用户证明您的身份。注册需要连接互联网。"</string>
+    <string name="reauthen_expired_body">"此设备的英特尔® 连接中心凭据已过期。请注册此设备。"</string>
+
+    <!-- New Unboxing -->
+
+
+    <!-- Start Up Page -->
+    <string name="start_up_page_message">Register with Intel Identity Cloud Services good, allows online discovery, secure, my devices, makes you a better person</string>
+    <string name="start_up_page_create_account_button_label">Create an account</string>
+    <string name="start_up_page_sign_in_button_label">Sign In</string>
+    <string name="start_up_page_skip_sign_in_button_label">Skip Sign In</string>
+
+    <!-- Enter Name Page -->
+    <string name="enter_screenname_header">Enter Screen Name</string>
+    <string name="enter_screenname_message">This is the name you will be seen as.</string>
+    <string name="enter_screenname_screen_name_label">Screen Name:</string>
+    <string name="enter_screenname_screen_name_hint">Screen Name</string>
+    <string name="enter_screenname_screen_name_desc">You can enter a nickname or your real name. This name will be shown to other people running Intel® Connect Center.</string>
+
+    <!-- Choose avatar page -->
+    <string name="choose_avater_header">Choose your profile picture</string>
+    <string name="choose_avater_message">Choose a profile picture to represent you. You can choose one of the pictures shown here, or browse to select your own custom picture. This profile picture will be shown to other people running Intel® Connect Center.</string>
+    <string name="choose_avater_gallery_button_label">Browse for a picture</string>
+    <string name="choose_avater_camera_button_label">Take a photo</string>
+    <string name="choose_avatar_error_gallery_not_stored_picture_title">Profile Picture</string>
+    <string name="choose_avatar_error_gallery_not_stored_picture">Please copy the picture to the local storage before choosing as an avatar or choose from local storage.</string>
+
+    <!-- Enter Device Name Page -->
+    <string name="enter_device_name_header">Enter Device Name</string>
+    <string name="enter_device_name_label">Device Name:</string>
+    <string name="enter_device_name_hint">Device Name</string>
+    <string name="enter_device_name_done_button_label">Done</string>
+
+    <!-- Successful Page -->
+    <string name="successful_header">Successful</string>
+    <string name="successful_ok_button_label">OK</string>
+    
+    <!-- Old Registration Strings -->
+    <string name="nu_title_registration">"注册"</string>
+    <string name="nu_text_registration">"使用英特尔® 连接中心时，注册提供了更安全的体验。"</string>
+    <string name="nu_sub_text_registration">"完成注册过程必须要有互联网连接。"</string>
+    <string name="nu_sub_button1">"立即注册"</string>
+    <string name="nu_sub_button2">"稍后注册"</string>
+    <string name="nu_sub_button3">"取消注册"</string>
+    <string name="nu_title_verify">"正在验证您的互联网连接"</string>
+    <string name="nu_no_internet">"无法连接至云服务。"</string>
+    <string name="nu_title_sign_in">"登录"</string>
+    <string name="nu_title_registering">"正在注册"</string>
+
+    <!-- Cloud and Unboxing -->
+
+    <string name="unboxing_name">"让此区域的人员知道您是谁。 "\n"英特尔® 连接中心将向此区域的人员显示您的姓名，使他们可以邀请您一起玩游戏或运行应用程序。"</string>
+    <string name="unboxing_avatar">"添加代表您的资料图片。 "\n"此区域的人员将看到此图片，他们将能够更快速地找到您。"</string>
+    <string name="unboxing_selectPicture">"选择资料图片"</string>
+    
+    <string name="unboxing_getStarted">"立即开始"</string>
+    <string name="unboxing_insert_username">Enter Username…</string>
+    <string name="cloud_reauthenticate">"重新验证您的设备"</string>
+    <string name="cloud_no_connection_new">"无法联系英特尔® 云服务。请确定您具有互联网连接并且防火墙配置正确。"</string>
+    <string name="cloud_signing_in_title">Signing In…</string>
+    
+    <!--  Cloud Error Strings -->
+    <string name="cloud_error_header">Registration Failed</string>       
+    <string name="cloud_error_message1">Unable to connect to the Internet.</string>
+    <string name="cloud_error_message2">Please make sure that you have an Internet Connection.</string>
+    <string name="cloud_error_try_again_button_label">Try Again</string>    
+	<string name="cloud_error_no_internet_header">No Internet Connection</string>
+	<string name="cloud_error_description">No Internet Connection</string> 
+	
+    <!-- StarterActivity -->
+
+    <string name="pending">Checking for Platform …</string>
+    <string name="ok">"确定"</string>
+    <string name="invalid_username">"用户名无效"</string>
+    <string name="invalid_username_text">"您的用户名必须至少包含一个有效字符。"</string>
+
+    <!-- Update User Details -->
+
+    <string name="profile_insert_username">Enter Username…</string>
+    <string name="profile_insert_status">Enter Status Message…</string>
+    <string name="app_name">Moon3D</string>
+    <string name="app_description">Simple chat app description.</string>
+    <string name="notification_text">has invited you to simple chat.</string>
+    <string name="timeout_toast_text">Invitation to simplechat has timed out.</string>
+    <string name="schat_inv_text">%s invited you to Chat.</string>
+    <string name="title_activity_friend_initiator">FriendInitiatorActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Do you want invite</string>
+    
+     <!-- FriendInviteActivity -->
+     
+    <string name="friend_receive_invitation_received"> %1$s wants to be your friend. Friends can connect to each other over the Internet.</string>
+    <string name="friend_receive_invitation_accepted_error_occurred"> Could not complete friend request. %1$s may not be available.</string>
+    <string name="accept_button_text">Accept</string>
+    <string name="ignore_button_text">Ignore</string>
+    <string name="ok_button_text">OK</string>
+	<string name="friendsendinvitationmsg_makingfriendrequest">Asking %1$s to be your friend...</string>
+	<string name="friendsendinvitationmsg_erroroccurred">Could not make %1$s your friend.  Try later.</string>
+	<string name="friendsendinvitationmsg_friendrequestacceptedregisteringwithserver">Making friends with %1$s...</string>
+	<string name="friendsendinvitationmsg_friendrequestnotaccepted">Could not complete friend request. %1$s may not be available.</string>
+	<string name="friendsendinvitationmsg_nolocalinternetconnection">You do not have an Internet connection.  An Internet connection is required to make friends.</string>
+	<string name="friendsendinvitationmsg_preconfirmsendinvitation">Would you like to invite %1$s to be your friend?</string>
+	<string name="friendsendinvitationmsg_serverregistrationsucceededfriendsmade">You and %1$s are now friends</string>
+	<string name="msgdlg_okbtntext">OK</string>
+	<string name="msgdlg_cancelbtntext">Cancel</string>
+	<string name="msgdlg_yesbtntext">Yes</string>
+	<string name="msgdlg_nobtntext">No</string>
+	<string name="friendreceiveinvitationmsg_errorafteracceptinginvitation">Could not make %1$s your friend.  Try later.</string>
+	<string name="friendreceiveinvitationmsg_invitationaccepted">Making friends with %1$s...</string>
+	<string name="friendreceiveinvitationmsg_invitationreceived">%1$s wants to be your friend. Friends can connect to each other over the Internet.</string>
+	<string name="friendreceiveinvitationmsg_registrationsucceededfriendsmade">You and %1$s are now friends</string>
+	<string name="friendreceiveinvitation_title">Received Friend Invitation</string>
+	<string name="friendsendinvitation_title">Sent Friend Invitation</string>
+	<string name="friendsendinvitationmsg_noremoteinternetconnection">Could not make %1$s your friend.  %1$s does not have an Internet connection. Try later.</string>
+	<string name="friendsendinvitationmsg_serverregistrationsucceededfriendsmade1">Could not make %1$s your friend.  Try later.</string>
+	<string name="friendreceiveinvitationmsg_nointernet">You do not have an Internet connection.  An Internet connection is required to make friends.</string>
+	<string name="msgdlg_acceptbtntext">Accept</string>
+	<string name="msgdlg_ignorebtntext">Ignore</string>
+	<string name="msgdlg_retrybtntext">Retry</string>
+    
+    <string name="sessionTitle">附近的玩家\n请选择</string>	
+    </resources>
